@@ -492,9 +492,47 @@ portfolio_engine.manual_sell_position('${code}', '${reason || "用户手动盘�
   }
 });
 
-// 7. System Logs (Internal)
+// 7. System Logs (Internal) — reads from daily archives (system_logs_YYYY-MM-DD.json).
+// Scans newest-first across archive files and stitches `limit` entries together,
+// mirroring python's get_recent_logs(). Falls back to legacy system_logs.json
+// for systems that still only have the old single-file format.
+function readRecentArchivedLogs(limit: number = 200): any[] {
+  try {
+    // List archive files newest-first (filename sort == date sort due to ISO format)
+    const archiveFiles = fs
+      .readdirSync(DATA_DIR)
+      .filter((name) => name.startsWith("system_logs_") && name.endsWith(".json"))
+      .sort()
+      .reverse();
+
+    const result: any[] = [];
+    for (const fname of archiveFiles) {
+      if (result.length >= limit) break;
+      try {
+        const fullPath = path.join(DATA_DIR, fname);
+        const dayLogs = JSON.parse(fs.readFileSync(fullPath, "utf-8"));
+        if (!Array.isArray(dayLogs)) continue;
+        const needed = limit - result.length;
+        // Take the tail of this day's logs; prepend older entries
+        const chunk = dayLogs.length >= needed ? dayLogs.slice(-needed) : dayLogs;
+        result.unshift(...chunk);
+      } catch (err) {
+        console.error(`Error reading archive ${fname}:`, err);
+      }
+    }
+    if (result.length) return result.slice(-limit);
+
+    // Fallback: legacy single-file format
+    return readJsonSafe("system_logs.json", []);
+  } catch (err) {
+    console.error("Error reading archived logs:", err);
+    return readJsonSafe("system_logs.json", []);
+  }
+}
+
 app.get("/api/logs", (req, res) => {
-  const logs = readJsonSafe("system_logs.json", []);
+  const limit = Math.min(parseInt(String(req.query.limit || "200"), 10) || 200, 2000);
+  const logs = readRecentArchivedLogs(limit);
   res.json({ success: true, data: logs });
 });
 

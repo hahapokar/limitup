@@ -361,6 +361,26 @@ export interface SellAlertCardData {
   };
 }
 
+export interface BuyAlertCardData {
+  alert_id: string;
+  code: string;
+  name: string;
+  time: string;
+  date: string;
+  buy_price: number;
+  shares: number;
+  amount: number;
+  friction: number;
+  strategy: "OPENING" | "REBREAK" | "PULLBACK";
+  strategy_name: string;
+  rank: number | string;
+  quant_score: number;
+  sector: string;
+  prev_close: number;
+  change_pct_at_entry: number;
+  reason: string;
+}
+
 export interface TradeOrder {
   order_id: string;
   type: "BUY" | "SELL";
@@ -403,6 +423,7 @@ export interface PortfolioState {
   trade_history: TradeOrder[];
   nav_history: NavHistoryItem[];
   recent_sell_alerts?: SellAlertCardData[];
+  recent_buy_alerts?: BuyAlertCardData[];
   last_update: string;
 }
 

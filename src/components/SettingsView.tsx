@@ -17,7 +17,15 @@ import {
   Sparkles,
   HelpCircle,
   BarChart3,
-  BookOpen
+  BookOpen,
+  Target,
+  ShoppingCart,
+  LogOut,
+  Lock,
+  ArrowDownCircle,
+  ArrowUpCircle,
+  MinusCircle,
+  Gauge
 } from "lucide-react";
 
 export const SettingsView: React.FC = () => {
@@ -493,87 +501,374 @@ export const SettingsView: React.FC = () => {
         </section>
       )}
 
-      {/* SECTION 3: 模拟实盘操作规则 */}
+      {/* SECTION 3: 买入逻辑详解 */}
       {(activeSubSection === "all" || activeSubSection === "trading") && (
         <section className="bg-slate-900/90 border border-slate-800 rounded-xl p-6 space-y-6 shadow-md">
           <div className="flex items-center justify-between border-b border-slate-800 pb-4">
             <div className="flex items-center gap-2.5">
-              <Clock className="w-5 h-5 text-emerald-400" />
+              <ShoppingCart className="w-5 h-5 text-emerald-400" />
               <h3 className="text-lg font-bold text-slate-100">
-                三、模拟实盘账户操作规则与交易风控白皮书
+                三、买入执行逻辑详解 (Buy Execution)
               </h3>
             </div>
-            <span className="text-xs text-slate-400 font-mono">LIVE 实时行情 · 15:30 FINAL 快照 · T-1 次日决策</span>
+            <span className="text-xs text-slate-400 font-mono">仅用 T-1 15:30 FINAL 候选 · 实时价成交</span>
+          </div>
+
+          {/* 全局买入杀开关 */}
+          <div className="bg-rose-950/20 border border-rose-900/50 rounded-lg p-4 space-y-3">
+            <h4 className="text-sm font-semibold text-rose-300 flex items-center gap-2">
+              <AlertTriangle className="w-4 h-4" />
+              3.0 全局买入杀开关 (Kill Switch) — 任何情况命中立即 return[] 不买单
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+              <div className="flex items-start gap-2 bg-slate-900/70 p-2.5 rounded border border-slate-800">
+                <ArrowDownCircle className="w-4 h-4 text-rose-400 shrink-0 mt-0.5" />
+                <div>
+                  <div className="font-bold text-rose-300">① 指数系统性弱势</div>
+                  <div className="text-slate-300 mt-0.5">上证 / 深证 / 创业板 3 大指数中 <strong>≥ 2 个低开 &lt; -1.0%</strong> → 今日不建仓</div>
+                </div>
+              </div>
+              <div className="flex items-start gap-2 bg-slate-900/70 p-2.5 rounded border border-slate-800">
+                <Lock className="w-4 h-4 text-rose-400 shrink-0 mt-0.5" />
+                <div>
+                  <div className="font-bold text-rose-300">② 情绪熔断 / 弱势期</div>
+                  <div className="text-slate-300 mt-0.5">T-1 情绪状态为 <strong>「退潮/弱势期」或「熔断状态」</strong>，或 circuit_breaker = True</div>
+                </div>
+              </div>
+              <div className="flex items-start gap-2 bg-slate-900/70 p-2.5 rounded border border-slate-800">
+                <Target className="w-4 h-4 text-rose-400 shrink-0 mt-0.5" />
+                <div>
+                  <div className="font-bold text-rose-300">③ 情绪目标仓位 cap</div>
+                  <div className="text-slate-300 mt-0.5">target_position_ratio × 总资产 − 已持股市值 &lt; ¥10,000 → 预算不足</div>
+                </div>
+              </div>
+              <div className="flex items-start gap-2 bg-slate-900/70 p-2.5 rounded border border-slate-800">
+                <MinusCircle className="w-4 h-4 text-rose-400 shrink-0 mt-0.5" />
+                <div>
+                  <div className="font-bold text-rose-300">④ 仓位 / 现金不足</div>
+                  <div className="text-slate-300 mt-0.5">已持仓 = 4 (MAX_POSITIONS) 或 可用现金 &lt; ¥10,000</div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Step 1: 集合竞价买入 */}
-            <div className="bg-slate-800/40 border border-slate-700/60 rounded-xl p-4 space-y-3">
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full bg-red-600/20 text-red-400 border border-red-500/40 flex items-center justify-center font-bold text-xs">
-                  1
+            {/* 策略 1: OPENING */}
+            <div className="bg-slate-800/40 border border-red-500/30 rounded-xl p-4 space-y-3">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg bg-red-600/20 text-red-400 border border-red-500/40 flex items-center justify-center font-bold">
+                    1
+                  </div>
+                  <h4 className="text-sm font-bold text-slate-100">开盘竞价买入</h4>
                 </div>
-                <h4 className="text-sm font-bold text-slate-100">第一类：开盘竞价买入</h4>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-red-950/60 text-red-300 border border-red-900/60">OPENING</span>
               </div>
-              <ul className="space-y-2 text-xs text-slate-300 list-disc list-inside leading-relaxed">
-                <li>
-                  <strong className="text-slate-100">执行时点：</strong>09:28 - 09:50，使用当日实时开盘价。
-                </li>
-                <li>
-                  <strong className="text-slate-100">候选范围：</strong>只考虑上一交易日 FINAL 快照中的排名前 8 名。
-                </li>
-                <li>
-                  <strong className="text-rose-400">成交风控：</strong>一字涨停、开盘高开 ≥ +6% 或低开 &lt; -2.5% 时跳过。
-                </li>
-                <li>
-                  <strong className="text-amber-400">实时原则：</strong>行情失败时不使用旧文件替代，也不模拟成交。
-                </li>
-                <li>
-                  <strong className="text-slate-400">交易滑点摩擦：</strong>包含双边 0.15% 印花税与佣金损耗。
-                </li>
-              </ul>
+              <div className="space-y-2 text-xs text-slate-300 leading-relaxed border-t border-slate-700/60 pt-3">
+                <div className="flex justify-between"><span className="text-slate-400">执行窗口:</span><span className="font-mono font-bold text-red-300">09:28 – 09:50</span></div>
+                <div className="flex justify-between"><span className="text-slate-400">成交价:</span><span className="font-mono text-slate-100">开盘价 (open_price)</span></div>
+                <div className="flex justify-between"><span className="text-slate-400">候选范围:</span><span className="font-mono text-slate-100">T-1 Top 8 (rank ≤ 8)</span></div>
+              </div>
+              <div className="space-y-1.5 text-[11px]">
+                <div className="font-semibold text-slate-200 flex items-center gap-1"><ShieldAlert className="w-3.5 h-3.5 text-rose-400" /> 三道开盘过滤器（全部通过才买）：</div>
+                <div className="p-2 rounded bg-slate-900/70 border border-slate-800 text-slate-300">
+                  <span className="text-rose-400 font-bold">⛔ 一字板:</span> 开盘涨幅 ≥ <strong>9.8%</strong> 且卖一量 = 0（封死涨停买不到）
+                </div>
+                <div className="p-2 rounded bg-slate-900/70 border border-slate-800 text-slate-300">
+                  <span className="text-amber-400 font-bold">⛔ 追高:</span> 开盘涨幅 ≥ <strong>+6.0%</strong>（避免高开低走接盘）
+                </div>
+                <div className="p-2 rounded bg-slate-900/70 border border-slate-800 text-slate-300">
+                  <span className="text-blue-400 font-bold">⛔ 弱开:</span> 开盘跌幅 &lt; <strong>−2.5%</strong>（严重不及预期）
+                </div>
+                <div className="p-2 rounded bg-slate-900/70 border border-slate-800 text-slate-300">
+                  <span className="text-emerald-400 font-bold">⛔ 竞价无量:</span> 开盘竞价成交额 &lt; <strong>¥1,000 万</strong>（无量不接力）
+                </div>
+              </div>
             </div>
 
-            {/* Step 2: 盘中防洗盘监控 */}
-            <div className="bg-slate-800/40 border border-slate-700/60 rounded-xl p-4 space-y-3">
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full bg-amber-600/20 text-amber-400 border border-amber-500/40 flex items-center justify-center font-bold text-xs">
-                  2
+            {/* 策略 2: REBREAK */}
+            <div className="bg-slate-800/40 border border-amber-500/30 rounded-xl p-4 space-y-3">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg bg-amber-600/20 text-amber-400 border border-amber-500/40 flex items-center justify-center font-bold">
+                    2
+                  </div>
+                  <h4 className="text-sm font-bold text-slate-100">炸板回封买入</h4>
                 </div>
-                <h4 className="text-sm font-bold text-slate-100">第二类 / 第三类：盘中买入</h4>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-950/60 text-amber-300 border border-amber-900/60">REBREAK</span>
               </div>
-              <ul className="space-y-2 text-xs text-slate-300 list-disc list-inside leading-relaxed">
-                <li>
-                  <strong className="text-red-400">炸板回封：</strong>必须先实时观测到涨停、再炸板，随后重新接近涨停价且盘口可成交。
-                </li>
-                <li>
-                  <strong className="text-amber-400">强势回踩：</strong>实时涨幅 +2% 至 +6%，从日内高点回撤至少 1.5%，且仍高于开盘价。
-                </li>
-                <li>
-                  <strong className="text-slate-100">共同规则：</strong>仅限候选前 8 名，成交价使用实时当前价，订单记录策略名称和触发时间。
-                </li>
-              </ul>
+              <div className="space-y-2 text-xs text-slate-300 leading-relaxed border-t border-slate-700/60 pt-3">
+                <div className="flex justify-between"><span className="text-slate-400">执行窗口:</span><span className="font-mono font-bold text-amber-300">09:50 – 11:30 / 13:00 – 15:00</span></div>
+                <div className="flex justify-between"><span className="text-slate-400">成交价:</span><span className="font-mono text-slate-100">实时价 (current_price)</span></div>
+                <div className="flex justify-between"><span className="text-slate-400">候选范围:</span><span className="font-mono text-slate-100">T-1 Top 8 (rank ≤ 8)</span></div>
+              </div>
+              <div className="space-y-1.5 text-[11px]">
+                <div className="font-semibold text-slate-200 flex items-center gap-1"><Zap className="w-3.5 h-3.5 text-amber-400" /> 四道同时满足：</div>
+                <div className="p-2 rounded bg-slate-900/70 border border-slate-800 text-slate-300">
+                  ① <strong className="text-amber-400">rebreak_ready = True</strong>（全天观测：曾涨停 → 曾炸板 → 状态机就绪）
+                </div>
+                <div className="p-2 rounded bg-slate-900/70 border border-slate-800 text-slate-300">
+                  ② 现价 ≥ 涨停价 × (1 − <strong>0.20%</strong>)（接近涨停，回封确认）
+                </div>
+                <div className="p-2 rounded bg-slate-900/70 border border-slate-800 text-slate-300">
+                  ③ <strong>卖一量 &gt; 0</strong>（盘口有可成交卖单，不是封死一字）
+                </div>
+                <div className="p-2 rounded bg-slate-900/70 border border-slate-800 text-slate-300">
+                  ④ <strong>量比 ≥ 1.2 倍</strong>（盘中量能放大，证明真实资金回封承接）
+                </div>
+              </div>
             </div>
 
-            {/* Step 3: T+2 强制离场 */}
-            <div className="bg-slate-800/40 border border-slate-700/60 rounded-xl p-4 space-y-3">
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full bg-blue-600/20 text-blue-400 border border-blue-500/40 flex items-center justify-center font-bold text-xs">
-                  3
+            {/* 策略 3: PULLBACK */}
+            <div className="bg-slate-800/40 border border-emerald-500/30 rounded-xl p-4 space-y-3">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg bg-emerald-600/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center font-bold">
+                    3
+                  </div>
+                  <h4 className="text-sm font-bold text-slate-100">强势回踩买入</h4>
                 </div>
-                <h4 className="text-sm font-bold text-slate-100">T+2 尾盘强制离场</h4>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950/60 text-emerald-300 border border-emerald-900/60">PULLBACK</span>
               </div>
-              <ul className="space-y-2 text-xs text-slate-300 list-disc list-inside leading-relaxed">
-                <li>
-                  <strong className="text-slate-100">清仓时点：</strong>次日 14:45 尾盘。
-                </li>
-                <li>
-                  <strong className="text-indigo-300">弱势必出：</strong>若持仓个股至 14:45 仍未能封死涨停板，系统自动以市价清仓离场。
-                </li>
-                <li>
-                  <strong className="text-slate-400">超短资金高周转：</strong>不参与隔夜未知利空博弈，资金快速归位，准备参与当晚新一轮候选打板选股。
-                </li>
-              </ul>
+              <div className="space-y-2 text-xs text-slate-300 leading-relaxed border-t border-slate-700/60 pt-3">
+                <div className="flex justify-between"><span className="text-slate-400">执行窗口:</span><span className="font-mono font-bold text-emerald-300">09:50 – 11:30 / 13:00 – 15:00</span></div>
+                <div className="flex justify-between"><span className="text-slate-400">成交价:</span><span className="font-mono text-slate-100">实时价 (current_price)</span></div>
+                <div className="flex justify-between"><span className="text-slate-400">候选范围:</span><span className="font-mono text-slate-100">T-1 Top 8 (rank ≤ 8)</span></div>
+              </div>
+              <div className="space-y-1.5 text-[11px]">
+                <div className="font-semibold text-slate-200 flex items-center gap-1"><Gauge className="w-3.5 h-3.5 text-emerald-400" /> 四道同时满足（连续窗口通用开盘过滤也必须通过）：</div>
+                <div className="p-2 rounded bg-slate-900/70 border border-slate-800 text-slate-300">
+                  ① 实时涨幅 <strong className="text-emerald-400">+2% ~ +6%</strong>（温和上行，不追涨停）
+                </div>
+                <div className="p-2 rounded bg-slate-900/70 border border-slate-800 text-slate-300">
+                  ② 自盘中最高回落 ≥ <strong className="text-emerald-400">1.5%</strong>（洗盘回踩入场点）
+                </div>
+                <div className="p-2 rounded bg-slate-900/70 border border-slate-800 text-slate-300">
+                  ③ 现价 <strong className="text-emerald-400">&gt; 开盘价</strong>（仍保持强势，不被空头掌控）
+                </div>
+                <div className="p-2 rounded bg-emerald-950/30 border border-emerald-900/50 text-emerald-200">
+                  💡 例：中广天择 9-02 开 0.0%，最高冲到 +10%，10:04 回落到 +4.9% 时触发 PULLBACK 买入 ¥22.04
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 仓位分配 / 资金管理 */}
+          <div className="bg-slate-950/60 border border-slate-800 rounded-lg p-4 space-y-2.5">
+            <h4 className="text-xs font-bold text-slate-200 flex items-center gap-2">
+              <Target className="w-4 h-4 text-indigo-400" />
+              资金分配与摩擦成本
+            </h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2.5 text-xs text-slate-300 pt-1">
+              <div className="p-2.5 rounded bg-slate-900 border border-slate-800">
+                <span className="text-indigo-300 font-bold">总仓位上限：</span>
+                <span className="text-slate-400 block mt-0.5">MAX_POSITIONS = <strong>4 只</strong>（等权 ¥25,000/只）</span>
+              </div>
+              <div className="p-2.5 rounded bg-slate-900 border border-slate-800">
+                <span className="text-rose-300 font-bold">买入摩擦：</span>
+                <span className="text-slate-400 block mt-0.5"><strong>0.08%</strong>（佣金+过户费+滑点）</span>
+              </div>
+              <div className="p-2.5 rounded bg-slate-900 border border-slate-800">
+                <span className="text-emerald-300 font-bold">卖出摩擦：</span>
+                <span className="text-slate-400 block mt-0.5"><strong>0.15%</strong>（含 0.05% 印花税）</span>
+              </div>
+              <div className="p-2.5 rounded bg-slate-900 border border-slate-800">
+                <span className="text-amber-300 font-bold">单票分配：</span>
+                <span className="text-slate-400 block mt-0.5">budget ÷ 剩余 slots，向下取整到 100 股，不足 100 股跳过</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* SECTION 3B: 卖出逻辑详解 */}
+      {(activeSubSection === "all" || activeSubSection === "trading") && (
+        <section className="bg-slate-900/90 border border-slate-800 rounded-xl p-6 space-y-6 shadow-md">
+          <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+            <div className="flex items-center gap-2.5">
+              <LogOut className="w-5 h-5 text-rose-400" />
+              <h3 className="text-lg font-bold text-slate-100">
+                四、卖出止盈止损逻辑详解 (Exit Rules)
+              </h3>
+            </div>
+            <span className="text-xs text-slate-400 font-mono">持仓以来最高 · 动态 holding_days · 三重卫兵</span>
+          </div>
+
+          {/* 三重卫兵 */}
+          <div className="bg-amber-950/20 border border-amber-900/50 rounded-lg p-4 space-y-2">
+            <h4 className="text-sm font-semibold text-amber-300 flex items-center gap-2">
+              <Lock className="w-4 h-4" />
+              4.0 卖出三重卫兵 (Guards) — 任一满足，四条卖出规则全部不执行
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5 text-xs">
+              <div className="flex items-start gap-2 bg-slate-900/70 p-2.5 rounded border border-slate-800">
+                <Lock className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
+                <div>
+                  <div className="font-bold text-amber-300">① T+0 锁仓</div>
+                  <div className="text-slate-300 mt-0.5">entry_date = today → 当日买入绝对不能卖（A 股 T+1）</div>
+                </div>
+              </div>
+              <div className="flex items-start gap-2 bg-slate-900/70 p-2.5 rounded border border-slate-800">
+                <Clock className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
+                <div>
+                  <div className="font-bold text-amber-300">② 非交易时段</div>
+                  <div className="text-slate-300 mt-0.5">不在 <strong>09:30 – 15:00</strong> 区间不成交（收盘后刷新行情不卖）</div>
+                </div>
+              </div>
+              <div className="flex items-start gap-2 bg-slate-900/70 p-2.5 rounded border border-slate-800">
+                <CheckCircle2 className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
+                <div>
+                  <div className="font-bold text-amber-300">③ holding_days ≥ 1</div>
+                  <div className="text-slate-300 mt-0.5">动态按交易日计数：entry_date→today 的交易日间隔（不依赖 settle_daily_nav 递增）</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {/* Rule 1: 分层移动止盈 */}
+            <div className="bg-slate-800/40 border border-emerald-500/30 rounded-xl p-4 space-y-3">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg bg-emerald-600/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center">
+                    <ArrowUpCircle className="w-4 h-4" />
+                  </div>
+                  <h4 className="text-sm font-bold text-slate-100">规则 ①：分层移动止盈（主要触发）</h4>
+                </div>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950/60 text-emerald-300 border border-emerald-900/60">TRAILING_STOP</span>
+              </div>
+              <div className="text-xs text-slate-300 space-y-2 border-t border-slate-700/60 pt-3">
+                <div className="p-3 rounded bg-slate-950/60 border border-slate-800 space-y-1.5">
+                  <div className="text-[11px] text-slate-400 mb-1">前置：盈利 ≥ 1.5%（先浮盈 1.5% 后才开始移动止盈观察）</div>
+                  <div className="font-mono text-slate-200">max_profit_pct = (high − entry) / entry</div>
+                  <div className="font-mono text-slate-200">pullback_ratio = (high − current) / high</div>
+                </div>
+                <div className="space-y-1.5">
+                  <div className="flex items-center justify-between p-2 rounded bg-slate-900/80 border border-slate-800 text-[11px]">
+                    <span className="text-emerald-300 font-bold">利润阶梯1: ≥ 8%</span>
+                    <span>回撤阈值: <strong className="text-emerald-300">2.5%</strong>（紧止盈，守住大利润）</span>
+                  </div>
+                  <div className="flex items-center justify-between p-2 rounded bg-slate-900/80 border border-slate-800 text-[11px]">
+                    <span className="text-amber-300 font-bold">利润阶梯2: ≥ 4%</span>
+                    <span>回撤阈值: <strong className="text-amber-300">4.0%</strong>（放宽，给洗盘空间）</span>
+                  </div>
+                  <div className="flex items-center justify-between p-2 rounded bg-slate-900/80 border border-slate-800 text-[11px] opacity-60">
+                    <span className="text-slate-400 font-bold">利润 &lt; 4%：</span>
+                    <span>不启用（靠规则 ② 硬止损兜底）</span>
+                  </div>
+                </div>
+                <div className="text-[11px] text-emerald-200/90 p-2 rounded bg-emerald-950/30 border border-emerald-900/40">
+                  💡 high_price = max(持仓历史持久化 high, 今日实时 high, current_price)，跨天持久化，不是当天才从 0 计
+                </div>
+              </div>
+            </div>
+
+            {/* Rule 2: 硬止损 */}
+            <div className="bg-slate-800/40 border border-rose-500/30 rounded-xl p-4 space-y-3">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg bg-rose-600/20 text-rose-400 border border-rose-500/40 flex items-center justify-center">
+                    <ArrowDownCircle className="w-4 h-4" />
+                  </div>
+                  <h4 className="text-sm font-bold text-slate-100">规则 ②：防洗盘硬止损（双重确认）</h4>
+                </div>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-rose-950/60 text-rose-300 border border-rose-900/60">HARD_STOP</span>
+              </div>
+              <div className="text-xs text-slate-300 space-y-2 border-t border-slate-700/60 pt-3">
+                <div className="p-3 rounded bg-rose-950/20 border border-rose-900/40">
+                  <div className="font-bold text-rose-300 mb-1">触发线：(current − entry) / entry ≤ <strong>−4.13%</strong></div>
+                  <div className="text-[11px] text-slate-300">（约等于 −5% 止损留出 0.87% 防扫损缓冲区）</div>
+                </div>
+                <div className="font-semibold text-slate-200 mt-2">双重确认（满足任意一条即执行）：</div>
+                <div className="grid grid-cols-2 gap-2">
+                  <div className="p-2 rounded bg-slate-900/80 border border-slate-800 text-[11px]">
+                    <strong className="text-rose-300">时间确认：</strong>连续 <strong>3 分钟</strong> 运行都在止损线下（anti_shakeout_count ≥ 3）
+                  </div>
+                  <div className="p-2 rounded bg-slate-900/80 border border-slate-800 text-[11px]">
+                    <strong className="text-rose-300">量能确认：</strong>盘口量比 ≥ <strong>2.0</strong> 倍（爆量破位，主力出逃）
+                  </div>
+                </div>
+                <div className="text-[11px] text-rose-200/90 p-2 rounded bg-rose-950/30 border border-rose-900/40">
+                  注意：如果价格弹回 −4.13% 之上，anti_shakeout_count 归零重置（不误杀洗盘）
+                </div>
+              </div>
+            </div>
+
+            {/* Rule 3: 炸板超时平仓 */}
+            <div className="bg-slate-800/40 border border-purple-500/30 rounded-xl p-4 space-y-3">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg bg-purple-600/20 text-purple-400 border border-purple-500/40 flex items-center justify-center">
+                    <Zap className="w-4 h-4" />
+                  </div>
+                  <h4 className="text-sm font-bold text-slate-100">规则 ③：涨停炸板超时风控</h4>
+                </div>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-950/60 text-purple-300 border border-purple-900/60">BROKEN_ZT_EXIT</span>
+              </div>
+              <div className="text-xs text-slate-300 space-y-2 border-t border-slate-700/60 pt-3">
+                <div className="space-y-1.5">
+                  <div className="p-2 rounded bg-slate-900/80 border border-slate-800 text-[11px]">
+                    <strong>① 观测条件：</strong>was_zt_today = True（今日任意时刻曾封死涨停，涨≥9.8% 且封单/量比≥3）
+                  </div>
+                  <div className="p-2 rounded bg-slate-900/80 border border-slate-800 text-[11px]">
+                    <strong>② 炸板条件：</strong>is_currently_zt = False（没封死了），记录 zt_broken_time 时间戳
+                  </div>
+                  <div className="p-2 rounded bg-purple-950/30 border border-purple-900/50 text-purple-200 text-[11px]">
+                    <strong>③ 超时平仓：</strong>now − zt_broken_time ≥ <strong>5 分钟</strong> 仍未回封 → 市价强制出局（避免"天地板"大面）
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Rule 4: T+2 14:45 强制平仓 */}
+            <div className="bg-slate-800/40 border border-blue-500/30 rounded-xl p-4 space-y-3">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg bg-blue-600/20 text-blue-400 border border-blue-500/40 flex items-center justify-center">
+                    <Clock className="w-4 h-4" />
+                  </div>
+                  <h4 className="text-sm font-bold text-slate-100">规则 ④：T+2 尾盘强制平仓</h4>
+                </div>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-950/60 text-blue-300 border border-blue-900/60">T2_FORCED</span>
+              </div>
+              <div className="text-xs text-slate-300 space-y-2 border-t border-slate-700/60 pt-3">
+                <div className="p-3 rounded bg-blue-950/30 border border-blue-900/50 space-y-1.5">
+                  <div className="font-bold text-blue-300">holding_days ≥ <strong>2</strong> 且当前时间 ≥ <strong>14:45</strong></div>
+                  <div className="text-[11px] text-slate-300">且个股涨跌幅 &lt; 9.8%（已封死涨停的空间龙头允许跳过，T+3 看情况再走）</div>
+                </div>
+                <div className="text-[11px] text-slate-400 p-2 rounded bg-slate-900/70 border border-slate-800">
+                  holding_days 动态计算：买入当天=0，下一交易日=1，再下一日=2（含周末/节假日按交易日跳算）
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 优先级 & UI 状态标签 */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="bg-slate-950/60 border border-slate-800 rounded-lg p-4 space-y-2">
+              <h4 className="text-xs font-bold text-slate-200 flex items-center gap-2">
+                <AlertTriangle className="w-4 h-4 text-amber-400" />
+                卖出规则优先级（按顺序匹配，先命中先卖）
+              </h4>
+              <div className="text-[11px] text-slate-300 space-y-1 mt-1 font-mono">
+                <div>① 移动止盈 TRAILING_STOP（最主要，绝大多数情况触发）</div>
+                <div>② 防洗盘硬止损 HARD_STOP（规则1未触发时判断）</div>
+                <div>③ 炸板超时平仓 BROKEN_ZT_EXIT（炸板+超时，高优先级即时）</div>
+                <div>④ T+2 尾盘强制平仓 T2_FORCED（最后兜底，14:45 后检查）</div>
+              </div>
+            </div>
+            <div className="bg-slate-950/60 border border-slate-800 rounded-lg p-4 space-y-2">
+              <h4 className="text-xs font-bold text-slate-200 flex items-center gap-2">
+                <Gauge className="w-4 h-4 text-indigo-400" />
+                UI 盯盘状态标签对应含义
+              </h4>
+              <div className="text-[11px] text-slate-300 space-y-1 mt-1">
+                <div><span className="px-1.5 rounded bg-emerald-600/30 text-emerald-300 text-[10px] mr-1.5">LOCKED_ZT</span>牢牢封死涨停（涨≥9.8% 且封单/量≥3）</div>
+                <div><span className="px-1.5 rounded bg-amber-600/30 text-amber-300 text-[10px] mr-1.5">TRAILING_WARN</span>自最高回撤 ≥ 1.8% 且高点过 1.015 倍 — 逼近止盈线</div>
+                <div><span className="px-1.5 rounded bg-rose-600/30 text-rose-300 text-[10px] mr-1.5">HARD_STOP_WARN</span>当前跌破 −4.13% 硬止损线（进入双重确认中）</div>
+                <div><span className="px-1.5 rounded bg-indigo-600/30 text-indigo-300 text-[10px] mr-1.5">T2_EXIT_PENDING</span>持股 ≥ 2 日，14:45 后可能被 T+2 强平</div>
+                <div><span className="px-1.5 rounded bg-slate-600/30 text-slate-300 text-[10px] mr-1.5">NORMAL</span>正常持有中</div>
+              </div>
             </div>
           </div>
         </section>

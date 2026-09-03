@@ -113,6 +113,7 @@ class PortfolioEngine:
                 }
             ],
             "recent_sell_alerts": [],
+            "recent_buy_alerts": [],
             "last_update": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         }
         self.save_state(initial_state)
@@ -310,6 +311,7 @@ class PortfolioEngine:
             "trade_history": trades,
             "nav_history": nav_history,
             "recent_sell_alerts": [],
+            "recent_buy_alerts": [],
             "last_update": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         }
         self.save_state(state)
@@ -796,6 +798,33 @@ class PortfolioEngine:
             }
             state["trade_history"].insert(0, order_record)
             executed_orders.append(order_record)
+
+            # Append to recent buy alerts for instant UI popups (与 recent_sell_alerts 对称)
+            if "recent_buy_alerts" not in state:
+                state["recent_buy_alerts"] = []
+
+            buy_alert_item = {
+                "alert_id": f"BUY_ALERT_{code}_{exec_time_tag}",
+                "code": code,
+                "name": name,
+                "time": exec_time_str,
+                "date": effective_date,
+                "buy_price": execution_price,
+                "shares": shares,
+                "amount": round(gross_amount, 2),
+                "friction": round(friction_cost, 2),
+                "strategy": strategy,
+                "strategy_name": strategy_name,
+                "rank": cand.get("rank", "-"),
+                "quant_score": cand.get("quant_score", 0),
+                "sector": cand.get("sector", "通用板块"),
+                "prev_close": round(prev_close, 3),
+                "change_pct_at_entry": round(((execution_price - prev_close) / prev_close) * 100.0, 2),
+                "reason": f"{strategy_name} · T+1 量化候选 (排名 {cand.get('rank', '-')}, 得分 {cand.get('quant_score', 0)} 分)"
+            }
+            state["recent_buy_alerts"].insert(0, buy_alert_item)
+            # Keep up to 20 recent alerts (与 recent_sell_alerts 一致)
+            state["recent_buy_alerts"] = state["recent_buy_alerts"][:20]
 
             send_notification(
                 f"🛒 模拟盘买入执行: {name}({code})",

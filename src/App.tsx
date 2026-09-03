@@ -7,16 +7,19 @@ import { SettingsView } from "./components/SettingsView";
 import { IterationView } from "./components/IterationView";
 import { ReviewAttributionView } from "./components/ReviewAttributionView";
 import { SellAlertModal } from "./components/SellAlertModal";
-import { 
-  SentimentData, 
-  CandidatesPayload, 
-  PortfolioState, 
+import { BuyAlertModal } from "./components/BuyAlertModal";
+import {
+  SentimentData,
+  CandidatesPayload,
+  PortfolioState,
   CandidateStock,
   IterationData,
   SellAlertCardData,
+  BuyAlertCardData,
   ReviewAttributionPayload,
   MarketSessionInfo
 } from "./types";
+import { Volume2, VolumeX } from "lucide-react";
 
 export function App() {
   const [activeTab, setActiveTab] = useState<string>("portfolio");
@@ -69,6 +72,85 @@ export function App() {
       return new Set();
     }
   });
+
+  // Dismissed BUY alert IDs (symmetric to dismissedAlerts for sell alerts)
+  const [dismissedBuyAlerts, setDismissedBuyAlerts] = useState<Set<string>>(() => {
+    try {
+      const saved = localStorage.getItem("dismissed_buy_alerts");
+      return saved ? new Set(JSON.parse(saved)) : new Set();
+    } catch {
+      return new Set();
+    }
+  });
+
+  // --- SOUND TOGGLE -------------------------------------------------------
+  // 交易提醒声音开关，默认开启，状态持久化到 localStorage。
+  // 用 Web Audio API 生成 beep，不依赖任何外部音频文件。
+  // 买入 = 两声高音 (880Hz → 1175Hz)；卖出 = 三声低音 (523Hz → 392Hz → 330Hz)。
+  // -------------------------------------------------------------------------
+  const [soundEnabled, setSoundEnabled] = useState<boolean>(() => {
+    try {
+      const saved = localStorage.getItem("trade_alert_sound_enabled");
+      return saved === null ? true : saved === "true";
+    } catch {
+      return true;
+    }
+  });
+
+  const audioCtxRef = useRef<AudioContext | null>(null);
+
+  const playBeepSequence = useCallback(
+    (freqs: number[], intervalMs: number = 180, durationMs: number = 220) => {
+      if (!soundEnabled) return;
+      try {
+        if (!audioCtxRef.current) {
+          const Ctx =
+            window.AudioContext ||
+            (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+          if (!Ctx) return;
+          audioCtxRef.current = new Ctx();
+        }
+        const ctx = audioCtxRef.current;
+        if (!ctx) return;
+        // Resume if suspended (浏览器自动暂停策略)
+        if (ctx.state === "suspended") ctx.resume();
+
+        freqs.forEach((freq, idx) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = "sine";
+          osc.frequency.value = freq;
+          const startAt = ctx.currentTime + (idx * intervalMs) / 1000;
+          const endAt = startAt + durationMs / 1000;
+          gain.gain.setValueAtTime(0.0001, startAt);
+          gain.gain.exponentialRampToValueAtTime(0.25, startAt + 0.02);
+          gain.gain.exponentialRampToValueAtTime(0.0001, endAt);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(startAt);
+          osc.stop(endAt);
+        });
+      } catch (err) {
+        // Audio not available (e.g. SSR, permissions) — silently ignore
+        console.warn("playBeepSequence failed:", err);
+      }
+    },
+    [soundEnabled]
+  );
+
+  const toggleSound = useCallback(() => {
+    setSoundEnabled((prev) => {
+      const next = !prev;
+      try {
+        localStorage.setItem("trade_alert_sound_enabled", String(next));
+      } catch {}
+      // 切换到开启时立刻播放一声短 beep 作为反馈
+      if (next) {
+        setTimeout(() => playBeepSequence([880], 100, 180), 50);
+      }
+      return next;
+    });
+  }, [playBeepSequence]);
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
@@ -359,6 +441,29 @@ export function App() {
     });
   };
 
+  // --- BUY ALERT DISMISS HANDLERS (symmetric to sell alerts) ---------------
+  const handleDismissBuyAlert = (alertId: string) => {
+    setDismissedBuyAlerts((prev) => {
+      const next = new Set(prev);
+      next.add(alertId);
+      try {
+        localStorage.setItem("dismissed_buy_alerts", JSON.stringify(Array.from(next)));
+      } catch {}
+      return next;
+    });
+  };
+
+  const handleDismissAllBuyAlerts = () => {
+    const allIds = (portfolio?.recent_buy_alerts || []).map((a) => a.alert_id);
+    setDismissedBuyAlerts((prev) => {
+      const next = new Set([...Array.from(prev), ...allIds]);
+      try {
+        localStorage.setItem("dismissed_buy_alerts", JSON.stringify(Array.from(next)));
+      } catch {}
+      return next;
+    });
+  };
+
   const fetchIteration = useCallback(async () => {
     setIterationLoading(true);
     try {
@@ -491,6 +596,46 @@ export function App() {
     (a) => !dismissedAlerts.has(a.alert_id)
   );
 
+  // Filter active un-dismissed BUY alerts (symmetric to sell alerts)
+  const activeBuyAlerts: BuyAlertCardData[] = (portfolio?.recent_buy_alerts || []).filter(
+    (a) => !dismissedBuyAlerts.has(a.alert_id)
+  );
+
+  // --- SOUND TRIGGER ------------------------------------------------------
+  // 监听 active buy/sell alerts 数量变化，新增提醒时播放对应 beep：
+  //   买入 = 两声高音 (880Hz → 1175Hz)，轻快上扬
+  //   卖出 = 三声低音 (523Hz → 392Hz → 330Hz)，沉缓下落
+  // 仅在数量增加时触发（用户 dismiss 不发声），并跳过首次冷启动避免开机噪音。
+  // -------------------------------------------------------------------------
+  const prevBuyCountRef = useRef<number>(0);
+  const prevSellCountRef = useRef<number>(0);
+  const firstSoundSkipRef = useRef<boolean>(true);
+
+  useEffect(() => {
+    const buyCount = activeBuyAlerts.length;
+    const sellCount = activeSellAlerts.length;
+
+    if (firstSoundSkipRef.current) {
+      // 首次挂载只同步基线，不触发声音（避免冷启动 beep）
+      prevBuyCountRef.current = buyCount;
+      prevSellCountRef.current = sellCount;
+      firstSoundSkipRef.current = false;
+      return;
+    }
+
+    if (buyCount > prevBuyCountRef.current) {
+      // 买入 beep：两声高音上扬
+      playBeepSequence([880, 1175], 200, 240);
+    }
+    if (sellCount > prevSellCountRef.current) {
+      // 卖出 beep：三声低音下沉
+      playBeepSequence([523, 392, 330], 220, 260);
+    }
+
+    prevBuyCountRef.current = buyCount;
+    prevSellCountRef.current = sellCount;
+  }, [activeBuyAlerts.length, activeSellAlerts.length, playBeepSequence]);
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-red-500 selection:text-white">
       {/* Toast Notification */}
@@ -500,11 +645,31 @@ export function App() {
         </div>
       )}
 
+      {/* Sound Toggle Button — 右上角浮动，避免依赖 Header 内部结构 */}
+      <button
+        onClick={toggleSound}
+        title={soundEnabled ? "点击静音交易提醒" : "点击开启交易提醒声音"}
+        className={`fixed top-3 right-3 z-50 p-2 rounded-lg border backdrop-blur-md transition shadow-lg ${
+          soundEnabled
+            ? "bg-emerald-950/80 border-emerald-600/60 text-emerald-300 hover:bg-emerald-900/80"
+            : "bg-slate-800/80 border-slate-600 text-slate-400 hover:bg-slate-700/80"
+        }`}
+      >
+        {soundEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
+      </button>
+
       {/* Sell Alert Modal Popups for Strategies */}
       <SellAlertModal
         alerts={activeSellAlerts}
         onDismiss={handleDismissAlert}
         onDismissAll={handleDismissAllAlerts}
+      />
+
+      {/* Buy Alert Modal Popups (左下角，与卖出提醒对称) */}
+      <BuyAlertModal
+        alerts={activeBuyAlerts}
+        onDismiss={handleDismissBuyAlert}
+        onDismissAll={handleDismissAllBuyAlerts}
       />
 
       {/* Navigation Header */}
