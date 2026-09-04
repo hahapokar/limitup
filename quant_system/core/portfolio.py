@@ -642,7 +642,14 @@ class PortfolioEngine:
             if remaining_slots <= 0 or state["cash"] < 10000.0:
                 break
 
+            # 等权动态分配：available_budget 按剩余 slot 数均分
             alloc_per_position = min(state["cash"], available_budget / remaining_slots)
+
+            # 🔴【单仓硬上限】防止最后一只票吃掉全部剩余预算导致单仓占比过高。
+            # 单仓金额绝不超过 INITIAL_CAPITAL / MAX_POSITIONS（默认 ¥25,000 = 25%）。
+            # 超出部分留在 cash 中，等权组合的风险分散原则不被破坏。
+            single_position_hard_cap = float(INITIAL_CAPITAL) / float(MAX_POSITIONS)
+            alloc_per_position = min(alloc_per_position, single_position_hard_cap)
 
             q = quotes.get(code)
             if not q:
@@ -743,7 +750,9 @@ class PortfolioEngine:
             turnover = float(q.get("turnover_rate", 8.5))
             vol_lots = float(q.get("volume_lots", 10000))
             buy1_lots = float(q.get("buy1_vol", 0))
-            seal_rat = round((buy1_lots / vol_lots * 100.0), 2) if vol_lots > 0 else 0.0
+            # ⚠️ 口径统一：holdings.seal_ratio 使用 0-1 小数比例（与 candidates/limitup pool/scoring 完全一致），
+            # 而不是百分值(1-100)。Percentile 打分、硬否决阈值 < 0.10、以及前端 *100 显示都依赖这一口径。
+            seal_rat = round(buy1_lots / vol_lots, 4) if vol_lots > 0 else 0.0
 
             holding_entry = {
                 "code": code,
@@ -962,8 +971,10 @@ class PortfolioEngine:
             vol_lots = float(vl_raw) if vl_raw not in (None, "") else 10000.0
             b1_raw = q.get("buy1_vol")
             buy1_lots = float(b1_raw) if b1_raw not in (None, "") else 0.0
-            seal_ratio = round((buy1_lots / vol_lots * 100.0), 2) if vol_lots > 0 else 0.0
-            
+            # 口径统一：0-1 小数比例（与 scoring/candidates 一致）
+            seal_ratio = round(buy1_lots / vol_lots, 4) if vol_lots > 0 else 0.0
+            seal_ratio_pct = round(seal_ratio * 100, 2)  # 保留百分值用于阈值判断（下面 status_tag）
+
             pullback_pct = ((high_price - current_price) / high_price * 100.0) if high_price > 0 else 0.0
             trailing_stop_line = round(high_price * (1.0 - TRAILING_STOP_PCT), 2)
             hard_stop_line = round(entry_price * (1.0 + HARD_STOP_PCT), 2)
@@ -976,8 +987,9 @@ class PortfolioEngine:
             h["hard_stop_price"] = hard_stop_line
 
             # Determine Health / Watch Status Tag[cite: 1]
-            is_currently_zt = (change_pct >= 9.8 and seal_ratio >= 1.0)
-                
+            # seal_ratio_pct 是百分值（1.0 => 1%），用于与原阈值匹配
+            is_currently_zt = (change_pct >= 9.8 and seal_ratio_pct >= 1.0)
+
             # ----------------- 【新增】优化4: 涨停与炸板状态追踪 -----------------
             if is_currently_zt:
                     h["was_zt_today"] = True
@@ -987,7 +999,7 @@ class PortfolioEngine:
                     if not h.get("zt_broken_time"):
                         h["zt_broken_time"] = now.timestamp()
                 # -----------------------------------------------------------------
-            if change_pct >= 9.8 and seal_ratio >= 3.0:
+            if change_pct >= 9.8 and seal_ratio_pct >= 3.0:
                 h["status_tag"] = "LOCKED_ZT"  # 牢牢封死涨停
             elif pullback_pct >= 1.8 and high_price > entry_price * 1.015:
                 h["status_tag"] = "TRAILING_WARN"  # 逼近移动止盈线
@@ -1353,7 +1365,9 @@ class PortfolioEngine:
                     vol_lots_f = 10000.0
                     buy1_lots_f = 0.0
 
-                seal_rat = round((buy1_lots_f / vol_lots_f * 100.0), 2) if vol_lots_f > 0 else 0.0
+                # 口径统一：seal_rat 使用 0-1 比例，seal_rat_pct 百分值供阈值判断
+                seal_rat = round(buy1_lots_f / vol_lots_f, 4) if vol_lots_f > 0 else 0.0
+                seal_rat_pct = round(seal_rat * 100, 2)
                 pullback = ((h["high_price"] - h["current_price"]) / h["high_price"] * 100.0) if h["high_price"] > 0 else 0.0
 
                 h["change_pct"] = round(chg_pct_f, 2)
@@ -1364,7 +1378,7 @@ class PortfolioEngine:
                 h["hard_stop_price"] = round(entry_price_h * (1.0 + HARD_STOP_PCT), 2)
 
                 # Update status tag
-                if chg_pct_f >= 9.8 and seal_rat >= 3.0:
+                if chg_pct_f >= 9.8 and seal_rat_pct >= 3.0:
                     h["status_tag"] = "LOCKED_ZT"
                 elif pullback >= 1.8 and h["high_price"] > entry_price_h * 1.015:
                     h["status_tag"] = "TRAILING_WARN"

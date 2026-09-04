@@ -316,7 +316,9 @@ export const PortfolioView: React.FC<PortfolioViewProps> = ({
                 {holdings.map((h) => {
                   const isPositive = (h.unrealized_pnl ?? 0) >= 0;
                   const isDayPositive = (h.change_pct ?? 0) >= 0;
-                  const sealRatio = h.seal_ratio ?? 0.0;
+                  // holdings.seal_ratio 统一为 0-1 小数比例（与 candidates/limitup pool 口径一致），
+                  // 所以显示时需 * 100 转为百分值。
+                  const sealRatioPct = (h.seal_ratio ?? 0.0) * 100;
                   const turnoverRate = h.turnover_rate ?? 0.0;
                   const pullbackPct = h.pullback_pct ?? 0.0;
                   const trailingStopLine = h.trailing_stop_price ?? (h.high_price != null ? h.high_price * 0.975 : 0);
@@ -378,17 +380,17 @@ export const PortfolioView: React.FC<PortfolioViewProps> = ({
 
                       {/* Seal Ratio 封成比 */}
                       <td className="py-3.5 px-3">
-                        {sealRatio > 0 ? (
+                        {sealRatioPct > 0 ? (
                           <div>
                             <span className={`px-2 py-0.5 rounded font-bold text-[11px] ${
-                              sealRatio >= 10.0
+                              sealRatioPct >= 10.0
                                 ? "bg-red-950/80 text-red-300 border border-red-700"
-                                : (sealRatio >= 3.0 ? "bg-amber-950/80 text-amber-300 border border-amber-700" : "bg-slate-800 text-slate-300")
+                                : (sealRatioPct >= 3.0 ? "bg-amber-950/80 text-amber-300 border border-amber-700" : "bg-slate-800 text-slate-300")
                             }`}>
-                              {sealRatio.toFixed(1)}%
+                              {sealRatioPct.toFixed(1)}%
                             </span>
                             <div className="text-[10px] text-slate-500 mt-0.5">
-                              {sealRatio >= 10 ? "强力封单" : (sealRatio >= 3 ? "稳健封板" : "弱封/试盘")}
+                              {sealRatioPct >= 10 ? "强力封单" : (sealRatioPct >= 3 ? "稳健封板" : "弱封/试盘")}
                             </div>
                           </div>
                         ) : (

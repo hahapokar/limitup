@@ -12,5 +12,19 @@
     "category": "Scheduler",
     "message": "APScheduler daemon activated with 7 daily lifecycle jobs.",
     "details": {}
+  },
+  {
+    "timestamp": "2026-09-03 22:39:51",
+    "level": "INFO",
+    "category": "Bootstrap",
+    "message": "Keeping existing candidate pool for 2026-09-03; no bootstrap overwrite",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-03 22:39:51",
+    "level": "INFO",
+    "category": "Scheduler",
+    "message": "APScheduler daemon activated with 7 daily lifecycle jobs.",
+    "details": {}
   }
 ]

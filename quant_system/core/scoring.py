@@ -160,7 +160,8 @@ class ScoringEngine:
             "all_scored_stocks": scored_stocks[:20]  # Store top 20 for in-depth analysis
         }
         # Persist to JSON
-        self._save_candidates(effective_date, result_payload)
+        # 15:30 盘后官方打分 → 允许覆盖同日旧 FINAL（用户手动触发重算也走这一路）
+        self._save_candidates(effective_date, result_payload, allow_overwrite_final=True)
 
         # Send notifications
         candidate_summary = ", ".join([f"{c['name']}({c['code']}, {c['quant_score']}分)" for c in top_candidates])
@@ -650,10 +651,48 @@ class ScoringEngine:
 
         return scored_stocks
 
-    def _save_candidates(self, trade_date: str, payload: Dict[str, Any]) -> None:
-        """Persist candidates payload to candidates_YYYYMMDD.json and latest_candidates.json."""
+    def _save_candidates(self, trade_date: str, payload: Dict[str, Any], *, allow_overwrite_final: bool = False) -> None:
+        """Persist candidates payload to candidates_YYYYMMDD.json and latest_candidates.json.
+
+        SAFETY GUARD — prevents intra-day live-quote scoring paths from accidentally
+        overwriting the post-market FINAL candidates file (e.g. seal_ratio being
+        recalculated from Tencent buy1_vol/volume_lots Sina fallback and losing the
+        authoritative AkShare seal_amount source).
+
+        Rule:
+          * If the target file already exists AND has snapshot_status="FINAL", we
+            REFUSE to overwrite unless the caller explicitly passes
+            allow_overwrite_final=True (reserved for the 15:30 post-market job and
+            on-demand manual re-runs that the user intentionally triggers via UI).
+          * Any other caller (e.g. /api/limitup-pool/live + score_intraday_pool, or
+            a mid-day heartbeat) CAN write a brand-new empty-date file but can NEVER
+            clobber an existing FINAL archive.
+        """
         try:
             target_file = DATA_DIR / f"candidates_{trade_date}.json"
+
+            if target_file.exists() and not allow_overwrite_final:
+                try:
+                    with open(target_file, "r", encoding="utf-8") as f:
+                        existing = json.load(f)
+                    if existing.get("snapshot_status") == "FINAL":
+                        logger.warning(
+                            f"_save_candidates: refusing to overwrite FINAL archive "
+                            f"{target_file.name} without explicit allow_overwrite_final=True. "
+                            f"If this is an intentional user-triggered re-run, pass the flag."
+                        )
+                        # Still refresh latest_candidates.json so the GET /api/candidates
+                        # endpoint sees the most recently computed payload, but the
+                        # historical date-locked archive is never mutated.
+                        latest_file = DATA_DIR / "latest_candidates.json"
+                        with open(latest_file, "w", encoding="utf-8") as f_latest:
+                            json.dump(payload, f_latest, ensure_ascii=False, indent=2)
+                        return
+                except Exception:
+                    # Corrupted existing file → write fresh anyway (better than
+                    # losing today's scoring result entirely).
+                    pass
+
             with open(target_file, "w", encoding="utf-8") as f:
                 json.dump(payload, f, ensure_ascii=False, indent=2)
 
