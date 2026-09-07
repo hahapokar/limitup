@@ -1,11 +1,11 @@
 {
   "initial_capital": 100000.0,
   "cash": 25945.060999999994,
-  "market_value": 82601.0,
-  "total_asset": 108546.06,
-  "nav": 1.0855,
-  "daily_pnl": 2794.95,
-  "total_pnl": 8546.06,
+  "market_value": 82341.0,
+  "total_asset": 108286.06,
+  "nav": 1.0829,
+  "daily_pnl": -3953.64,
+  "total_pnl": 8286.06,
   "current_step": "DEMO_TOP4_BOUGHT",
   "current_step_name": "参考上一交易日盘后候选 TOP4 等权建仓演示 (无真实 2026-08-24 开盘撮合数据) · T+0 当日锁仓",
   "holdings": [
@@ -16,28 +16,28 @@
       "entry_price": 36.33,
       "cost_price": 36.359,
       "entry_date": "2026-09-04",
-      "holding_days": 0,
-      "can_sell": false,
+      "holding_days": 1,
+      "can_sell": true,
       "t1_lock_text": "T+0 当日买入锁仓 (下一交易日可卖)",
       "sell_available_date": "2026-09-07",
       "high_price": 38.45,
-      "current_price": 34.79,
-      "change_pct": -0.46,
-      "pullback_pct": 9.52,
-      "turnover_rate": 37.32,
-      "seal_ratio": 0.0,
+      "current_price": 33.69,
+      "change_pct": 0.96,
+      "pullback_pct": 12.38,
+      "turnover_rate": 33.58,
+      "seal_ratio": 0.0017,
       "trailing_stop_price": 37.49,
       "status_tag": "TRAILING_WARN",
-      "market_value": 13916.0,
-      "unrealized_pnl": -627.6,
-      "unrealized_pnl_pct": -4.32,
+      "market_value": 13476.0,
+      "unrealized_pnl": -1067.6,
+      "unrealized_pnl_pct": -7.34,
       "anti_shakeout_count": 0,
       "hard_stop_price": 34.83,
       "sector": "通用设备",
       "entry_strategy": "OPENING",
       "entry_strategy_name": "开盘竞价买入",
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-04 10:38:56",
+      "quote_status_at": "2026-09-07 18:43:48",
       "was_zt_today": true,
       "zt_broken_time": 1788485487.065568
     },
@@ -48,28 +48,28 @@
       "entry_price": 14.22,
       "cost_price": 14.231,
       "entry_date": "2026-09-04",
-      "holding_days": 0,
-      "can_sell": false,
+      "holding_days": 1,
+      "can_sell": true,
       "t1_lock_text": "T+0 当日买入锁仓 (下一交易日可卖)",
       "sell_available_date": "2026-09-07",
-      "high_price": 15.55,
-      "current_price": 15.55,
-      "change_pct": 9.97,
+      "high_price": 17.11,
+      "current_price": 17.11,
+      "change_pct": 10.03,
       "pullback_pct": 0.0,
-      "turnover_rate": 6.88,
-      "seal_ratio": 0.3206,
-      "trailing_stop_price": 15.16,
+      "turnover_rate": 3.34,
+      "seal_ratio": 0.4402,
+      "trailing_stop_price": 16.68,
       "status_tag": "LOCKED_ZT",
-      "market_value": 23325.0,
-      "unrealized_pnl": 1978.5,
-      "unrealized_pnl_pct": 9.27,
+      "market_value": 25665.0,
+      "unrealized_pnl": 4318.5,
+      "unrealized_pnl_pct": 20.23,
       "anti_shakeout_count": 0,
       "hard_stop_price": 13.63,
       "sector": "出版",
       "entry_strategy": "OPENING",
       "entry_strategy_name": "开盘竞价买入",
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-04 10:38:56",
+      "quote_status_at": "2026-09-07 18:43:48",
       "was_zt_today": true,
       "zt_broken_time": null
     },
@@ -80,28 +80,28 @@
       "entry_price": 8.35,
       "cost_price": 8.357,
       "entry_date": "2026-09-04",
-      "holding_days": 0,
-      "can_sell": false,
+      "holding_days": 1,
+      "can_sell": true,
       "t1_lock_text": "T+0 当日买入锁仓 (下一交易日可卖)",
       "sell_available_date": "2026-09-07",
-      "high_price": 8.4,
-      "current_price": 8.4,
-      "change_pct": 0.12,
-      "pullback_pct": 0.0,
-      "turnover_rate": 9.64,
-      "seal_ratio": 0.002,
-      "trailing_stop_price": 8.19,
-      "status_tag": "NORMAL",
-      "market_value": 45360.0,
-      "unrealized_pnl": 232.2,
-      "unrealized_pnl_pct": 0.51,
+      "high_price": 8.7,
+      "current_price": 8.0,
+      "change_pct": -0.37,
+      "pullback_pct": 8.05,
+      "turnover_rate": 10.27,
+      "seal_ratio": 0.0084,
+      "trailing_stop_price": 8.48,
+      "status_tag": "TRAILING_WARN",
+      "market_value": 43200.0,
+      "unrealized_pnl": -1927.8,
+      "unrealized_pnl_pct": -4.27,
       "anti_shakeout_count": 0,
       "hard_stop_price": 8.01,
       "sector": "电网设备",
       "entry_strategy": "OPENING",
       "entry_strategy_name": "开盘竞价买入",
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-04 10:38:56"
+      "quote_status_at": "2026-09-07 18:43:48"
     }
   ],
   "trade_history": [
@@ -475,6 +475,13 @@
       "nav": 1.0993,
       "cash": 109933.7,
       "market_value": 0
+    },
+    {
+      "date": "2026-09-04",
+      "total_asset": 105980.06,
+      "nav": 1.0598,
+      "cash": 25945.06,
+      "market_value": 80035.0
     }
   ],
   "recent_sell_alerts": [
@@ -559,7 +566,7 @@
       }
     }
   ],
-  "last_update": "2026-09-04 10:38:58",
+  "last_update": "2026-09-07 18:43:48",
   "entry_observations": {
     "002412": {
       "date": "2026-08-26",
@@ -750,24 +757,24 @@
       "was_limit_up": false,
       "was_broken": false,
       "rebreak_ready": false,
-      "last_price": 12.06,
-      "last_volume_lots": 797536.0
+      "last_price": 12.65,
+      "last_volume_lots": 1305576.0
     },
     "002909": {
       "date": "2026-09-04",
       "was_limit_up": false,
       "was_broken": false,
       "rebreak_ready": false,
-      "last_price": 8.03,
-      "last_volume_lots": 907358.0
+      "last_price": 7.21,
+      "last_volume_lots": 1439484.0
     },
     "603270": {
       "date": "2026-09-04",
       "was_limit_up": true,
       "was_broken": true,
       "rebreak_ready": false,
-      "last_price": 34.79,
-      "last_volume_lots": 263902.0
+      "last_price": 33.37,
+      "last_volume_lots": 342335.0
     },
     "605577": {
       "date": "2026-09-04",
@@ -775,39 +782,39 @@
       "was_broken": true,
       "rebreak_ready": true,
       "last_price": 15.55,
-      "last_volume_lots": 305590.0
+      "last_volume_lots": 323155.0
     },
     "002300": {
       "date": "2026-09-04",
       "was_limit_up": false,
       "was_broken": false,
       "rebreak_ready": false,
-      "last_price": 8.4,
-      "last_volume_lots": 696329.0
+      "last_price": 8.03,
+      "last_volume_lots": 1407184.0
     },
     "002059": {
       "date": "2026-09-04",
       "was_limit_up": false,
       "was_broken": false,
       "rebreak_ready": false,
-      "last_price": 6.09,
-      "last_volume_lots": 1590124.0
+      "last_price": 5.67,
+      "last_volume_lots": 2073924.0
     },
     "300830": {
       "date": "2026-09-04",
       "was_limit_up": false,
       "was_broken": false,
       "rebreak_ready": false,
-      "last_price": 10.12,
-      "last_volume_lots": 557895.0
+      "last_price": 9.98,
+      "last_volume_lots": 812195.0
     },
     "600969": {
       "date": "2026-09-04",
       "was_limit_up": false,
       "was_broken": false,
       "rebreak_ready": false,
-      "last_price": 10.48,
-      "last_volume_lots": 188920.0
+      "last_price": 10.18,
+      "last_volume_lots": 348160.0
     }
   },
   "total_market_value": 78602.0,
