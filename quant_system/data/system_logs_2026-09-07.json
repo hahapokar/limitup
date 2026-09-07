@@ -103,5 +103,33 @@
     "category": "Scheduler",
     "message": "APScheduler daemon activated with 7 daily lifecycle jobs.",
     "details": {}
+  },
+  {
+    "timestamp": "2026-09-07 20:00:27",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 1 lock-up records for 2026-09-07",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-07 20:00:53",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 1 lock-up records for 2026-09-07",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-07 20:01:46",
+    "level": "INFO",
+    "category": "Bootstrap",
+    "message": "Keeping existing candidate pool for 2026-09-07; no bootstrap overwrite",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-07 20:01:46",
+    "level": "INFO",
+    "category": "Scheduler",
+    "message": "APScheduler daemon activated with 7 daily lifecycle jobs.",
+    "details": {}
   }
 ]

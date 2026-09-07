@@ -41,7 +41,10 @@ from quant_system.config import (
     DATA_REQUEST_RETRIES,
     DATA_DIR
 )
-from quant_system.utils.calendar import normalize_to_trade_day, is_trade_day, get_prev_trade_day, get_next_trade_day
+from quant_system.utils.calendar import (
+    normalize_to_trade_day, is_trade_day, get_prev_trade_day, get_next_trade_day,
+    get_trade_days_range,
+)
 from quant_system.utils.notifier import record_system_log
 
 logger = logging.getLogger("QuantTrading.DataFetcher")
@@ -386,6 +389,7 @@ class DataFetcher:
 
     def __init__(self):
         self.session = _RobustSession()
+        self._lockup_cache: Dict[str, Dict[str, Any]] = {}
         self.session.headers.update({
             "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
             "Referer": "https://finance.sina.com.cn/"
@@ -409,6 +413,99 @@ class DataFetcher:
         else:
             query_date = (datetime.datetime.utcnow() + datetime.timedelta(hours=8)).strftime("%Y-%m-%d")
         return normalize_to_trade_day(query_date)
+
+    def get_lockup_risk_map(self, trade_date: str) -> Dict[str, Any]:
+        """Return parsed lock-up releases in the 15-trading-day risk window.
+
+        The result is cached by the scoring trade date so post-market and
+        intraday scoring share one request and one interpretation of the data.
+        """
+        effective_date = self.get_effective_date(trade_date)
+        if effective_date in self._lockup_cache:
+            return self._lockup_cache[effective_date]
+
+        unavailable = {"available": False, "records": {}, "reason": "not fetched"}
+        try:
+            import akshare as ak
+            raw = ak.stock_restricted_release_queue_em()
+            rows = raw.to_dict(orient="records") if hasattr(raw, "to_dict") else list(raw or [])
+            parsed: Dict[str, Dict[str, Any]] = {}
+            # The requested date is the first day in the inclusive 15-trading-day window.
+            window = set(get_trade_days_range(effective_date, self._trade_day_after(effective_date, 14)))
+            for row in rows:
+                if not isinstance(row, dict):
+                    continue
+                release_date = self._first_value(row, (
+                    "解禁日期", "解禁时间", "release_date", "release_time", "上市日期",
+                ))
+                code = self._normalize_stock_code(self._first_value(row, (
+                    "股票代码", "证券代码", "代码", "stock_code", "code", "symbol",
+                )))
+                release_date = self._normalize_date(release_date)
+                ratio_value = self._first_value(row, (
+                    "占流通股比例", "解禁占流通股比例", "占总股本比例", "解禁占总股本比例",
+                    "float_ratio", "total_ratio", "release_ratio", "ratio",
+                ))
+                ratio = self._parse_ratio(ratio_value)
+                if not code or not release_date or release_date not in window or ratio is None:
+                    continue
+                ratio_basis = "float" if self._first_value(row, ("占流通股比例", "解禁占流通股比例", "float_ratio")) is not None else "total"
+                release_type = str(self._first_value(row, (
+                    "解禁类型", "限售解禁类型", "release_type", "type",
+                )) or "").strip()
+                current = parsed.get(code)
+                if current is None or ratio > current["risk_ratio"]:
+                    parsed[code] = {
+                        "risk_ratio": ratio,
+                        "release_date": release_date,
+                        "release_type": release_type,
+                        "ratio_basis": ratio_basis,
+                    }
+            result = {"available": True, "records": parsed, "reason": None}
+            record_system_log("INFO", "DataFetcher", f"Parsed {len(parsed)} lock-up records for {effective_date}")
+        except Exception as err:
+            result = {**unavailable, "reason": str(err)}
+            record_system_log("WARNING", "DataFetcher", f"lockup_data_unavailable for {effective_date}: {err}")
+
+        self._lockup_cache[effective_date] = result
+        return result
+
+    @staticmethod
+    def _first_value(row: Dict[str, Any], keys: tuple) -> Any:
+        for key in keys:
+            if key in row and row[key] not in (None, "", "-", "--"):
+                return row[key]
+        return None
+
+    @staticmethod
+    def _normalize_stock_code(value: Any) -> str:
+        digits = re.sub(r"\D", "", str(value or ""))
+        return digits[-6:].zfill(6) if digits else ""
+
+    @staticmethod
+    def _normalize_date(value: Any) -> Optional[str]:
+        if value is None:
+            return None
+        text = str(value).strip()[:10].replace("/", "-")
+        if re.fullmatch(r"\d{8}", text):
+            return f"{text[:4]}-{text[4:6]}-{text[6:]}"
+        return text if re.fullmatch(r"\d{4}-\d{2}-\d{2}", text) else None
+
+    @staticmethod
+    def _parse_ratio(value: Any) -> Optional[float]:
+        try:
+            text = str(value).strip().replace("%", "")
+            ratio = float(text)
+            return ratio / 100.0 if ratio > 1.0 else ratio
+        except (TypeError, ValueError):
+            return None
+
+    @staticmethod
+    def _trade_day_after(start_date: str, count: int) -> str:
+        current = start_date
+        for _ in range(count):
+            current = get_next_trade_day(current)
+        return current
 
     # -------------------------------------------------------------------------
     # 1. LIMIT-UP POOL FETCHING (4-Level Fallback)
