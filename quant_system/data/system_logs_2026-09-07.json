@@ -131,5 +131,117 @@
     "category": "Scheduler",
     "message": "APScheduler daemon activated with 7 daily lifecycle jobs.",
     "details": {}
+  },
+  {
+    "timestamp": "2026-09-07 20:04:16",
+    "level": "INFO",
+    "category": "Bootstrap",
+    "message": "Keeping existing candidate pool for 2026-09-07; no bootstrap overwrite",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-07 20:04:16",
+    "level": "INFO",
+    "category": "Scheduler",
+    "message": "APScheduler daemon activated with 7 daily lifecycle jobs.",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-07 20:05:32",
+    "level": "INFO",
+    "category": "Bootstrap",
+    "message": "Keeping existing candidate pool for 2026-09-07; no bootstrap overwrite",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-07 20:05:32",
+    "level": "INFO",
+    "category": "Scheduler",
+    "message": "APScheduler daemon activated with 7 daily lifecycle jobs.",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-07 20:07:11",
+    "level": "INFO",
+    "category": "Scoring",
+    "message": "Executing 4-factor quant scoring for 2026-09-07",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-07 20:07:14",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 93 limit-up stocks via [AkShare] for 2026-09-07",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-07 20:07:16",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-07",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-07 20:07:16",
+    "level": "INFO",
+    "category": "Scoring",
+    "message": "Pool filtered: 93 -> 58 stocks (ST, Cap, Price, Inst filters applied)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-07 20:07:16",
+    "level": "INFO",
+    "category": "Scoring",
+    "message": "Linking sentiment state: '主升/强势期' to consecutive board factor",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-07 20:07:16",
+    "level": "INFO",
+    "category": "Notifier",
+    "message": "📢 🎯 盘后打板量化选股完成 (2026-09-07): 市场情绪状态: [主升/强势期]，共分析 93 只涨停标的，排雷筛选后推荐 Top 8:\n龙版传媒(605577, 87.1分), 百大集团(600865, 86.99分), 天沃科技(002564, 76.57分), 播恩集团(001366, 75.46分), 爱仕达(002403, 75.29分), 中水渔业(000798, 73.16分), 海欣食品(002702, 70.26分), 罗牛山(000735, 69.49分)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-07 20:08:13",
+    "level": "INFO",
+    "category": "Bootstrap",
+    "message": "Keeping existing candidate pool for 2026-09-07; no bootstrap overwrite",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-07 20:08:13",
+    "level": "INFO",
+    "category": "Scheduler",
+    "message": "APScheduler daemon activated with 7 daily lifecycle jobs.",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-07 20:15:12",
+    "level": "INFO",
+    "category": "Bootstrap",
+    "message": "Keeping existing candidate pool for 2026-09-07; no bootstrap overwrite",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-07 20:15:12",
+    "level": "INFO",
+    "category": "Scheduler",
+    "message": "APScheduler daemon activated with 7 daily lifecycle jobs.",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-07 20:29:24",
+    "level": "INFO",
+    "category": "Bootstrap",
+    "message": "Keeping existing candidate pool for 2026-09-07; no bootstrap overwrite",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-07 20:29:24",
+    "level": "INFO",
+    "category": "Scheduler",
+    "message": "APScheduler daemon activated with 7 daily lifecycle jobs.",
+    "details": {}
   }
 ]

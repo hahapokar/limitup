@@ -204,17 +204,15 @@ export function App() {
                 : fetch(`/api/limitup-pool?date=${effectiveDate}`, { signal }).then((r) => r.json()).catch(() => ({ success: false })))
               : Promise.resolve({ success: false })
             ),
-          // Portfolio: active session => sync (blocking, user-visible load so ok)
-          //            else          => pure cache GET
-          (currentSession?.today_date && currentSession.current_time_beijing < "15:30:00"
-            ? fetch("/api/portfolio/sync", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ date: "", blocking: true }),
-                signal
-              }).then((r) => r.json()).catch(() => ({ success: false }))
-            : fetch("/api/portfolio", { signal }).then((r) => r.json()).catch(() => ({ success: false }))
-          ),
+          // Portfolio: always sync once on page entry, including off-hours.
+          // The quote endpoint returns the latest available market price after
+          // close, while a cache-only GET can remain stale for several days.
+          fetch("/api/portfolio/sync", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ date: currentSession?.today_date || "", blocking: true }),
+            signal
+          }).then((r) => r.json()).catch(() => ({ success: false })),
           fetch("/api/iteration/data", { signal }).then((r) => r.json()).catch(() => ({ success: false })),
           fetch("/api/review/aug24-evaluation", { signal }).then((r) => r.json()).catch(() => ({ success: false })),
         ]);
@@ -267,7 +265,7 @@ export function App() {
   // * Skips sentiment / candidates / limitup / iteration / review because
   //   those are end-of-day artifacts refreshed once at 15:30 + 15:35.
   // ---------------------------------------------------------------------------
-  const pollSilentTick = useCallback(async () => {
+  const pollSilentTick = useCallback(async (forceBlocking = false) => {
     if (pollInFlightRef.current) return;
     pollInFlightRef.current = true;
     try {
@@ -317,7 +315,15 @@ export function App() {
           }
         }
       } else if (!beforeFinalSnapshot && !currentSession?.is_trading_active) {
-        const portRes = await fetch("/api/portfolio");
+        const portRes = await fetch("/api/portfolio/sync", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            date: currentSession?.today_date || "",
+            blocking: forceBlocking,
+            watchlist_only: true,
+          }),
+        });
         const portJson = await portRes.json();
         if (portJson.success) setPortfolio(portJson.data);
         return;
@@ -337,8 +343,9 @@ export function App() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             date: currentSession.today_date || "",
-            blocking: false,
-            watchlist_only: false,
+            blocking: forceBlocking,
+            // Resume/focus refreshes quotes only; it must not duplicate an opening buy.
+            watchlist_only: forceBlocking,
           }),
         });
         const syncJson = await syncRes.json();
@@ -355,6 +362,22 @@ export function App() {
       pollInFlightRef.current = false;
     }
   }, [sentiment?.trade_date, portfolio?.holdings]);
+
+  // Browser background tabs can suspend timers. Refresh immediately when the
+  // user returns so the portfolio cannot remain on a multi-day cache snapshot.
+  useEffect(() => {
+    const refreshOnResume = () => {
+      if (document.visibilityState === "visible") {
+        void pollSilentTick(true);
+      }
+    };
+    document.addEventListener("visibilitychange", refreshOnResume);
+    window.addEventListener("focus", refreshOnResume);
+    return () => {
+      document.removeEventListener("visibilitychange", refreshOnResume);
+      window.removeEventListener("focus", refreshOnResume);
+    };
+  }, [pollSilentTick]);
 
   // Timeline step simulation handler
   const handleTimelineStep = async (step: string) => {

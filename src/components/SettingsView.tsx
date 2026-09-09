@@ -313,7 +313,7 @@ export const SettingsView: React.FC = () => {
               <div>
                 <div className="flex items-center justify-between">
                   <span className="px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 font-bold text-xs">
-                    因子 1 · 权重 30%
+                    因子 1 · 权重 35%
                   </span>
                   <Layers className="w-4 h-4 text-purple-400" />
                 </div>
@@ -327,25 +327,25 @@ export const SettingsView: React.FC = () => {
                 <div className="mt-3 space-y-2 text-xs text-slate-300 border-t border-slate-700/60 pt-2.5 font-mono">
                   <div className="flex justify-between">
                     <span className="text-slate-400">1 连板 (首板):</span>
-                    <span className="text-purple-300 font-bold">50 分</span>
+                    <span className="text-purple-300 font-bold">45 分</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-slate-400">2 连板:</span>
-                    <span className="text-purple-300 font-bold">65 分</span>
+                    <span className="text-purple-300 font-bold">70 分</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-slate-400">3-4 连板 (中位):</span>
-                    <span className="text-purple-300 font-bold">75 分</span>
+                    <span className="text-purple-300 font-bold">85 分</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-slate-400">≥5 连板 (高位):</span>
-                    <span className="text-purple-300 font-bold">95 分</span>
+                    <span className="text-purple-300 font-bold">100 分</span>
                   </div>
                 </div>
               </div>
 
               <div className="p-2.5 rounded bg-purple-950/40 border border-purple-900/50 text-[11px] text-purple-200">
-                ⚡ <strong>联动避险逻辑：</strong>退潮期中位股(3-4板)扣减 30分防“断板A杀”，首板加 10分防守；主升期空间高度龙头额外追加 15分。
+                ⚡ <strong>联动避险逻辑：</strong>5 板以上按 <code>0.7^(N-5)</code> 衰减高度分，再叠加情绪调整；退潮期 3-4 板扣 30 分、1-2 板加 10 分，主升期空间龙头加 18 分，震荡期龙头加 12 分、2 板加 3 分。
               </div>
             </div>
 
@@ -354,7 +354,7 @@ export const SettingsView: React.FC = () => {
               <div>
                 <div className="flex items-center justify-between">
                   <span className="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-bold text-xs">
-                    因子 2 · 权重 25%
+                    因子 2 · 权重 15%
                   </span>
                   <Zap className="w-4 h-4 text-amber-400" />
                 </div>
@@ -375,12 +375,12 @@ export const SettingsView: React.FC = () => {
                     <span className="text-amber-300 font-bold">100 分 (秒板)</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-400">09:45-10:00 封板:</span>
-                    <span className="text-amber-300 font-bold">85 分</span>
+                    <span className="text-slate-400">09:45-10:30 封板:</span>
+                    <span className="text-amber-300 font-bold">80 分</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-400">午后 14:30 以后:</span>
-                    <span className="text-slate-400 font-bold">25 分 (尾盘弱板)</span>
+                    <span className="text-slate-400">14:00 以后封板:</span>
+                    <span className="text-slate-400 font-bold">20 分 (尾盘弱板)</span>
                   </div>
                 </div>
               </div>
@@ -395,7 +395,7 @@ export const SettingsView: React.FC = () => {
               <div>
                 <div className="flex items-center justify-between">
                   <span className="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold text-xs">
-                    因子 3 · 权重 25%
+                    因子 3 · 权重 30%
                   </span>
                   <Percent className="w-4 h-4 text-emerald-400" />
                 </div>
@@ -495,6 +495,27 @@ export const SettingsView: React.FC = () => {
               <div className="p-2 rounded bg-slate-900 border border-slate-800">
                 <span className="text-purple-400 font-bold">4. 开盘价下限：</span>
                 <span className="text-slate-400 block mt-0.5">次日开盘跌幅 &lt; -4.5% 严重破位股自动放弃。</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-rose-950/20 border border-rose-900/50 rounded-xl p-4 space-y-2">
+            <h4 className="text-xs font-bold text-rose-200 flex items-center gap-2">
+              <ShieldAlert className="w-4 h-4 text-rose-400" />
+              解禁股风险机制 (Lock-up Release Risk)
+            </h4>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs text-slate-300">
+              <div className="p-2 rounded bg-slate-900 border border-slate-800">
+                <span className="text-rose-400 font-bold block">高风险硬过滤</span>
+                <span className="text-slate-400">未来 15 个交易日内，高风险限售解禁且占比 ≥ 5%：直接剔除。</span>
+              </div>
+              <div className="p-2 rounded bg-slate-900 border border-slate-800">
+                <span className="text-amber-400 font-bold block">中风险扣分</span>
+                <span className="text-slate-400">解禁占比 2%~5%：保留股票，最终量化总分扣 15 分，最低为 0。</span>
+              </div>
+              <div className="p-2 rounded bg-slate-900 border border-slate-800">
+                <span className="text-emerald-400 font-bold block">容错与复用</span>
+                <span className="text-slate-400">按 trade_date 查询并缓存；接口失败时 fail-open，仅记录不可用状态，不全量过滤。</span>
               </div>
             </div>
           </div>

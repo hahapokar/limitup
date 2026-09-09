@@ -136,8 +136,8 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               onClick={() => setActiveTab("settings")}
               className={`p-1.5 rounded-md border transition ${activeTab === "settings" ? "bg-indigo-600/20 border-indigo-500 text-indigo-300" : "bg-slate-800 border-slate-700 text-slate-300 hover:text-white"}`}
-              title="设置与模型底层逻辑"
-              aria-label="设置与模型底层逻辑"
+              title="设置与最新量化策略说明"
+              aria-label="设置与最新量化策略说明"
             >
               <Settings className="w-3.5 h-3.5" />
             </button>

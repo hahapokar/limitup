@@ -1,0 +1,3201 @@
+[
+  {
+    "timestamp": "2026-09-09 13:54:54",
+    "level": "INFO",
+    "category": "Bootstrap",
+    "message": "Keeping existing candidate pool for 2026-09-08; no bootstrap overwrite",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:54:54",
+    "level": "INFO",
+    "category": "Scheduler",
+    "message": "APScheduler daemon activated with 7 daily lifecycle jobs.",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:02",
+    "level": "WARNING",
+    "category": "Portfolio",
+    "message": "⚠️ 标的 [天沃科技(002564)] 触及止损线 (-6.47%)，进入防洗盘确认状态 (1/3)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:02",
+    "level": "INFO",
+    "category": "Notifier",
+    "message": "📢 📤 模拟盘平仓执行: 罗牛山(000735): 分层移动止盈触发(最高利润9.9%, 回撤 5.06% >= 2.5%)\n卖出价格: ¥6.94, 盈亏: +¥1,015.98 (+4.13%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:02",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 44 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:02",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:02",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:02",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:04",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:05",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 44 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:07",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:12",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 44 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:13",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:15",
+    "level": "WARNING",
+    "category": "Portfolio",
+    "message": "⚠️ 标的 [天沃科技(002564)] 触及止损线 (-6.47%)，进入防洗盘确认状态 (2/3)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:15",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:15",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:15",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:17",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 44 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:18",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 44 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:19",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:20",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:26",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 44 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:27",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:31",
+    "level": "INFO",
+    "category": "Notifier",
+    "message": "📢 📤 模拟盘平仓执行: 天沃科技(002564): 防洗盘硬止损触发 (跌幅 -6.29% 触及 -4.13% 且双重确认成立)\n卖出价格: ¥5.21, 盈亏: ¥-1,591.99 (-6.50%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:31",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:31",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:31",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:38",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:38",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:38",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:55",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 44 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:56",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:59",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:59",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:55:59",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:56:16",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 44 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:56:18",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:56:22",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:56:22",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:56:22",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:56:36",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 43 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:56:37",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:56:41",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:56:41",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:56:41",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:57:00",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 43 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:57:01",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:57:05",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:57:05",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:57:05",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:57:21",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 43 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:57:23",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:57:26",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:57:26",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:57:26",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:57:43",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 43 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:57:44",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:57:47",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:57:47",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:57:47",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:58:05",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 44 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:58:07",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:58:10",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:58:10",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:58:10",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:58:27",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 44 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:58:29",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:58:32",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:58:32",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:58:32",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:58:48",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 46 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:58:50",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:58:53",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:58:53",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:58:53",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:59:11",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 46 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:59:12",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:59:16",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:59:16",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:59:16",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:59:32",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:59:34",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:59:38",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:59:38",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:59:38",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:59:54",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 45 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:59:56",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:59:59",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:59:59",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 13:59:59",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:00:16",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 46 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:00:17",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:00:21",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:00:21",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:00:21",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:00:37",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:00:39",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:00:43",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:00:43",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:00:43",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:00:59",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:01:00",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:01:04",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:01:04",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:01:04",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:01:20",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:01:22",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:01:25",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:01:25",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:01:25",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:01:42",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:01:44",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:01:47",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:01:47",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:01:47",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:02:04",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:02:05",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:02:09",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:02:09",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:02:09",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:02:26",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:02:27",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:02:31",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:02:31",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:02:31",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:02:47",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:02:49",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:02:53",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:02:53",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:02:53",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:03:10",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:03:11",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:03:15",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:03:15",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:03:15",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:03:31",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:03:33",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:03:36",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:03:36",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:03:36",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:03:54",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:03:56",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:04:00",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:04:00",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:04:00",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:04:17",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:04:19",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:04:22",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:04:22",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:04:22",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:04:38",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:04:40",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:04:43",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:04:43",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:04:43",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:05:04",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:05:06",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:05:09",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:05:09",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:05:09",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:05:24",
+    "level": "INFO",
+    "category": "Scheduler",
+    "message": "[FallbackTimer] firing '盘中巡检 14:05' at 14:05 Beijing",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:05:25",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:05:27",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:05:30",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:05:30",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:05:30",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:05:47",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 46 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:05:49",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:05:52",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:05:52",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:05:52",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:06:09",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 46 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:06:11",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:06:15",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:06:15",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:06:15",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:06:32",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 46 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:06:33",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:06:37",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:06:37",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:06:37",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:06:58",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 46 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:07:01",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:07:04",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:07:04",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:07:04",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:07:21",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 46 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:07:22",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:07:25",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:07:25",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:07:25",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:07:43",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 46 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:07:44",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:07:48",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:07:48",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:07:48",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:08:05",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:08:06",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:08:10",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:08:10",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:08:10",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:08:26",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:08:28",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:08:31",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:08:31",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:08:31",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:08:49",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:08:50",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:08:54",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:08:54",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:08:54",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:09:11",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 46 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:09:12",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:09:15",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:09:15",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:09:15",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:09:34",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 48 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:09:36",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:09:39",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:09:39",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:09:39",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:09:58",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:09:59",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:10:03",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:10:03",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:10:03",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:10:19",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:10:21",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:10:24",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:10:24",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:10:24",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:10:43",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:10:45",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:10:48",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:10:48",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:10:48",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:11:05",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:11:07",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:11:11",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:11:11",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:11:11",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:11:28",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 48 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:11:29",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:11:32",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:11:32",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:11:32",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:11:49",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:11:51",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:12:10",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:12:13",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:12:16",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:12:16",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:12:16",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:12:28",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:12:28",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:12:28",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:12:28",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:12:29",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:12:30",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:12:32",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:12:59",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:13:01",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:13:05",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:13:05",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:13:05",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:13:21",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 48 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:13:23",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:13:26",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:13:26",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:13:26",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:13:42",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 48 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:13:44",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:13:48",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:13:48",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:13:48",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:14:05",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:14:07",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:14:10",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:14:10",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:14:10",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:14:28",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 49 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:14:29",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:14:33",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:14:33",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:14:33",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:14:50",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:14:52",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:14:55",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:14:55",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:14:55",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:15:12",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 48 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:15:13",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:15:17",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:15:17",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:15:17",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:15:34",
+    "level": "INFO",
+    "category": "Bootstrap",
+    "message": "Keeping existing candidate pool for 2026-09-08; no bootstrap overwrite",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:15:34",
+    "level": "INFO",
+    "category": "Scheduler",
+    "message": "APScheduler daemon activated with 7 daily lifecycle jobs.",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:15:41",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:15:41",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:15:41",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:15:42",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:15:44",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:15:50",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:15:52",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:16:01",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:16:03",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:16:06",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:16:06",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:16:06",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:16:07",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:16:10",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:16:13",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:16:13",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:16:13",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:16:24",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:16:25",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:16:29",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:16:29",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:16:29",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:16:30",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:16:32",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:16:35",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:16:35",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:16:35",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:16:46",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:16:47",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:16:51",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:16:51",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:16:51",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:16:53",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:16:55",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:16:58",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:16:58",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:16:58",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:17:07",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 48 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:17:09",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:17:13",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:17:13",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:17:13",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:17:25",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:17:28",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:17:31",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:17:31",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:17:31",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:17:31",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:17:34",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:17:37",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:17:37",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:17:37",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:17:49",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:17:51",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:17:54",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:17:54",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:17:54",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:17:54",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:17:56",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:17:59",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:17:59",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:17:59",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:18:12",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:18:14",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:18:16",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:18:17",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:18:21",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:18:21",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:18:21",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:18:43",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:18:45",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:18:48",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:18:48",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:18:48",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:19:06",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:19:08",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:19:11",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:19:11",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:19:11",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:19:29",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:19:31",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:19:34",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:19:34",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:19:34",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:19:53",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 48 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:19:55",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:19:59",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:19:59",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:19:59",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:20:04",
+    "level": "INFO",
+    "category": "Scheduler",
+    "message": "[FallbackTimer] firing '盘中巡检 14:20' at 14:20 Beijing",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:20:22",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 48 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:20:24",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:20:28",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:20:28",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:20:28",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:20:49",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 48 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:20:52",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:20:56",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:20:56",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:20:56",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:21:12",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 48 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:21:14",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:21:17",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:21:17",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:21:17",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:21:34",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:21:36",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:21:39",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:21:39",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:21:39",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:22:08",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:22:11",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:22:14",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:22:14",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:22:14",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:22:41",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 46 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:22:43",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:22:46",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:22:46",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:22:46",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:23:13",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:23:15",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:23:19",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:23:19",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:23:19",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:23:43",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 45 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:23:45",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:23:49",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:23:49",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:23:49",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:24:08",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 46 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:24:09",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:24:12",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:24:12",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:24:12",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:24:34",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:24:36",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:24:39",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:24:39",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:24:39",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:24:57",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:24:59",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:25:03",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:25:03",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:25:03",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:25:30",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 47 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:25:32",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:25:35",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:25:35",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:25:35",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:26:00",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 46 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:26:02",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:26:06",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:26:06",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:26:06",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:26:11",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 上证指数: 开+0.09% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:26:11",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 深证成指: 开+0.63% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:26:11",
+    "level": "INFO",
+    "category": "Portfolio",
+    "message": "[买入前指数审查] 创业板指: 开+1.15% (阈值-1.0%)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:26:33",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 46 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 14:26:35",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  }
+]
