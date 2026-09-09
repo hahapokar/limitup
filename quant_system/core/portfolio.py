@@ -102,6 +102,8 @@ class PortfolioEngine:
             "current_step": "WAITING_NEXT_OPEN",
             "current_step_name": f"空仓就绪 · 监控下一个开盘日 ({next_date}) 集合竞价与开盘撮合",
             "holdings": [],
+            "live_positions": [],
+            "watch_positions": [],
             "trade_history": [],
             "nav_history": [
                 {
@@ -113,6 +115,8 @@ class PortfolioEngine:
                 }
             ],
             "recent_sell_alerts": [],
+            "live_sell_alerts": [],
+            "watch_sell_alerts": [],
             "recent_buy_alerts": [],
             "last_update": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         }
@@ -859,7 +863,9 @@ class PortfolioEngine:
         for display but no sell orders are fired.
         """
         state = self.load_state()
-        holdings = state.get("holdings", [])
+        paper_holdings = state.get("holdings", [])
+        live_holdings = state.get("live_positions", [])
+        holdings = paper_holdings + live_holdings
         if not holdings:
             return []
 
@@ -875,9 +881,11 @@ class PortfolioEngine:
         
         exited_orders = []
         surviving_holdings = []
+        surviving_live_holdings = []
 
         for h in holdings:
             code = h["code"]
+            is_live_position = h.get("position_source") == "LIVE"
             name = h["name"]
             shares = h["shares"]
             entry_price = float(h["entry_price"])
@@ -939,7 +947,7 @@ class PortfolioEngine:
                     h["hard_stop_price"] = round(entry_price * (1.0 + HARD_STOP_PCT), 2)
                 if not h.get("status_tag"):
                     h["status_tag"] = "NORMAL"
-                surviving_holdings.append(h)
+                (surviving_live_holdings if is_live_position else surviving_holdings).append(h)
                 h["quote_status"] = "STALE"
                 h["quote_status_at"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                 continue
@@ -1091,6 +1099,34 @@ class PortfolioEngine:
             # Execute Exit
             # -------------------------------------------------------------
             if should_exit:
+                if is_live_position:
+                    signal = {
+                        "alert_id": f"LIVE_ALERT_{code}_{rule_type}",
+                        "code": code,
+                        "name": name,
+                        "time": now.strftime("%H:%M:%S"),
+                        "date": now.strftime("%Y-%m-%d"),
+                        "sell_price": current_price,
+                        "shares": shares,
+                        "entry_price": entry_price,
+                        "rule_type": rule_type,
+                        "reason": exit_reason,
+                        "details": {
+                            "high_price": high_price,
+                            "pullback_pct": round(pullback_pct, 2),
+                            "stop_price": hard_stop_line,
+                            "holding_days": holding_days
+                        }
+                    }
+                    previous_signal = h.get("sell_signal") or {}
+                    if previous_signal.get("rule_type") != rule_type or previous_signal.get("reason") != exit_reason:
+                        state.setdefault("live_sell_alerts", []).insert(0, signal)
+                        state["live_sell_alerts"] = state["live_sell_alerts"][:20]
+                    h["sell_signal"] = signal
+                    h["status_tag"] = "SELL_SIGNAL"
+                    surviving_live_holdings.append(h)
+                    continue
+
                 gross_amount = shares * current_price
                 friction_cost = gross_amount * SELL_FRICTION_RATE
                 net_proceeds = gross_amount - friction_cost
@@ -1153,12 +1189,512 @@ class PortfolioEngine:
                     f"{exit_reason}\n卖出价格: ¥{current_price:.2f}, 盈亏: {'+' if realized_pnl >= 0 else ''}¥{realized_pnl:,.2f} ({realized_pnl_pct:+.2f}%)"
                 )
             else:
-                surviving_holdings.append(h)
+                (surviving_live_holdings if is_live_position else surviving_holdings).append(h)
 
         state["holdings"] = surviving_holdings
+        state["live_positions"] = surviving_live_holdings
         self._recalculate_portfolio_totals(state)
         self.save_state(state)
         return exited_orders
+
+    def add_live_position(self, code: str, entry_price: float, shares: int, entry_date: str, name: str = "") -> Dict[str, Any]:
+        """Add a manually-entered real position to the signal-only watchlist."""
+        normalized_code = data_fetcher._normalize_stock_code(code)
+        if not normalized_code or entry_price <= 0 or shares <= 0 or shares % 100 != 0:
+            raise ValueError("股票代码、买入价和股数无效；股数必须为100的整数倍")
+        try:
+            datetime.datetime.strptime(entry_date, "%Y-%m-%d")
+        except ValueError as exc:
+            raise ValueError("买入日期必须为 YYYY-MM-DD") from exc
+
+        state = self.load_state()
+        if any(h.get("code") == normalized_code for h in state.get("live_positions", [])):
+            raise ValueError(f"实盘盯盘中已存在 {normalized_code}")
+        if any(h.get("code") == normalized_code for h in state.get("holdings", [])):
+            raise ValueError(f"模拟盘中已存在 {normalized_code}，请勿重复添加")
+
+        quote = data_fetcher.get_realtime_quotes([normalized_code]).get(normalized_code, {})
+        resolved_name = name or quote.get("name") or normalized_code
+        position = {
+            "code": normalized_code,
+            "name": resolved_name,
+            "shares": int(shares),
+            "entry_price": round(float(entry_price), 3),
+            "cost_price": round(float(entry_price), 3),
+            "entry_date": entry_date,
+            "position_source": "LIVE",
+            "holding_days": 0,
+            "can_sell": False,
+            "sell_available_date": get_next_trade_day(entry_date),
+            "high_price": float(entry_price),
+            "current_price": float(entry_price),
+            "market_value": round(float(entry_price) * shares, 2),
+            "unrealized_pnl": 0.0,
+            "unrealized_pnl_pct": 0.0,
+            "anti_shakeout_count": 0,
+            "hard_stop_price": round(float(entry_price) * (1.0 + HARD_STOP_PCT), 2),
+            "trailing_stop_price": round(float(entry_price) * (1.0 - TRAILING_STOP_PCT), 2),
+            "sector": quote.get("sector") or "手动实盘",
+            "status_tag": "NORMAL",
+        }
+        state.setdefault("live_positions", []).append(position)
+        self.save_state(state)
+        return position
+
+    def remove_live_position(self, code: str) -> bool:
+        """Remove a live watchlist record without simulating a sale."""
+        normalized_code = data_fetcher._normalize_stock_code(code)
+        state = self.load_state()
+        before = len(state.get("live_positions", []))
+        state["live_positions"] = [h for h in state.get("live_positions", []) if h.get("code") != normalized_code]
+        removed = len(state["live_positions"]) < before
+        if removed:
+            self.save_state(state)
+        return removed
+
+    def add_watch_position(self, code: str, entry_price: float, shares: int, holding_days: int, name: str = "") -> Dict[str, Any]:
+        """Add a non-limit-up position to the independent technical watchlist."""
+        normalized_code = data_fetcher._normalize_stock_code(code)
+        if not normalized_code or entry_price <= 0 or shares <= 0 or holding_days < 0:
+            raise ValueError("股票代码、买入成本、股数或持仓天数无效")
+        state = self.load_state()
+        if any(h.get("code") == normalized_code for h in state.get("watch_positions", [])):
+            raise ValueError(f"非打板盯盘中已存在 {normalized_code}")
+        quote = data_fetcher.get_realtime_quotes([normalized_code]).get(normalized_code, {})
+        history = data_fetcher.get_watch_history(normalized_code)
+        price = float(quote.get("price") or entry_price)
+        position = {
+            "code": normalized_code,
+            "name": name or quote.get("name") or normalized_code,
+            "shares": int(shares),
+            "entry_price": round(float(entry_price), 3),
+            "cost_price": round(float(entry_price), 3),
+            "holding_days": int(holding_days),
+            "current_price": price,
+            "high_price": price,
+            "market_value": round(price * shares, 2),
+            "unrealized_pnl": round((price - entry_price) * shares - price * shares * 0.001, 2),
+            "unrealized_pnl_pct": round(((price - entry_price) / entry_price - 0.001) * 100, 2),
+            "strategy_mode": "normal",
+            "strategy_status": "指标数据不足",
+            "price_history": self._history_points(history.get("minute_1", [])),
+            "historical_data": history,
+            "history_status": history.get("history_status"),
+            "minute_status": history.get("minute_status"),
+            "history_error": history.get("history_error"),
+            "last_signal_at": None,
+            "last_signal_type": None,
+            "signal_confirmations": {},
+            "quote_status": "LIVE" if quote else "STALE",
+            "quote_status_at": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "data_source": quote.get("data_source"),
+        }
+        state.setdefault("watch_positions", []).append(position)
+        self.save_state(state)
+        return position
+
+    @staticmethod
+    def _history_points(records: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """Normalize AkShare minute rows into the compact rolling-price format."""
+        points: List[Dict[str, Any]] = []
+        for row in records:
+            price = row.get("收盘", row.get("close", row.get("Close")))
+            volume = row.get("成交量", row.get("volume", row.get("Volume", 0)))
+            try:
+                parsed_price = float(price)
+                if parsed_price > 0:
+                    points.append({"time": str(row.get("时间", row.get("time", ""))), "price": parsed_price, "volume": float(volume or 0)})
+            except (TypeError, ValueError):
+                continue
+        return points[-2400:]
+
+    def remove_watch_position(self, code: str) -> bool:
+        normalized_code = data_fetcher._normalize_stock_code(code)
+        state = self.load_state()
+        before = len(state.get("watch_positions", []))
+        state["watch_positions"] = [p for p in state.get("watch_positions", []) if p.get("code") != normalized_code]
+        removed = len(state["watch_positions"]) < before
+        if removed:
+            self.save_state(state)
+        return removed
+
+    def refresh_watch_positions(self, current_time_str: Optional[str] = None) -> List[Dict[str, Any]]:
+        """Refresh independent non-limit-up positions and emit signal-only alerts."""
+        state = self.load_state()
+        positions = state.get("watch_positions", [])
+        if not positions:
+            return []
+        now = datetime.datetime.now()
+        cur_time = current_time_str or now.strftime("%H:%M")
+        quotes = data_fetcher.get_realtime_quotes([p["code"] for p in positions])
+        market_risk = self._watch_market_risk()
+        alerts: List[Dict[str, Any]] = []
+        for position in positions:
+            needs_daily = position.get("history_status") != "READY"
+            needs_minute = position.get("minute_status") != "READY"
+            minute_retry_due = now.timestamp() - float(position.get("minute_last_attempt_at") or 0) >= 300
+            if needs_daily or (needs_minute and minute_retry_due):
+                history = data_fetcher.get_watch_history(position["code"], include_minute=True)
+                position["historical_data"] = history
+                position["history_status"] = history.get("history_status")
+                position["history_error"] = history.get("history_error")
+                position["minute_status"] = history.get("minute_status")
+                position["minute_last_attempt_at"] = now.timestamp()
+                if not position.get("price_history"):
+                    position["price_history"] = self._history_points(history.get("minute_1", []))
+            position.update(self._daily_moving_averages(position.get("historical_data", {}).get("daily", [])))
+            quote = quotes.get(position["code"])
+            if not quote or float(quote.get("price") or 0) <= 0:
+                position["quote_status"] = "STALE"
+                continue
+            price = float(quote["price"])
+            entry = float(position["entry_price"])
+            shares = int(position["shares"])
+            history = position.setdefault("price_history", [])
+            history.append({"time": now.timestamp(), "price": price, "volume": float(quote.get("volume_lots") or 0)})
+            position["price_history"] = history[-2400:]
+            position["current_price"] = price
+            position["high_price"] = max(float(position.get("high_price") or price), price)
+            position["market_value"] = round(price * shares, 2)
+            position["unrealized_pnl"] = round((price - entry) * shares - price * shares * 0.001, 2)
+            position["unrealized_pnl_pct"] = round(((price - entry) / entry - 0.001) * 100, 2) if entry else 0.0
+            position["holding_days"] = int(position.get("holding_days") or 0) + (1 if position.get("last_day_seen") and position["last_day_seen"] != now.strftime("%Y-%m-%d") else 0)
+            position["last_day_seen"] = now.strftime("%Y-%m-%d")
+            position["quote_status"] = "LIVE"
+            position["quote_status_at"] = now.strftime("%Y-%m-%d %H:%M:%S")
+            position["data_source"] = quote.get("data_source")
+            position["change_pct"] = quote.get("change_pct")
+            position["turnover_rate"] = quote.get("turnover_rate")
+            metrics = self._watch_metrics(position, quote)
+            position.update(metrics)
+            classification = self.evaluate_strategy_mode(position["code"], position, price)
+            position["strategy_mode"] = classification["mode"]
+            position["strategy_status"] = classification["reason"]
+            position["strategy_classification_reason"] = classification["reason"]
+            position["platform_industry"] = classification.get("industry")
+            position["platform_beta"] = classification.get("beta")
+            position["daily_atr_ratio"] = classification.get("atr_ratio")
+            signal = self._evaluate_watch_signal(position, market_risk, cur_time, state)
+            if signal:
+                position["sell_signal"] = signal
+                position["status_tag"] = "SELL_SIGNAL"
+                previous = position.get("last_signal_type")
+                if previous != signal["rule_type"]:
+                    alerts.append(signal)
+                    state.setdefault("watch_sell_alerts", []).insert(0, signal)
+                    state["watch_sell_alerts"] = state["watch_sell_alerts"][:30]
+                position["last_signal_type"] = signal["rule_type"]
+                position["last_signal_at"] = now.timestamp()
+                if signal["rule_type"] in ("PRO_T_BUY", "ANTI_T_SELL"):
+                    position["t_loop_action"] = signal["rule_type"]
+                    position["t_loop_price"] = price
+            else:
+                position["status_tag"] = "NORMAL" if metrics.get("indicator_data_ready") else "DATA不足"
+        self.save_state(state)
+        return alerts
+
+    @staticmethod
+    def _daily_moving_averages(records: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Calculate daily moving averages from AkShare close prices."""
+        closes: List[float] = []
+        for row in records:
+            try:
+                close = float(row.get("close"))
+                if close > 0:
+                    closes.append(close)
+            except (TypeError, ValueError):
+                continue
+        result: Dict[str, Any] = {"ma5_daily": None, "ma10_daily": None, "ma20_daily": None, "ma20": None}
+        for window in (5, 10, 20):
+            if len(closes) >= window:
+                result[f"ma{window}_daily"] = round(sum(closes[-window:]) / window, 3)
+        result["ma20"] = result["ma20_daily"]
+        result["daily_ma_data_ready"] = len(closes) >= 20
+        result["daily_ma_note"] = f"日线收盘样本 {len(closes)} 条"
+        return result
+
+    @staticmethod
+    def _daily_atr_ratio(records: List[Dict[str, Any]], current_price: float) -> Optional[float]:
+        """Calculate ATR14/current price from normalized daily OHLC bars."""
+        if len(records) < 15 or current_price <= 0:
+            return None
+        true_ranges: List[float] = []
+        previous_close = None
+        for row in records[-60:]:
+            try:
+                high, low, close = float(row["high"]), float(row["low"]), float(row["close"])
+                prior = float(row.get("previous_close") or previous_close or close)
+                true_ranges.append(max(high - low, abs(high - prior), abs(low - prior)))
+                previous_close = close
+            except (KeyError, TypeError, ValueError):
+                continue
+        if len(true_ranges) < 14:
+            return None
+        return round((sum(true_ranges[-14:]) / 14.0) / current_price, 4)
+
+    def evaluate_strategy_mode(self, symbol: str, position: Dict[str, Any], current_price: Optional[float] = None) -> Dict[str, Any]:
+        """Classify any watched instrument from account state and platform data."""
+        price = float(current_price or position.get("current_price") or position.get("entry_price") or 0)
+        pnl_pct = float(position.get("unrealized_pnl_pct") or 0)
+        holding_days = int(position.get("holding_days") or 0)
+        if pnl_pct <= -10.0 or holding_days > 30:
+            reason = f"浮动盈亏={pnl_pct:.2f}%" if pnl_pct <= -10.0 else f"持仓天数={holding_days}天"
+            logger.info("[分类引擎] %s(%s) -> 归类为 deep_stuck (触发依据: %s)", position.get("name", symbol), symbol, reason)
+            return {"mode": "deep_stuck", "reason": reason, "industry": None, "beta": None, "atr_ratio": None}
+
+        history = (position.get("historical_data") or {}).get("daily", [])
+        atr_ratio = self._daily_atr_ratio(history, price)
+        profile = data_fetcher.get_instrument_profile(symbol)
+        industry = str(profile.get("industry") or "")
+        beta = profile.get("beta")
+        elastic_terms = ("半导体", "芯片", "软件", "人工智能", "军工", "电子", "通信", "光伏", "新能源", "自动化", "消费电子")
+        matched_industry = next((term for term in elastic_terms if term in industry), None)
+        reasons: List[str] = []
+        if matched_industry:
+            reasons.append(f"平台行业标签='{industry}'匹配'{matched_industry}'")
+        if beta is not None and beta > 1.2:
+            reasons.append(f"Beta={beta:.2f}")
+        if atr_ratio is not None and atr_ratio >= 0.025:
+            reasons.append(f"ATR14占比={atr_ratio * 100:.2f}%")
+        if reasons:
+            reason = ", ".join(reasons)
+            logger.info("[分类引擎] %s(%s) -> 归类为 high_volatility (触发依据: %s)", position.get("name", symbol), symbol, reason)
+            return {"mode": "high_volatility", "reason": reason, "industry": industry or None, "beta": beta, "atr_ratio": atr_ratio}
+        reason = "未满足深套、行业/Beta/ATR高波动条件"
+        logger.info("[分类引擎] %s(%s) -> 归类为 normal (触发依据: %s)", position.get("name", symbol), symbol, reason)
+        return {"mode": "normal", "reason": reason, "industry": industry or None, "beta": beta, "atr_ratio": atr_ratio}
+
+    def _watch_market_sentiment(self) -> str:
+        try:
+            from quant_system.config import DATA_DIR
+            session = data_fetcher.get_market_session_status()
+            path = DATA_DIR / f"sentiment_{session.get('latest_trade_date')}.json"
+            with open(path, "r", encoding="utf-8") as stream:
+                return json.load(stream).get("sentiment_state", "震荡/中性期")
+        except Exception:
+            return "震荡/中性期"
+
+    def _watch_market_risk(self) -> Dict[str, Any]:
+        """Read the latest sentiment snapshot for watchlist-level guardrails."""
+        try:
+            from quant_system.config import DATA_DIR
+            session = data_fetcher.get_market_session_status()
+            path = DATA_DIR / f"sentiment_{session.get('latest_trade_date')}.json"
+            with open(path, "r", encoding="utf-8") as stream:
+                data = json.load(stream)
+            advance_ratio = data.get("advance_ratio")
+            panic = data.get("sentiment_state") in ("退潮/弱势期", "熔断状态", "panic")
+            if advance_ratio is not None and float(advance_ratio) < 20.0:
+                panic = True
+            return {"state": data.get("sentiment_state", "震荡/中性期"), "panic": panic, "advance_ratio": advance_ratio}
+        except Exception:
+            return {"state": "震荡/中性期", "panic": False, "advance_ratio": None}
+
+    def _watch_metrics(self, position: Dict[str, Any], quote: Dict[str, Any]) -> Dict[str, Any]:
+        history = position.get("price_history", [])
+        prices = [float(item["price"]) for item in history if float(item.get("price") or 0) > 0]
+        price = float(position["current_price"])
+        if len(prices) < 20:
+            return {"indicator_data_ready": False, "indicator_note": "需要至少20个实时快照后计算指标"}
+        window = prices[-60:]
+        mean = sum(window) / len(window)
+        variance = sum((value - mean) ** 2 for value in window) / len(window)
+        std = variance ** 0.5
+        changes = [abs(window[i] - window[i - 1]) / window[i - 1] for i in range(1, len(window)) if window[i - 1] > 0]
+        atr_ratio = (sum(changes[-14:]) / max(1, len(changes[-14:]))) if changes else 0.0
+        volume_steps = [max(0.0, float(history[i].get("volume") or 0) - float(history[i - 1].get("volume") or 0)) for i in range(1, len(history))]
+        positive_volume = [value for value in volume_steps if value > 0]
+        volume_ratio = (positive_volume[-1] / (sum(positive_volume[-20:]) / max(1, len(positive_volume[-20:]))) if positive_volume else 1.0)
+        bias = ((price - mean) / mean * 100) if mean else 0.0
+        rsi = 50.0
+        gains = [max(0, window[i] - window[i - 1]) for i in range(1, len(window))]
+        losses = [max(0, window[i - 1] - window[i]) for i in range(1, len(window))]
+        avg_gain, avg_loss = sum(gains[-14:]) / 14, sum(losses[-14:]) / 14
+        if avg_loss > 0:
+            rsi = 100 - (100 / (1 + avg_gain / avg_loss))
+        return {
+            "indicator_data_ready": True, "indicator_note": "基于实时快照滚动估算",
+            "bias": round(bias, 2), "rsi_1m": round(rsi, 2), "rsi_5m": round(rsi, 2),
+            "boll_upper": round(mean + 2 * std, 3), "boll_lower": round(mean - 2 * std, 3),
+            "ma20": round(sum(prices[-20:]) / 20, 3), "atr_ratio": round(atr_ratio, 4),
+            "volume_ratio": round(volume_ratio, 2),
+            "avg_amplitude_5": round((max(window[-5:]) - min(window[-5:])) / mean, 4) if len(window) >= 5 and mean else 0.0,
+            "intraday_support": round(min(window[-20:]), 3),
+        }
+
+    @staticmethod
+    def _historical_zombie_metrics(records: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Use only complete daily bars for zombie-stock classification."""
+        rows = records[-5:]
+        amplitudes: List[float] = []
+        turnovers: List[float] = []
+        for row in rows:
+            try:
+                high = float(row["high"])
+                low = float(row["low"])
+                close = float(row["close"])
+                previous_close = float(row.get("previous_close") or row.get("prev_close") or close)
+                turnover = float(row["turnover_rate"])
+                if high > 0 and low > 0 and previous_close > 0:
+                    amplitudes.append((high - low) / previous_close * 100.0)
+                    turnovers.append(turnover)
+            except (KeyError, TypeError, ValueError):
+                continue
+        if len(amplitudes) < 5 or len(turnovers) < 5:
+            return {"zombie_data_ready": False, "zombie_data_note": "历史5日换手率或真实振幅不完整"}
+        average_amplitude = sum(amplitudes) / 5.0
+        average_turnover = sum(turnovers) / 5.0
+        return {
+            "zombie_data_ready": True,
+            "historical_5d_avg_amplitude": round(average_amplitude, 3),
+            "historical_5d_avg_turnover": round(average_turnover, 3),
+            "is_zombie_stock": average_turnover < 1.0 and average_amplitude < 1.5,
+            "zombie_data_note": "基于完整历史5日日线"
+        }
+
+    @staticmethod
+    def _five_minute_breakdown_metrics(records: List[Dict[str, Any]], ma20: Optional[float], current_time_str: Optional[str] = None) -> Dict[str, Any]:
+        """Confirm breakdown from two closed 5-minute bars and 20-bar volume."""
+        if current_time_str:
+            now = datetime.datetime.now()
+            try:
+                current_hour, current_minute = (int(part) for part in current_time_str[:5].split(":"))
+                current_total_minutes = current_hour * 60 + current_minute
+                closed_records: List[Dict[str, Any]] = []
+                for record in records:
+                    raw_time = str(record.get("time", ""))
+                    if raw_time[:10] != now.strftime("%Y-%m-%d"):
+                        closed_records.append(record)
+                        continue
+                    time_part = raw_time[11:16] if len(raw_time) >= 16 else raw_time[:5]
+                    try:
+                        bar_hour, bar_minute = (int(part) for part in time_part.split(":"))
+                        bar_end = bar_hour * 60 + (bar_minute // 5) * 5 + 5
+                        if current_total_minutes >= bar_end:
+                            closed_records.append(record)
+                    except (ValueError, TypeError):
+                        continue
+                records = closed_records
+            except (ValueError, TypeError):
+                pass
+        if not ma20 or len(records) < 22:
+            return {"breakdown_data_ready": False, "breakdown_data_note": "需要至少22根5分钟K线"}
+        bars = records[-22:]
+        closes: List[float] = []
+        volumes: List[float] = []
+        for bar in bars:
+            try:
+                closes.append(float(bar["close"]))
+                volumes.append(float(bar.get("volume") or 0))
+            except (KeyError, TypeError, ValueError):
+                return {"breakdown_data_ready": False, "breakdown_data_note": "5分钟K线字段不完整"}
+        baseline = sum(volumes[-22:-2]) / 20.0
+        micro_ratio = volumes[-1] / baseline if baseline > 0 else 0.0
+        confirmed = closes[-2] < ma20 and closes[-1] < ma20 and micro_ratio > 2.5
+        return {
+            "breakdown_data_ready": True,
+            "five_minute_closes_below_ma20": closes[-2] < ma20 and closes[-1] < ma20,
+            "micro_volume_ratio": round(micro_ratio, 2),
+            "breakdown_confirmed": confirmed,
+            "breakdown_data_note": "5分钟收盘连续2根 + 20根量基准"
+        }
+
+    def _evaluate_watch_signal(self, position: Dict[str, Any], market_risk: Dict[str, Any], cur_time: str, state: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        if not position.get("indicator_data_ready"):
+            return None
+        pnl_pct = float(position.get("unrealized_pnl_pct") or 0)
+        days = int(position.get("holding_days") or 0)
+        atr = float(position.get("daily_atr_ratio") or position.get("atr_ratio") or 0)
+        avg_amp = float(position.get("avg_amplitude_5") or 0)
+        mode = str(position.get("strategy_mode") or "normal")
+        # Classification is produced by evaluate_strategy_mode from account
+        # state and platform metadata; this signal layer only consumes it.
+        position["strategy_mode"] = mode
+        bias = float(position.get("bias") or 0)
+        rsi = float(position.get("rsi_5m" if mode == "high_volatility" else "rsi_1m") or 50)
+        price = float(position["current_price"])
+        high = float(position.get("high_price") or price)
+        upper, lower = float(position.get("boll_upper") or price), float(position.get("boll_lower") or price)
+        zombie_data = self._historical_zombie_metrics((position.get("historical_data") or {}).get("daily", []))
+        position.update(zombie_data)
+        zombie = bool(zombie_data.get("is_zombie_stock"))
+        zombie_blocked = False
+        position.update(self._five_minute_breakdown_metrics(
+            (position.get("historical_data") or {}).get("minute_5", []),
+            float(position.get("ma20") or 0) or None,
+            cur_time,
+        ))
+        signal = None
+        if market_risk.get("panic") and price <= float(position.get("intraday_support") or 0):
+            signal = ("PANIC_REDUCE", "规避系统性风险减仓")
+        threshold = max(1.8, 1.5 * atr * 100) if mode == "high_volatility" else (2.0 if mode == "deep_stuck" else 1.8)
+        # Priority 1: only complete 5-minute candle confirmation.
+        if not signal:
+            if position.get("breakdown_confirmed"):
+                signal = ("BREAKDOWN_REDUCE", "放量破位减仓50%")
+        if not signal and zombie and 2 <= float(position.get("change_pct") or 0) <= 3:
+            signal = ("ZOMBIE_EXIT", "拉高换股离场")
+        elif zombie:
+            position["strategy_status"] = "僵尸股：禁用日内做T"
+            zombie_blocked = True
+        # Priority 2: close the previous T action before opening another one.
+        t_action = position.get("t_loop_action")
+        t_entry = float(position.get("t_loop_price") or price)
+        if not signal and t_action == "PRO_T_BUY" and (bias >= 0 or (price - t_entry) / t_entry >= .012):
+            signal = ("PRO_T_EXIT", "卖出平T：Bias回归0或T仓盈利达到1.2%")
+            position["t_loop_action"] = None
+        elif not signal and t_action == "ANTI_T_SELL" and (bias <= 0 or (price - t_entry) / t_entry <= -.012):
+            signal = ("ANTI_T_BUYBACK", "买回平T：Bias回归0或价格回落达到1.2%")
+            position["t_loop_action"] = None
+        if not signal and not zombie_blocked:
+            if days <= 10 and high > 0 and (high - price) / high >= .04:
+                signal = ("TRAILING_EXIT", "移动止盈清仓")
+            elif days > 10 and high > 0 and (high - price) / high >= .07:
+                signal = ("TRAILING_REDUCE", "移动止盈减仓50%")
+            elif mode == "normal" and days > 10 and -3 <= pnl_pct <= 3:
+                signal = ("TIME_STOP_REDUCE", "时间止损降级：减仓1/3并锁定日内正T，提示换股")
+            elif mode == "high_volatility" and days > 18 and -3 <= pnl_pct <= 3:
+                signal = ("TIME_STOP_REDUCE", "高波动时间止损降级：减仓1/3并锁定日内正T")
+            elif mode == "deep_stuck" and (2 <= float(position.get("change_pct") or 0) <= 3 or bias >= threshold):
+                signal = ("ANTI_T_SELL", "深套反T高抛，建议卖出底仓20%-30%")
+            elif bias >= threshold and rsi > 75 and price >= upper and int(position.get("shares") or 0) > 0:
+                signal = ("ANTI_T_SELL", "反T高抛卖出，建议不超过底仓30%-50%")
+            elif mode != "deep_stuck" and not market_risk.get("panic") and bias <= -threshold and rsi < 25 and price <= lower:
+                signal = ("PRO_T_BUY", "正T低吸买入，建议当前底仓30%")
+        if not signal:
+            position["signal_confirmations"] = {}
+            return None
+        # Opening and closing auction windows only retain defensive signals;
+        # intraday T signals are intentionally suppressed to avoid noise.
+        if "09:30" <= cur_time <= "09:45" and signal[0] in ("ANTI_T_SELL", "PRO_T_BUY", "PRO_T_EXIT", "ANTI_T_BUYBACK"):
+            position["signal_confirmations"] = {}
+            return None
+        if "14:50" <= cur_time <= "15:00" and signal[0] in ("PRO_T_BUY", "PRO_T_EXIT"):
+            position["signal_confirmations"] = {}
+            return None
+        confirmations = position.setdefault("signal_confirmations", {})
+        confirmations[signal[0]] = int(confirmations.get(signal[0], 0)) + 1
+        for signal_type in list(confirmations):
+            if signal_type != signal[0]:
+                confirmations[signal_type] = 0
+        # Two consecutive refresh ticks are required for every signal. This
+        # also debounces transient quote spikes before an alert is displayed.
+        if confirmations[signal[0]] < 2:
+            return None
+        cooldown = 30 * 60 if mode == "high_volatility" else 15 * 60
+        if position.get("last_signal_at") and datetime.datetime.now().timestamp() - float(position["last_signal_at"]) < cooldown:
+            return None
+        if signal[0] in ("PRO_T_BUY", "ANTI_T_SELL"):
+            today = datetime.datetime.now().strftime("%Y-%m-%d")
+            if state.get("t_day_date") != today:
+                state["t_day_date"] = today
+                state["t_day_spent"] = 0.0
+            proposed = price * int(position.get("shares") or 0) * 0.3
+            if float(state.get("t_day_spent") or 0) + proposed > float(state.get("cash") or 0) * 0.5:
+                position["strategy_status"] = "日内做T资金上限50%"
+                return None
+            state["t_day_spent"] = round(float(state.get("t_day_spent") or 0) + proposed, 2)
+        return {"alert_id": f"WATCH_{position['code']}_{signal[0]}", "code": position["code"], "name": position["name"], "time": cur_time, "date": datetime.datetime.now().strftime("%Y-%m-%d"), "rule_type": signal[0], "reason": signal[1], "sell_price": price, "entry_price": position["entry_price"], "shares": position["shares"], "strategy_mode": mode}
 
     def manual_sell_position(self, code: str, reason: str = "用户手动盘中平仓") -> Optional[Dict[str, Any]]:
         """Manually liquidate an active position at current quote."""
@@ -1276,7 +1812,12 @@ class PortfolioEngine:
         effective_date = data_fetcher.get_effective_date(trade_date)
         state = self.load_state()
         
-        # 1. First monitor exits for any active holdings
+        # 1. Refresh the independent watchlist even when the paper account is empty.
+        # monitor_intraday_exits() intentionally returns early for zero paper/live
+        # holdings, so this call must remain separate.
+        self.refresh_watch_positions()
+
+        # 2. First monitor exits for any active holdings
         exits = self.monitor_intraday_exits()
         _ = exits  # exits are already persisted inside monitor_intraday_exits()
         

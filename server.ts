@@ -372,7 +372,9 @@ app.post("/api/portfolio/sync", async (req, res) => {
 
     // Heartbeat FAST PATH: Nothing to watch → no work to do. Return instantly
     // from Node memory without touching Python.
-    if (watchlistOnly && Array.isArray(cache.holdings) && cache.holdings.length === 0) {
+    if (watchlistOnly && Array.isArray(cache.holdings) && cache.holdings.length === 0
+      && Array.isArray(cache.live_positions) && cache.live_positions.length === 0
+      && Array.isArray(cache.watch_positions) && cache.watch_positions.length === 0) {
       return res.json({
         success: true,
         data: cache,
@@ -489,6 +491,82 @@ portfolio_engine.manual_sell_position('${code}', '${reason || "用户手动盘�
     res.json({ success: true, message: `标的 ${code} 已手动平仓`, data });
   } catch (err: any) {
     res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// 6.3 Manual real-position watchlist (signal only; never touches paper cash)
+app.post("/api/portfolio/live-positions", async (req, res) => {
+  try {
+    const { code, entry_price, shares, entry_date, name } = req.body || {};
+    if (!code || !entry_price || !shares || !entry_date) {
+      return res.status(400).json({ success: false, error: "请填写股票代码、买入价、股数和买入日期" });
+    }
+    const payload = JSON.stringify({ code, entry_price, shares, entry_date, name: name || "" });
+    const encoded = Buffer.from(payload, "utf8").toString("base64");
+    await execAsync(`python3 -c "
+import base64, json
+from quant_system.core.portfolio import portfolio_engine
+payload = json.loads(base64.b64decode('${encoded}').decode('utf-8'))
+portfolio_engine.add_live_position(payload['code'], float(payload['entry_price']), int(payload['shares']), payload['entry_date'], payload.get('name', ''))
+"`, { cwd: process.cwd() });
+    res.json({ success: true, data: readJsonSafe("portfolio_state.json", null) });
+  } catch (err: any) {
+    res.status(400).json({ success: false, error: err.message });
+  }
+});
+
+app.delete("/api/portfolio/live-positions/:code", async (req, res) => {
+  try {
+    const code = String(req.params.code || "").replace(/[^0-9A-Za-z]/g, "");
+    const encoded = Buffer.from(code, "utf8").toString("base64");
+    const { stdout } = await execAsync(`python3 -c "
+import base64
+from quant_system.core.portfolio import portfolio_engine
+removed = portfolio_engine.remove_live_position(base64.b64decode('${encoded}').decode('utf-8'))
+print('1' if removed else '0')
+"`, { cwd: process.cwd() });
+    if (stdout.trim() !== "1") {
+      return res.status(404).json({ success: false, error: "未找到实盘盯盘记录" });
+    }
+    res.json({ success: true, data: readJsonSafe("portfolio_state.json", null) });
+  } catch (err: any) {
+    res.status(400).json({ success: false, error: err.message });
+  }
+});
+
+app.post("/api/portfolio/watch-positions", async (req, res) => {
+  try {
+    const { code, entry_price, shares, holding_days, name } = req.body || {};
+    if (!code || !entry_price || !shares || holding_days == null) {
+      return res.status(400).json({ success: false, error: "请填写股票代码、买入成本、股数和持仓天数" });
+    }
+    const payload = JSON.stringify({ code, entry_price, shares, holding_days, name: name || "" });
+    const encoded = Buffer.from(payload, "utf8").toString("base64");
+    await execAsync(`python3 -c "
+import base64, json
+from quant_system.core.portfolio import portfolio_engine
+payload = json.loads(base64.b64decode('${encoded}').decode('utf-8'))
+portfolio_engine.add_watch_position(payload['code'], float(payload['entry_price']), int(payload['shares']), int(payload['holding_days']), payload.get('name', ''))
+"`, { cwd: process.cwd() });
+    res.json({ success: true, data: readJsonSafe("portfolio_state.json", null) });
+  } catch (err: any) {
+    res.status(400).json({ success: false, error: err.message });
+  }
+});
+
+app.delete("/api/portfolio/watch-positions/:code", async (req, res) => {
+  try {
+    const code = String(req.params.code || "").replace(/[^0-9A-Za-z]/g, "");
+    const encoded = Buffer.from(code, "utf8").toString("base64");
+    const { stdout } = await execAsync(`python3 -c "
+import base64
+from quant_system.core.portfolio import portfolio_engine
+print('1' if portfolio_engine.remove_watch_position(base64.b64decode('${encoded}').decode('utf-8')) else '0')
+"`, { cwd: process.cwd() });
+    if (stdout.trim() !== "1") return res.status(404).json({ success: false, error: "未找到非打板盯盘记录" });
+    res.json({ success: true, data: readJsonSafe("portfolio_state.json", null) });
+  } catch (err: any) {
+    res.status(400).json({ success: false, error: err.message });
   }
 });
 

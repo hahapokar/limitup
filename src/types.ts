@@ -106,7 +106,7 @@ export interface HoldingPosition {
   turnover_rate?: number;
   seal_ratio?: number;
   trailing_stop_price?: number;
-  status_tag?: "LOCKED_ZT" | "TRAILING_WARN" | "HARD_STOP_WARN" | "T2_EXIT_PENDING" | "NORMAL";
+  status_tag?: "LOCKED_ZT" | "TRAILING_WARN" | "HARD_STOP_WARN" | "T2_EXIT_PENDING" | "SELL_SIGNAL" | "NORMAL";
   market_value: number;
   unrealized_pnl: number;
   unrealized_pnl_pct: number;
@@ -117,6 +117,7 @@ export interface HoldingPosition {
   entry_strategy_name?: string;
   quote_status?: "LIVE" | "STALE";
   quote_status_at?: string;
+  sell_signal?: SellAlertCardData;
 }
 
 export interface Aug21EvaluationItem {
@@ -361,6 +362,64 @@ export interface SellAlertCardData {
   };
 }
 
+export interface LiveSellSignal {
+  alert_id: string;
+  code: string;
+  name: string;
+  time: string;
+  date: string;
+  sell_price: number;
+  shares: number;
+  entry_price: number;
+  rule_type: string;
+  reason: string;
+  details?: {
+    high_price?: number;
+    pullback_pct?: number;
+    stop_price?: number;
+    holding_days?: number;
+  };
+}
+
+export interface WatchPosition {
+  code: string;
+  name: string;
+  shares: number;
+  entry_price: number;
+  holding_days: number;
+  current_price?: number;
+  high_price?: number;
+  market_value?: number;
+  unrealized_pnl?: number;
+  unrealized_pnl_pct?: number;
+  strategy_mode?: "deep_stuck" | "high_volatility" | "normal";
+  strategy_status?: string;
+  strategy_classification_reason?: string;
+  platform_industry?: string | null;
+  platform_beta?: number | null;
+  daily_atr_ratio?: number | null;
+  indicator_data_ready?: boolean;
+  indicator_note?: string;
+  bias?: number;
+  rsi_1m?: number;
+  rsi_5m?: number;
+  boll_upper?: number;
+  boll_lower?: number;
+  atr_ratio?: number;
+  sell_signal?: LiveSellSignal;
+  status_tag?: string;
+  quote_status?: "LIVE" | "STALE";
+  quote_status_at?: string;
+  data_source?: string;
+  ma5_daily?: number | null;
+  ma10_daily?: number | null;
+  ma20_daily?: number | null;
+  daily_ma_data_ready?: boolean;
+  daily_ma_note?: string;
+  history_status?: "READY" | "UNAVAILABLE";
+  history_error?: string | null;
+}
+
 export interface BuyAlertCardData {
   alert_id: string;
   code: string;
@@ -420,9 +479,13 @@ export interface PortfolioState {
   current_step?: string;
   current_step_name?: string;
   holdings: HoldingPosition[];
+  live_positions?: HoldingPosition[];
+  watch_positions?: WatchPosition[];
   trade_history: TradeOrder[];
   nav_history: NavHistoryItem[];
   recent_sell_alerts?: SellAlertCardData[];
+  live_sell_alerts?: LiveSellSignal[];
+  watch_sell_alerts?: LiveSellSignal[];
   recent_buy_alerts?: BuyAlertCardData[];
   last_update: string;
 }

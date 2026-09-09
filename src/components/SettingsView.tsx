@@ -699,6 +699,79 @@ export const SettingsView: React.FC = () => {
               </div>
             </div>
           </div>
+
+          <div className="bg-cyan-950/20 border border-cyan-700/50 rounded-lg p-4 space-y-3">
+            <h4 className="text-sm font-bold text-cyan-200 flex items-center gap-2">
+              <BarChart3 className="w-4 h-4 text-cyan-400" />
+              非打板实盘盯盘：数据口径与可用性
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-[11px] text-slate-300 leading-relaxed">
+              <div className="bg-slate-950/50 border border-slate-800 rounded p-3">
+                <div className="font-bold text-cyan-300 mb-1">日线均线</div>
+                <div>AkShare 日线收盘价计算 MA5、MA10、MA20。日线数据不依赖盘中分钟线；加入股票时初始化，旧仓位刷新时补齐。MA20 至少需要 20 个有效交易日收盘价。</div>
+              </div>
+              <div className="bg-slate-950/50 border border-slate-800 rounded p-3">
+                <div className="font-bold text-cyan-300 mb-1">Bias</div>
+                <div>Bias =（当前价 − 参考均线）÷ 参考均线 × 100%。当前策略盘中使用加入股票后的实时快照滚动 VWAP/均值计算，实时价变化时才实时更新；历史日线只能计算日线 Bias，不能替代盘中 Bias。</div>
+              </div>
+              <div className="bg-slate-950/50 border border-slate-800 rounded p-3">
+                <div className="font-bold text-cyan-300 mb-1">RSI</div>
+                <div>RSI 可以用历史 K 线计算，但当前做 T 策略需要 1 分钟 RSI；高波动模式需要 5 分钟 RSI。只有对应分钟 K 线收盘/数据可用时才具备完整盘中 RSI，分钟数据缺失时不伪造信号。</div>
+              </div>
+              <div className="bg-slate-950/50 border border-slate-800 rounded p-3">
+                <div className="font-bold text-cyan-300 mb-1">策略实际参照</div>
+                <div>常规模式：Bias ±1.8%，RSI_1m；深套模式：Bias 上轨 +2.0%，禁止正 T；高波动模式：Bias 阈值为 1.5 × ATR14/现价，RSI_5m。MA20 仅用于放量破位判断，要求连续两根快照位于 MA20 下方且量比大于 1.5。</div>
+              </div>
+            </div>
+            <div className="text-[11px] text-amber-200/90 bg-amber-950/30 border border-amber-800/50 rounded p-3">
+              当前项目已具备日线 MA5/MA10/MA20；分钟线受数据源和交易时段影响。分钟线不足时，页面会保留行情和日线均线，但不会把历史日线 RSI 当作盘中 1m/5m RSI 使用。
+            </div>
+
+            <div className="border-t border-cyan-800/50 pt-4 space-y-3">
+              <h4 className="text-sm font-bold text-cyan-200">非打板实盘盯盘卖出策略与归类</h4>
+              <p className="text-[11px] text-slate-400 leading-relaxed">
+                以下规则只作用于“非打板股票实时盯盘”中手动加入的股票，不会作用于模拟盘或打板实盘盯盘。策略先归类，再按优先级从高到低判断；信号连续两个刷新周期满足后才展示。
+              </p>
+              <div className="bg-indigo-950/30 border border-indigo-700/50 rounded p-3 text-[11px] text-slate-300 leading-relaxed">
+                <div className="font-bold text-indigo-300 mb-1">动态分类引擎</div>
+                <div>① deep_stuck：账户浮动盈亏 ≤ -20% 或持仓天数 &gt; 30 天；② high_volatility：平台行业标签匹配半导体/芯片/软件开发/人工智能/军工，或平台 Beta &gt; 1.2，或历史日线 ATR14/现价 ≥ 3.0%；③ 其余为 normal。</div>
+                <div className="mt-1">分类不依赖具体股票代码白名单。系统日志会输出实际触发字段，例如行业标签、Beta 或 ATR14 占比。</div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-[11px] text-slate-300 leading-relaxed">
+                <div className="bg-rose-950/20 border border-rose-800/50 rounded p-3">
+                  <div className="font-bold text-rose-300 mb-1">一、持仓归类：深套模式 deep_stuck</div>
+                  <div>条件：浮动盈亏 ≤ -20%，或持仓天数 &gt; 30 天。</div>
+                  <div className="mt-1">动作：成本价不再作为主要决策依据；禁止正T，优先反T高抛或拉高换股。</div>
+                </div>
+                <div className="bg-amber-950/20 border border-amber-800/50 rounded p-3">
+                  <div className="font-bold text-amber-300 mb-1">二、持仓归类：高波动模式 high_volatility</div>
+                  <div>条件：ATR14/现价 ≥ 3.5%，或近 5 个滚动样本的平均振幅 ≥ 5.0%。</div>
+                  <div className="mt-1">动作：Bias 阈值动态放大至 max(1.8%, 1.5 × ATR14/现价)；使用 RSI_5m 口径，冷却 30 分钟。</div>
+                </div>
+                <div className="bg-cyan-950/20 border border-cyan-800/50 rounded p-3">
+                  <div className="font-bold text-cyan-300 mb-1">三、持仓归类：常规短线 normal</div>
+                  <div>条件：不满足深套和高波动条件。</div>
+                  <div className="mt-1">动作：Bias 阈值 ±1.8%，使用 RSI_1m，信号冷却 15 分钟。</div>
+                </div>
+                <div className="bg-slate-800/70 border border-slate-700 rounded p-3">
+                  <div className="font-bold text-slate-200 mb-1">四、僵尸股过滤 zombie</div>
+                  <div>严格使用盘前/补齐的完整历史5日日线：5日日均换手率 &lt; 1.0%，且5日日均真实振幅（最高−最低）÷前收 &lt; 1.5%。数据不完整时不打僵尸标签。</div>
+                  <div className="mt-1">结果：禁用所有日内做T信号；若当日涨幅处于 +2% 至 +3%，才提示“拉高换股离场”。禁止使用盘中3秒Tick滚动振幅判定僵尸股。</div>
+                </div>
+              </div>
+              <div className="bg-slate-950/70 border border-slate-700 rounded p-3 text-[11px] text-slate-300 leading-relaxed">
+                <div className="font-bold text-indigo-300 mb-1">五、卖出信号优先级</div>
+                <div>1. 硬止损/全局避险：市场上涨家数占比 &lt; 20% 或情绪为 panic 时冻结正T；触及盘中支撑提示减仓。破位必须是两根已收盘5分钟K线低于日线MA20，且最新单分钟量 &gt; 前20分钟均量2.5倍，才减仓50%。</div>
+                <div>2. 平T闭环：前次正T低吸后，Bias ≥ 0 或T仓盈利 ≥ 1.2%提示“卖出平T”；前次反T高抛后，Bias ≤ 0 或价格回落 ≥ 1.2%提示“买回平T”。</div>
+                <div>3. 僵尸股拉高换股：历史5日日均换手率 &lt; 1.0% 且真实振幅 &lt; 1.5%，并且当日涨幅 +2% 至 +3%才提示。</div>
+                <div>4. 移动止盈：持仓 ≤ 10 天从高点回撤 ≥ 4%清仓；持仓 &gt; 10 天从高点回撤 ≥ 7%减仓50%。</div>
+                <div>5. 时间止损降级：normal 模式持仓 &gt; 10 天、盈亏在 -3% 到 +3%时减仓1/3并锁定日内正T；high_volatility 模式阈值延长至 &gt; 18 天，同样减仓1/3。</div>
+                <div>6. 深套/反T：deep_stuck 模式当日涨幅 +2% 至 +3%或Bias触及上轨，提示高抛20%-30%；深套模式严禁正T。</div>
+                <div>7. 正T发起：非深套、市场非恐慌时，Bias触及下轨、RSI超卖且价格触及布林下轨，提示低吸当前底仓30%。</div>
+                <div>8. 时间保护与资金上限：09:30-09:45屏蔽所有做T信号，14:50-15:00屏蔽正T；单日做T预计资金消耗不超过账户现金50%。</div>
+              </div>
+            </div>
+          </div>
         </section>
       )}
 

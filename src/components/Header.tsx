@@ -9,6 +9,7 @@ import {
   Settings,
   Brain,
   Eye,
+  BarChart3,
   Radio
 } from "lucide-react";
 import { MarketSessionInfo } from "../types";
@@ -40,6 +41,7 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const liveTabs = [
     { id: "portfolio", label: "模拟盘与实时盯盘", icon: Eye },
+    { id: "watch", label: "非打板股票盯盘", icon: BarChart3 },
     { id: "limitup", label: "全量涨停池", icon: Activity },
   ];
   const evaluationTabs = [

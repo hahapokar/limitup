@@ -18,6 +18,7 @@ import {
   Lock,
   Unlock,
   Flame
+  ,Plus, Trash2
 } from "lucide-react";
 import { 
   ResponsiveContainer, 
@@ -35,6 +36,8 @@ interface PortfolioViewProps {
   loading: boolean;
   onSyncRealtime?: () => void;
   onManualSell?: (code: string) => Promise<void>;
+  onAddLivePosition?: (payload: { code: string; entry_price: number; shares: number; entry_date: string }) => Promise<void>;
+  onRemoveLivePosition?: (code: string) => Promise<void>;
   syncLoading?: boolean;
 }
 
@@ -43,9 +46,18 @@ export const PortfolioView: React.FC<PortfolioViewProps> = ({
   loading,
   onSyncRealtime,
   onManualSell,
+  onAddLivePosition,
+  onRemoveLivePosition,
   syncLoading = false
 }) => {
   const [sellingCode, setSellingCode] = useState<string | null>(null);
+  const [liveForm, setLiveForm] = useState({
+    code: "",
+    entry_price: "",
+    shares: "100",
+    entry_date: new Date().toISOString().slice(0, 10)
+  });
+  const [addingLive, setAddingLive] = useState(false);
 
   if (loading) {
     return (
@@ -74,9 +86,27 @@ export const PortfolioView: React.FC<PortfolioViewProps> = ({
     nav = 1.0,
     total_pnl = 0,
     holdings = [],
+    live_positions = [],
     trade_history = [],
     nav_history = []
   } = portfolio;
+
+  const handleAddLive = async (event: React.FormEvent) => {
+    event.preventDefault();
+    if (!onAddLivePosition) return;
+    setAddingLive(true);
+    try {
+      await onAddLivePosition({
+        code: liveForm.code.trim(),
+        entry_price: Number(liveForm.entry_price),
+        shares: Number(liveForm.shares),
+        entry_date: liveForm.entry_date
+      });
+      setLiveForm((prev) => ({ ...prev, code: "", entry_price: "", shares: "100" }));
+    } finally {
+      setAddingLive(false);
+    }
+  };
 
   // ✅ 彻底安全的格式化函数：严格校验 TypeScript/JavaScript 中的 undefined、null 和 NaN
   const fmtNum = (v: number | null | undefined, digits = 2, prefix = "") => {
@@ -233,6 +263,50 @@ export const PortfolioView: React.FC<PortfolioViewProps> = ({
       </div>
 
       {/* 2. REAL-TIME WATCHLIST (已买入股票专属盯盘清单) */}
+      <div className="bg-slate-900 border border-amber-800/60 rounded-xl p-6 shadow-md space-y-4">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
+          <div>
+            <h3 className="text-base font-bold text-amber-200 flex items-center gap-2">
+              <Shield className="w-5 h-5 text-amber-400" /> 实盘卖出信号盯盘
+              <span className="text-xs px-2 py-0.5 rounded-full bg-amber-950/70 text-amber-300 font-mono">{live_positions.length} 只</span>
+            </h3>
+            <p className="text-xs text-slate-400 mt-1">只根据模拟盘同一套策略发出卖出信号，不自动卖出、不计入模拟盘资金。</p>
+          </div>
+          <span className="text-[11px] text-amber-300/80">添加和移除均由你手动确认</span>
+        </div>
+
+        {onAddLivePosition && (
+          <form onSubmit={handleAddLive} className="grid grid-cols-2 md:grid-cols-5 gap-2 items-end">
+            <label className="text-[11px] text-slate-400">股票代码<input required value={liveForm.code} onChange={(e) => setLiveForm({ ...liveForm, code: e.target.value })} placeholder="000001" className="mt-1 w-full rounded bg-slate-950 border border-slate-700 px-2.5 py-2 text-sm text-slate-100" /></label>
+            <label className="text-[11px] text-slate-400">买入价<input required type="number" min="0.01" step="0.001" value={liveForm.entry_price} onChange={(e) => setLiveForm({ ...liveForm, entry_price: e.target.value })} placeholder="12.345" className="mt-1 w-full rounded bg-slate-950 border border-slate-700 px-2.5 py-2 text-sm text-slate-100" /></label>
+            <label className="text-[11px] text-slate-400">股数（100整数倍）<input required type="number" min="100" step="100" value={liveForm.shares} onChange={(e) => setLiveForm({ ...liveForm, shares: e.target.value })} className="mt-1 w-full rounded bg-slate-950 border border-slate-700 px-2.5 py-2 text-sm text-slate-100" /></label>
+            <label className="text-[11px] text-slate-400">买入日期<input required type="date" value={liveForm.entry_date} onChange={(e) => setLiveForm({ ...liveForm, entry_date: e.target.value })} className="mt-1 w-full rounded bg-slate-950 border border-slate-700 px-2.5 py-2 text-sm text-slate-100" /></label>
+            <button disabled={addingLive} className="h-9 rounded bg-amber-700 hover:bg-amber-600 text-white text-xs font-semibold flex items-center justify-center gap-1.5 disabled:opacity-50"><Plus className="w-4 h-4" />{addingLive ? "添加中..." : "加入实盘盯盘"}</button>
+          </form>
+        )}
+
+        {live_positions.length > 0 && (
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-xs">
+              <thead className="text-slate-400 border-b border-slate-800"><tr><th className="py-2 px-2">标的</th><th className="py-2 px-2">买入价/现价</th><th className="py-2 px-2">盈亏</th><th className="py-2 px-2">策略状态</th><th className="py-2 px-2">卖出信号</th><th className="py-2 px-2 text-right">操作</th></tr></thead>
+              <tbody className="divide-y divide-slate-800/80">
+                {live_positions.map((h) => {
+                  const signal = h.sell_signal;
+                  return <tr key={`live-${h.code}`} className="hover:bg-slate-800/40">
+                    <td className="py-3 px-2"><div className="font-bold text-slate-100">{h.name}</div><div className="text-slate-500">{h.code} · {h.entry_date}</div></td>
+                    <td className="py-3 px-2"><div className="text-slate-200">¥{fmtNum(h.entry_price, 3)}</div><div className="text-emerald-300">¥{fmtNum(h.current_price, 2)}</div></td>
+                    <td className={`${(h.unrealized_pnl ?? 0) >= 0 ? "text-red-300" : "text-emerald-300"} py-3 px-2 font-semibold`}>{fmtNum(h.unrealized_pnl, 2, "¥")}<div className="text-[10px]">{fmtPct(h.unrealized_pnl_pct, 2, true)}</div></td>
+                    <td className="py-3 px-2"><span className="text-amber-300">{h.can_sell === false ? "T+1锁仓" : "可卖出"}</span><div className="text-[10px] text-slate-500">{h.quote_status === "LIVE" ? "LIVE" : "STALE"}</div></td>
+                    <td className="py-3 px-2">{signal ? <div className="max-w-xs"><span className="px-2 py-1 rounded bg-rose-950 text-rose-300 border border-rose-700 font-bold">建议卖出</span><div className="mt-1 text-[11px] text-rose-200">{signal.reason}</div></div> : <span className="text-slate-500">暂无信号</span>}</td>
+                    <td className="py-3 px-2 text-right"><button onClick={() => onRemoveLivePosition?.(h.code)} className="px-2 py-1 rounded border border-slate-700 text-slate-400 hover:text-rose-300 hover:border-rose-700 text-[11px] flex items-center gap-1 ml-auto"><Trash2 className="w-3 h-3" />移除</button></td>
+                  </tr>;
+                })}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+
       <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 shadow-md space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
           <div className="flex items-center gap-2.5">

@@ -390,18 +390,23 @@ class DataFetcher:
     def __init__(self):
         self.session = _RobustSession()
         self._lockup_cache: Dict[str, Dict[str, Any]] = {}
+        self._instrument_profile_cache: Dict[str, Dict[str, Any]] = {}
         self.session.headers.update({
             "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
             "Referer": "https://finance.sina.com.cn/"
         })
 
     def normalize_symbol(self, code: str) -> str:
-        """Convert 6-digit stock code to exchange prefix format, e.g., 600519 -> sh600519, 000001 -> sz000001."""
+        """Convert A-share stock/bond codes to exchange-prefixed quote symbols."""
         code_str = str(code).strip().zfill(6)
         if code_str.startswith("6"):
             return f"sh{code_str}"
+        elif code_str.startswith("11"):
+            return f"sh{code_str}"  # Shanghai convertible bonds, e.g. 118058
         elif code_str.startswith("0") or code_str.startswith("3"):
             return f"sz{code_str}"
+        elif code_str.startswith("12"):
+            return f"sz{code_str}"  # Shenzhen convertible bonds
         elif code_str.startswith("8") or code_str.startswith("4") or code_str.startswith("9"):
             return f"bj{code_str}"
         return f"sz{code_str}"
@@ -945,6 +950,146 @@ class DataFetcher:
         err_msg = f"Failed to fetch real-time quotes for stocks: {clean_codes}"
         record_system_log("ERROR", "DataFetcher", err_msg)
         raise RuntimeError(err_msg)
+
+    def get_watch_history(self, code: str, daily_days: int = 120, minute_days: int = 5, include_minute: bool = True) -> Dict[str, Any]:
+        """Fetch history only for one explicitly watched instrument.
+
+        Stocks use ``stock_zh_a_*`` and convertible bonds use the corresponding
+        ``bond_zh_hs_cov_*`` endpoints. The caller owns the watchlist, so this
+        method never scans a market-wide universe.
+        """
+        normalized = self._normalize_stock_code(code)
+        if not normalized:
+            raise ValueError("Invalid instrument code")
+        import datetime as _datetime
+        end_date = _datetime.date.today()
+        daily_start = end_date - _datetime.timedelta(days=max(180, daily_days * 2))
+        minute_start = end_date - _datetime.timedelta(days=max(10, minute_days * 2))
+        is_convertible_bond = normalized.startswith(("11", "12"))
+        result: Dict[str, Any] = {
+            "code": normalized,
+            "instrument_type": "convertible_bond" if is_convertible_bond else "stock",
+            "daily": [],
+            "minute_1": [],
+            "minute_5": [],
+            "history_status": "UNAVAILABLE",
+            "history_error": None,
+            "history_fetched_at": _datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        }
+        try:
+            import akshare as ak
+            if is_convertible_bond:
+                bond_symbol = self.normalize_symbol(normalized)
+                # The installed AkShare version exposes bond daily history as
+                # a symbol-only call; date filtering is done locally.
+                daily_df = ak.bond_zh_hs_cov_daily(symbol=bond_symbol)
+                minute_fetcher = ak.bond_zh_hs_cov_min
+            else:
+                try:
+                    daily_df = ak.stock_zh_a_hist(
+                        symbol=normalized,
+                        period="daily",
+                        start_date=daily_start.strftime("%Y%m%d"),
+                        end_date=end_date.strftime("%Y%m%d"),
+                        adjust="qfq",
+                    )
+                except Exception as primary_exc:
+                    logger.warning("EastMoney stock history failed for %s, trying Tencent fallback: %s", normalized, primary_exc)
+                    daily_df = ak.stock_zh_a_hist_tx(
+                        symbol=self.normalize_symbol(normalized),
+                        start_date=daily_start.strftime("%Y%m%d"),
+                        end_date=end_date.strftime("%Y%m%d"),
+                        adjust="",
+                    )
+                minute_fetcher = ak.stock_zh_a_hist_min_em
+
+            if daily_df is not None and not daily_df.empty:
+                result["daily"] = self._normalize_history_rows(daily_df.tail(daily_days).to_dict(orient="records"), "daily")
+
+            if not include_minute:
+                result["history_status"] = "READY" if result["daily"] else "UNAVAILABLE"
+                if not result["daily"]:
+                    result["history_error"] = "AkShare returned no daily history rows"
+                return result
+
+            for period, key in (("1", "minute_1"), ("5", "minute_5")):
+                try:
+                    minute_df = minute_fetcher(
+                        symbol=self.normalize_symbol(normalized) if is_convertible_bond else normalized,
+                        period=period,
+                        start_date=minute_start.strftime("%Y-%m-%d 09:00:00"),
+                        end_date=end_date.strftime("%Y-%m-%d 15:30:00"),
+                        adjust="",
+                    )
+                    if minute_df is not None and not minute_df.empty:
+                        result[key] = self._normalize_history_rows(minute_df.tail(3000).to_dict(orient="records"), "minute")
+                except Exception as exc:
+                    logger.warning("Minute history failed for %s period=%s: %s", normalized, period, exc)
+
+            result["minute_status"] = "READY" if result["minute_1"] and result["minute_5"] else "PARTIAL"
+            if result["daily"] or result["minute_1"] or result["minute_5"]:
+                result["history_status"] = "READY"
+            else:
+                result["history_error"] = "AkShare returned no history rows"
+        except Exception as exc:
+            result["history_error"] = str(exc)
+            logger.warning("History fetch failed for %s: %s", normalized, exc)
+        return result
+
+    def get_instrument_profile(self, code: str) -> Dict[str, Any]:
+        """Fetch platform metadata for one watched instrument, never a universe scan."""
+        normalized = self._normalize_stock_code(code)
+        if normalized in self._instrument_profile_cache:
+            return self._instrument_profile_cache[normalized]
+        profile: Dict[str, Any] = {"code": normalized, "industry": None, "beta": None, "profile_status": "UNAVAILABLE"}
+        try:
+            import akshare as ak
+            frame = ak.stock_individual_info_em(symbol=normalized)
+            if frame is not None and not frame.empty:
+                values = {str(row.iloc[0]): row.iloc[1] for _, row in frame.iterrows() if len(row) >= 2}
+                profile["industry"] = values.get("行业") or values.get("所属行业")
+                for key in ("Beta", "beta", "贝塔系数"):
+                    if values.get(key) not in (None, "", "-"):
+                        try:
+                            profile["beta"] = float(values[key])
+                        except (TypeError, ValueError):
+                            pass
+                        break
+                profile["profile_status"] = "READY" if profile["industry"] or profile["beta"] is not None else "PARTIAL"
+        except Exception as exc:
+            profile["profile_error"] = str(exc)
+            logger.warning("Instrument profile unavailable for %s: %s", normalized, exc)
+        self._instrument_profile_cache[normalized] = profile
+        return profile
+
+    @staticmethod
+    def _normalize_history_rows(rows: List[Dict[str, Any]], kind: str) -> List[Dict[str, Any]]:
+        """Keep AkShare history source values under stable English keys."""
+        normalized: List[Dict[str, Any]] = []
+        for row in rows:
+            item = dict(row)
+            if kind == "daily":
+                aliases = {
+                    "date": ("date", "日期"), "open": ("open", "开盘"), "high": ("high", "最高"),
+                    "low": ("low", "最低"), "close": ("close", "收盘"), "volume": ("volume", "成交量"),
+                    "turnover_rate": ("turnover_rate", "换手率"),
+                }
+            else:
+                aliases = {
+                    "time": ("time", "时间", "日期"), "open": ("open", "开盘"), "high": ("high", "最高"),
+                    "low": ("low", "最低"), "close": ("close", "收盘"), "volume": ("volume", "成交量"),
+                }
+            for target, keys in aliases.items():
+                for key in keys:
+                    if key in item and item[key] not in (None, "", "-"):
+                        item[target] = item[key]
+                        break
+            normalized.append(json.loads(json.dumps(item, default=str)))
+        if kind == "daily":
+            for index, item in enumerate(normalized):
+                if index > 0 and "previous_close" not in item:
+                    item["previous_close"] = normalized[index - 1].get("close")
+        return normalized
 
     # -------------------------------------------------------------------------
     # 3. TOP-LEVEL MARKET OVERVIEW (Advancing / Declining / Limit-down counts)

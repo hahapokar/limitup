@@ -2,12 +2,14 @@ import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Header } from "./components/Header";
 import { CandidatesView } from "./components/CandidatesView";
 import { PortfolioView } from "./components/PortfolioView";
+import { NonLimitWatchView } from "./components/NonLimitWatchView";
 import { LimitUpPoolView } from "./components/LimitUpPoolView";
 import { SettingsView } from "./components/SettingsView";
 import { IterationView } from "./components/IterationView";
 import { ReviewAttributionView } from "./components/ReviewAttributionView";
 import { SellAlertModal } from "./components/SellAlertModal";
 import { BuyAlertModal } from "./components/BuyAlertModal";
+import { LiveSignalModal } from "./components/LiveSignalModal";
 import {
   SentimentData,
   CandidatesPayload,
@@ -16,6 +18,7 @@ import {
   IterationData,
   SellAlertCardData,
   BuyAlertCardData,
+  LiveSellSignal,
   ReviewAttributionPayload,
   MarketSessionInfo
 } from "./types";
@@ -59,9 +62,13 @@ export function App() {
   // -------------------------------------------------------------------------
   const computeIntervalMs = useCallback((): number | null => {
     if (!marketSession?.today_date || marketSession.current_time_beijing >= "15:30:00") return null;
-    const holdings = portfolio?.holdings || [];
-    return holdings.length > 0 ? 6000 : 15000;
-  }, [marketSession?.today_date, marketSession?.current_time_beijing, portfolio?.holdings]);
+    const holdings = [
+      ...(portfolio?.holdings || []),
+      ...(portfolio?.live_positions || []),
+      ...(portfolio?.watch_positions || []),
+    ];
+    return holdings.length > 0 && marketSession?.is_trading_active ? 3000 : 15000;
+  }, [marketSession?.today_date, marketSession?.current_time_beijing, marketSession?.is_trading_active, portfolio?.holdings, portfolio?.live_positions, portfolio?.watch_positions]);
 
   // Dismissed alert IDs to prevent repetitive alerts
   const [dismissedAlerts, setDismissedAlerts] = useState<Set<string>>(() => {
@@ -361,7 +368,7 @@ export function App() {
     } finally {
       pollInFlightRef.current = false;
     }
-  }, [sentiment?.trade_date, portfolio?.holdings]);
+  }, [sentiment?.trade_date, portfolio?.holdings, portfolio?.live_positions, portfolio?.watch_positions]);
 
   // Browser background tabs can suspend timers. Refresh immediately when the
   // user returns so the portfolio cannot remain on a multi-day cache snapshot.
@@ -440,6 +447,58 @@ export function App() {
     } catch (err: any) {
       showToast(`❌ 异常: ${err.message}`);
     }
+  };
+
+  const handleAddLivePosition = async (payload: { code: string; entry_price: number; shares: number; entry_date: string }) => {
+    try {
+      const res = await fetch("/api/portfolio/live-positions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      const json = await res.json();
+      if (json.success) {
+        setPortfolio(json.data);
+        showToast(`✓ ${payload.code} 已加入实盘卖出信号盯盘`);
+      } else {
+        showToast(`❌ 添加失败: ${json.error}`);
+      }
+    } catch (err: any) {
+      showToast(`❌ 添加异常: ${err.message}`);
+    }
+  };
+
+  const handleRemoveLivePosition = async (code: string) => {
+    try {
+      const res = await fetch(`/api/portfolio/live-positions/${encodeURIComponent(code)}`, { method: "DELETE" });
+      const json = await res.json();
+      if (json.success) {
+        setPortfolio(json.data);
+        showToast(`✓ ${code} 已从实盘盯盘移除`);
+      } else {
+        showToast(`❌ 移除失败: ${json.error}`);
+      }
+    } catch (err: any) {
+      showToast(`❌ 移除异常: ${err.message}`);
+    }
+  };
+
+  const handleAddWatchPosition = async (payload: { code: string; entry_price: number; shares: number; holding_days: number }) => {
+    try {
+      const res = await fetch("/api/portfolio/watch-positions", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
+      const json = await res.json();
+      if (json.success) { setPortfolio(json.data); showToast(`✓ ${payload.code} 已加入非打板盯盘`); }
+      else showToast(`❌ 添加失败: ${json.error}`);
+    } catch (err: any) { showToast(`❌ 添加异常: ${err.message}`); }
+  };
+
+  const handleRemoveWatchPosition = async (code: string) => {
+    try {
+      const res = await fetch(`/api/portfolio/watch-positions/${encodeURIComponent(code)}`, { method: "DELETE" });
+      const json = await res.json();
+      if (json.success) { setPortfolio(json.data); showToast(`✓ ${code} 已移除`); }
+      else showToast(`❌ 移除失败: ${json.error}`);
+    } catch (err: any) { showToast(`❌ 移除异常: ${err.message}`); }
   };
 
   const handleDismissAlert = (alertId: string) => {
@@ -619,6 +678,13 @@ export function App() {
     (a) => !dismissedAlerts.has(a.alert_id)
   );
 
+  const activeLiveSellAlerts: LiveSellSignal[] = (portfolio?.live_sell_alerts || []).filter(
+    (a) => !dismissedAlerts.has(a.alert_id)
+  );
+  const activeWatchSellAlerts: LiveSellSignal[] = (portfolio?.watch_sell_alerts || []).filter(
+    (a) => !dismissedAlerts.has(a.alert_id)
+  );
+
   // Filter active un-dismissed BUY alerts (symmetric to sell alerts)
   const activeBuyAlerts: BuyAlertCardData[] = (portfolio?.recent_buy_alerts || []).filter(
     (a) => !dismissedBuyAlerts.has(a.alert_id)
@@ -636,7 +702,7 @@ export function App() {
 
   useEffect(() => {
     const buyCount = activeBuyAlerts.length;
-    const sellCount = activeSellAlerts.length;
+    const sellCount = activeSellAlerts.length + activeLiveSellAlerts.length + activeWatchSellAlerts.length;
 
     if (firstSoundSkipRef.current) {
       // 首次挂载只同步基线，不触发声音（避免冷启动 beep）
@@ -657,7 +723,7 @@ export function App() {
 
     prevBuyCountRef.current = buyCount;
     prevSellCountRef.current = sellCount;
-  }, [activeBuyAlerts.length, activeSellAlerts.length, playBeepSequence]);
+  }, [activeBuyAlerts.length, activeSellAlerts.length, activeLiveSellAlerts.length, activeWatchSellAlerts.length, playBeepSequence]);
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-red-500 selection:text-white">
@@ -684,6 +750,19 @@ export function App() {
       {/* Sell Alert Modal Popups for Strategies */}
       <SellAlertModal
         alerts={activeSellAlerts}
+        onDismiss={handleDismissAlert}
+        onDismissAll={handleDismissAllAlerts}
+      />
+
+      <LiveSignalModal
+        alerts={activeLiveSellAlerts}
+        source="limitup"
+        onDismiss={handleDismissAlert}
+        onDismissAll={handleDismissAllAlerts}
+      />
+      <LiveSignalModal
+        alerts={activeWatchSellAlerts}
+        source="non-limitup"
         onDismiss={handleDismissAlert}
         onDismissAll={handleDismissAllAlerts}
       />
@@ -719,7 +798,20 @@ export function App() {
             loading={!firstLoadDone && portfolio === null}
             onSyncRealtime={handleSyncRealtimePortfolio}
             onManualSell={handleManualSellPosition}
+            onAddLivePosition={handleAddLivePosition}
+            onRemoveLivePosition={handleRemoveLivePosition}
             syncLoading={syncLoading}
+          />
+        )}
+
+        {activeTab === "watch" && (
+          <NonLimitWatchView
+            positions={portfolio?.watch_positions || []}
+            sentiment={sentiment?.sentiment_state}
+            onAdd={handleAddWatchPosition}
+            onRemove={handleRemoveWatchPosition}
+            onRefresh={handleSyncRealtimePortfolio}
+            loading={syncLoading}
           />
         )}
 
