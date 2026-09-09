@@ -142,8 +142,7 @@ class QuantScheduler:
     - 09:30-15:00 Intraday trailing take-profit & anti-shakeout monitoring
     - 14:45 T+2 Close forced liquidation
     - 15:02 Daily NAV settlement
-    - 15:30 Top-level Sentiment Timing & 4-Factor Stock Selection
-    - 15:35 Daily Post-Mortem Attribution & Shadow Backtest Iteration (NEW)
+    - 18:30 Top-level Sentiment Timing & 4-Factor Stock Selection & Post-Mortem Attribution
     """
 
     def __init__(self):
@@ -239,25 +238,19 @@ class QuantScheduler:
             15, 2, self.job_daily_settlement,
         )
 
-        # 6. 15:30 大盘情绪 + 因子选股 + 复盘归因（核心盘后更新入口）
+        # 6. 18:30 大盘情绪 + 因子选股 + 复盘归因（核心盘后更新入口）
+        #    改到18:30一次拉取，避免15:30 AkShare封单数据未更新的问题
         add(
             "job_post_market_review",
-            "15:30 盘后全量数据更新（情绪/选股/复盘/涨停池）",
-            15, 30, self.job_post_market_review,
-        )
-
-        # 7. 15:35 深度归因对账与影子回测自迭代
-        add(
-            "job_post_market_iteration",
-            "15:35 盘后深度归因与影子回测自迭代",
-            15, 35, self.job_post_market_iteration,
+            "18:30 盘后全量数据更新（情绪/选股/复盘/涨停池）",
+            18, 30, self.job_post_market_review,
         )
 
     def start(self) -> None:
         if not self.is_running:
             self.scheduler.start()
             self.is_running = True
-            record_system_log("INFO", "Scheduler", "APScheduler daemon activated with 7 daily lifecycle jobs.")
+            record_system_log("INFO", "Scheduler", "APScheduler daemon activated with 6 daily lifecycle jobs.")
 
     def stop(self) -> None:
         if self.is_running:
@@ -309,13 +302,15 @@ class QuantScheduler:
         portfolio_engine.settle_daily_nav(today_str)
 
     def job_post_market_review(self) -> Dict[str, Any]:
-        """15:30: 盘后全量数据更新 — 涨停池、情绪分、因子选股、复盘评估与连板归因。"""
+        """18:30: 盘后全量数据更新 — 涨停池、情绪分、因子选股、复盘评估与连板归因。
+        改到18:30一次拉取，避免15:30 AkShare封单数据未更新导致candidates与limitup不一致。
+        """
         today_str = self._beijing_today().strftime("%Y-%m-%d")
         if not is_trade_day(today_str):
             record_system_log("INFO", "Scheduler", f"今日 ({today_str}) 非交易日，跳过盘后数据更新。")
             return {"skipped": True, "reason": "not_trade_day"}
         effective_date = normalize_to_trade_day(today_str)
-        record_system_log("INFO", "Scheduler", f"🎯 15:30 启动盘后全量数据更新流程 (交易日: {effective_date})...")
+        record_system_log("INFO", "Scheduler", f"🎯 18:30 启动盘后全量数据更新流程 (交易日: {effective_date})...")
 
         # 1. 刷新当日全量涨停池缓存（主动获取最新当日数据并写入 limitup_YYYY-MM-DD.json）
         record_system_log("INFO", "Scheduler", "  [1/5] 刷新当日全量涨停池缓存...")
@@ -378,8 +373,8 @@ class QuantScheduler:
         review_res = review_attribution_engine.generate_review_and_attribution()
         record_system_log("INFO", "Scheduler", f"       复盘报告已生成: Top{len(review_res.get('top_candidate_evaluations', []))} 评估 / {len(review_res.get('lower_ranked_attributions', []))} 落选归因")
 
-        # 5. 策略自迭代影子回测（15:30 先跑一次，15:35 再做深度对账，避免与后续任务冲突）
-        record_system_log("INFO", "Scheduler", "  [5/5] 运行盘后影子回测自迭代初评...")
+        # 5. 策略自迭代影子回测
+        record_system_log("INFO", "Scheduler", "  [5/5] 运行盘后影子回测自迭代...")
         try:
             iteration_res = iteration_engine.run_daily_post_mortem_and_shadow_test(effective_date)
             record_system_log("INFO", "Scheduler", f"       影子回测状态: {iteration_res.get('status')}")
@@ -413,19 +408,28 @@ class QuantScheduler:
         record_system_log("INFO", "Scheduler", f"🧠 15:35 启动深度归因对账与影子回测二次评估 ({effective_date})...")
 
         # 1. 二次确认涨停池（部分数据源15:30后才补全封单/炸板明细）
-        record_system_log("INFO", "Scheduler", "  [1/3] 二次确认涨停池最终数据（含封单/炸板明细）...")
+        record_system_log("INFO", "Scheduler", "  [1/4] 二次确认涨停池最终数据（含封单/炸板明细）...")
         try:
             data_fetcher.get_limit_up_pool(effective_date)
             data_fetcher.get_broken_limit_up_pool(effective_date)
         except Exception as e:
             record_system_log("WARNING", "Scheduler", f"       二次涨停池确认跳过: {e}")
 
-        # 2. 重新生成盘后复盘评估（确保用的是最终版涨停池数据）
-        record_system_log("INFO", "Scheduler", "  [2/3] 基于最终涨停池数据重算盘后复盘与连板归因...")
+        # 2. 重新打分：15:30打分时AkShare封单数据可能尚未更新，
+        #    15:35二次确认后用最终版涨停池重算candidates，确保candidates与limitup一致
+        record_system_log("INFO", "Scheduler", "  [2/4] 基于最终涨停池数据重新打分（修正封成比/封单额）...")
+        try:
+            scoring_res = scoring_engine.run_daily_scoring(effective_date)
+            record_system_log("INFO", "Scheduler", f"       重新打分完成: {scoring_res.get('candidates_count')} 候选")
+        except Exception as e:
+            record_system_log("ERROR", "Scheduler", f"       重新打分失败: {e}")
+
+        # 3. 重新生成盘后复盘评估（确保用的是最终版涨停池数据）
+        record_system_log("INFO", "Scheduler", "  [3/4] 基于最终涨停池数据重算盘后复盘与连板归因...")
         review_res = review_attribution_engine.generate_review_and_attribution()
 
-        # 3. 运行真实 iteration_engine 影子回测（不是伪代码）
-        record_system_log("INFO", "Scheduler", "  [3/3] 运行真实影子回测与参数微调建议...")
+        # 4. 运行真实 iteration_engine 影子回测（不是伪代码）
+        record_system_log("INFO", "Scheduler", "  [4/4] 运行真实影子回测与参数微调建议...")
         iteration_res = iteration_engine.run_daily_post_mortem_and_shadow_test(effective_date)
 
         if iteration_res.get("has_recommendation"):

@@ -3869,5 +3869,61 @@
     "category": "Scheduler",
     "message": "APScheduler daemon activated with 7 daily lifecycle jobs.",
     "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 23:03:03",
+    "level": "INFO",
+    "category": "Bootstrap",
+    "message": "Keeping existing candidate pool for 2026-09-09; no bootstrap overwrite",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 23:03:03",
+    "level": "INFO",
+    "category": "Scheduler",
+    "message": "APScheduler daemon activated with 7 daily lifecycle jobs.",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 23:07:47",
+    "level": "INFO",
+    "category": "Scoring",
+    "message": "Executing 4-factor quant scoring for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 23:07:50",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 48 limit-up stocks via [AkShare] for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 23:07:52",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-09",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 23:07:52",
+    "level": "INFO",
+    "category": "Scoring",
+    "message": "Pool filtered: 48 -> 30 stocks (ST, Cap, Price, Inst filters applied)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 23:07:52",
+    "level": "INFO",
+    "category": "Scoring",
+    "message": "Linking sentiment state: '震荡/分化期' to consecutive board factor",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-09 23:07:52",
+    "level": "INFO",
+    "category": "Notifier",
+    "message": "📢 🎯 盘后打板量化选股完成 (2026-09-09): 市场情绪状态: [震荡/分化期]，共分析 48 只涨停标的，排雷筛选后推荐 Top 8:\n瑞尔特(002790, 79.17分), 中粮科技(000930, 78.27分), 华脉科技(603042, 75.67分), 百大集团(600865, 74.34分), 精艺股份(002295, 71.16分), 中百集团(000759, 71.08分), 精华制药(002349, 65.39分), 华康股份(605077, 63.25分)",
+    "details": {}
   }
 ]

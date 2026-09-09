@@ -700,7 +700,7 @@
       }
     }
   ],
-  "last_update": "2026-09-09 17:56:10",
+  "last_update": "2026-09-09 23:14:38",
   "entry_observations": {
     "002412": {
       "date": "2026-08-26",
@@ -1169,7 +1169,7 @@
       "sector": "手动实盘",
       "status_tag": "NORMAL",
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 17:56:10",
+      "quote_status_at": "2026-09-09 23:14:38",
       "change_pct": 8.14,
       "turnover_rate": 40.55,
       "seal_ratio": 0.0012,
@@ -1198,7 +1198,7 @@
       "sector": "手动实盘",
       "status_tag": "LOCKED_ZT",
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 17:56:10",
+      "quote_status_at": "2026-09-09 23:14:38",
       "change_pct": 9.99,
       "turnover_rate": 26.04,
       "seal_ratio": 0.0328,
@@ -1229,7 +1229,7 @@
       "sector": "手动实盘",
       "status_tag": "LOCKED_ZT",
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 17:56:10",
+      "quote_status_at": "2026-09-09 23:14:38",
       "change_pct": 9.97,
       "turnover_rate": 18.79,
       "seal_ratio": 0.056,
@@ -1399,13 +1399,23 @@
           "time": 1788947477.168309,
           "price": 18.39,
           "volume": 274466.0
+        },
+        {
+          "time": 1788966258.525804,
+          "price": 18.39,
+          "volume": 274466.0
+        },
+        {
+          "time": 1788966580.342453,
+          "price": 18.39,
+          "volume": 274466.0
         }
       ],
       "last_signal_at": null,
       "last_signal_type": null,
       "signal_confirmations": {},
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 17:51:17",
+      "quote_status_at": "2026-09-09 23:09:40",
       "data_source": "tencent",
       "last_day_seen": "2026-09-09",
       "change_pct": -2.39,
@@ -2501,7 +2511,7 @@
         "minute_5": [],
         "history_status": "READY",
         "history_error": null,
-        "history_fetched_at": "2026-09-09 17:51:19",
+        "history_fetched_at": "2026-09-09 23:09:42",
         "minute_status": "PARTIAL"
       },
       "ma5_daily": 18.61,
@@ -2522,7 +2532,7 @@
       "avg_amplitude_5": 0.0,
       "intraday_support": 18.39,
       "minute_status": "PARTIAL",
-      "minute_last_attempt_at": 1788947477.168309,
+      "minute_last_attempt_at": 1788966580.342453,
       "zombie_data_ready": false,
       "zombie_data_note": "历史5日换手率或真实振幅不完整",
       "breakdown_data_ready": false,
@@ -2691,13 +2701,23 @@
           "time": 1788947477.168309,
           "price": 51.38,
           "volume": 34838.0
+        },
+        {
+          "time": 1788966258.525804,
+          "price": 51.38,
+          "volume": 34838.0
+        },
+        {
+          "time": 1788966580.342453,
+          "price": 51.38,
+          "volume": 34838.0
         }
       ],
       "last_signal_at": null,
       "last_signal_type": null,
       "signal_confirmations": {},
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 17:51:17",
+      "quote_status_at": "2026-09-09 23:09:40",
       "data_source": "tencent",
       "last_day_seen": "2026-09-09",
       "change_pct": -0.17,
@@ -3793,7 +3813,7 @@
         "minute_5": [],
         "history_status": "READY",
         "history_error": null,
-        "history_fetched_at": "2026-09-09 17:51:37",
+        "history_fetched_at": "2026-09-09 23:09:59",
         "minute_status": "PARTIAL"
       },
       "ma5_daily": 51.31,
@@ -3814,7 +3834,7 @@
       "avg_amplitude_5": 0.0,
       "intraday_support": 51.38,
       "minute_status": "PARTIAL",
-      "minute_last_attempt_at": 1788947477.168309,
+      "minute_last_attempt_at": 1788966580.342453,
       "zombie_data_ready": false,
       "zombie_data_note": "历史5日换手率或真实振幅不完整",
       "breakdown_data_ready": false,
@@ -3836,8 +3856,8 @@
       "market_value": 38330.0,
       "unrealized_pnl": -6858.33,
       "unrealized_pnl_pct": -15.21,
-      "strategy_mode": "high_volatility",
-      "strategy_status": "ATR14占比=5.18%",
+      "strategy_mode": "deep_stuck",
+      "strategy_status": "浮动盈亏=-15.21%",
       "price_history": [
         {
           "time": 1788942577.148728,
@@ -3983,13 +4003,23 @@
           "time": 1788947477.168309,
           "price": 383.3,
           "volume": 75650.0
+        },
+        {
+          "time": 1788966258.525804,
+          "price": 383.3,
+          "volume": 75650.0
+        },
+        {
+          "time": 1788966580.342453,
+          "price": 383.3,
+          "volume": 75650.0
         }
       ],
       "last_signal_at": null,
       "last_signal_type": null,
       "signal_confirmations": {},
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 17:51:17",
+      "quote_status_at": "2026-09-09 23:09:40",
       "data_source": "tencent",
       "last_day_seen": "2026-09-09",
       "change_pct": 0.21,
@@ -5085,7 +5115,7 @@
         "minute_5": [],
         "history_status": "READY",
         "history_error": null,
-        "history_fetched_at": "2026-09-09 17:51:58",
+        "history_fetched_at": "2026-09-09 23:10:17",
         "minute_status": "PARTIAL"
       },
       "ma5_daily": 360.824,
@@ -5106,15 +5136,15 @@
       "avg_amplitude_5": 0.0,
       "intraday_support": 383.3,
       "minute_status": "PARTIAL",
-      "minute_last_attempt_at": 1788947477.168309,
+      "minute_last_attempt_at": 1788966580.342453,
       "zombie_data_ready": false,
       "zombie_data_note": "历史5日换手率或真实振幅不完整",
       "breakdown_data_ready": false,
       "breakdown_data_note": "需要至少22根5分钟K线",
-      "strategy_classification_reason": "ATR14占比=5.18%",
+      "strategy_classification_reason": "浮动盈亏=-15.21%",
       "platform_industry": null,
       "platform_beta": null,
-      "daily_atr_ratio": 0.0518
+      "daily_atr_ratio": null
     },
     {
       "code": "300274",
@@ -5275,13 +5305,23 @@
           "time": 1788947477.168309,
           "price": 87.0,
           "volume": 346103.0
+        },
+        {
+          "time": 1788966258.525804,
+          "price": 87.0,
+          "volume": 346103.0
+        },
+        {
+          "time": 1788966580.342453,
+          "price": 87.0,
+          "volume": 346103.0
         }
       ],
       "last_signal_at": null,
       "last_signal_type": null,
       "signal_confirmations": {},
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 17:51:17",
+      "quote_status_at": "2026-09-09 23:09:40",
       "data_source": "tencent",
       "last_day_seen": "2026-09-09",
       "change_pct": -0.97,
@@ -6377,7 +6417,7 @@
         "minute_5": [],
         "history_status": "READY",
         "history_error": null,
-        "history_fetched_at": "2026-09-09 17:52:19",
+        "history_fetched_at": "2026-09-09 23:10:38",
         "minute_status": "PARTIAL"
       },
       "ma5_daily": 87.822,
@@ -6398,7 +6438,7 @@
       "avg_amplitude_5": 0.0,
       "intraday_support": 87.0,
       "minute_status": "PARTIAL",
-      "minute_last_attempt_at": 1788947477.168309,
+      "minute_last_attempt_at": 1788966580.342453,
       "zombie_data_ready": false,
       "zombie_data_note": "历史5日换手率或真实振幅不完整",
       "breakdown_data_ready": false,
@@ -6421,7 +6461,7 @@
       "unrealized_pnl": -3403.35,
       "unrealized_pnl_pct": -13.24,
       "strategy_mode": "deep_stuck",
-      "strategy_status": "持仓天数=69天",
+      "strategy_status": "浮动盈亏=-13.24%",
       "price_history": [
         {
           "time": 1788942577.148728,
@@ -6567,13 +6607,23 @@
           "time": 1788947477.168309,
           "price": 111.745,
           "volume": 226394.0
+        },
+        {
+          "time": 1788966258.525804,
+          "price": 111.745,
+          "volume": 226394.0
+        },
+        {
+          "time": 1788966580.342453,
+          "price": 111.745,
+          "volume": 226394.0
         }
       ],
       "last_signal_at": null,
       "last_signal_type": null,
       "signal_confirmations": {},
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 17:51:17",
+      "quote_status_at": "2026-09-09 23:09:40",
       "data_source": "tencent",
       "last_day_seen": "2026-09-09",
       "change_pct": -0.71,
@@ -6586,21 +6636,12 @@
         "instrument_type": "convertible_bond",
         "daily": [
           {
-            "date": "2026-03-18",
-            "open": 124.263,
-            "high": 125.0,
-            "low": 123.251,
-            "close": 124.995,
-            "volume": 902490
-          },
-          {
             "date": "2026-03-19",
             "open": 124.99,
             "high": 124.99,
             "low": 121.57,
             "close": 122.228,
-            "volume": 879290,
-            "previous_close": 124.995
+            "volume": 879290
           },
           {
             "date": "2026-03-20",
@@ -7663,18 +7704,27 @@
             "close": 112.541,
             "volume": 1076004,
             "previous_close": 115.028
+          },
+          {
+            "date": "2026-09-09",
+            "open": 112.9,
+            "high": 113.249,
+            "low": 111.315,
+            "close": 111.745,
+            "volume": 2263940,
+            "previous_close": 112.541
           }
         ],
         "minute_1": [],
         "minute_5": [],
         "history_status": "READY",
         "history_error": null,
-        "history_fetched_at": "2026-09-09 17:52:40",
+        "history_fetched_at": "2026-09-09 23:10:58",
         "minute_status": "PARTIAL"
       },
-      "ma5_daily": 114.215,
-      "ma10_daily": 115.866,
-      "ma20_daily": 116.397,
+      "ma5_daily": 113.364,
+      "ma10_daily": 115.44,
+      "ma20_daily": 115.903,
       "daily_ma_data_ready": true,
       "daily_ma_note": "日线收盘样本 120 条",
       "ma20": 111.745,
@@ -7690,12 +7740,12 @@
       "avg_amplitude_5": 0.0,
       "intraday_support": 111.745,
       "minute_status": "PARTIAL",
-      "minute_last_attempt_at": 1788947477.168309,
+      "minute_last_attempt_at": 1788966580.342453,
       "zombie_data_ready": false,
       "zombie_data_note": "历史5日换手率或真实振幅不完整",
       "breakdown_data_ready": false,
       "breakdown_data_note": "需要至少22根5分钟K线",
-      "strategy_classification_reason": "持仓天数=69天",
+      "strategy_classification_reason": "浮动盈亏=-13.24%",
       "platform_industry": null,
       "platform_beta": null,
       "daily_atr_ratio": null
@@ -7859,13 +7909,23 @@
           "time": 1788947477.168309,
           "price": 381.87,
           "volume": 229047.0
+        },
+        {
+          "time": 1788966258.525804,
+          "price": 381.87,
+          "volume": 229047.0
+        },
+        {
+          "time": 1788966580.342453,
+          "price": 381.87,
+          "volume": 229047.0
         }
       ],
       "last_signal_at": 1788945981.875337,
       "last_signal_type": "TIME_STOP",
       "signal_confirmations": {},
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 17:51:17",
+      "quote_status_at": "2026-09-09 23:09:40",
       "data_source": "tencent",
       "last_day_seen": "2026-09-09",
       "change_pct": -1.06,
@@ -8961,7 +9021,7 @@
         "minute_5": [],
         "history_status": "READY",
         "history_error": null,
-        "history_fetched_at": "2026-09-09 17:52:52",
+        "history_fetched_at": "2026-09-09 23:11:08",
         "minute_status": "PARTIAL"
       },
       "ma5_daily": 381.67,
@@ -8995,7 +9055,7 @@
         "strategy_mode": "normal"
       },
       "minute_status": "PARTIAL",
-      "minute_last_attempt_at": 1788947477.168309,
+      "minute_last_attempt_at": 1788966580.342453,
       "zombie_data_ready": false,
       "zombie_data_note": "历史5日换手率或真实振幅不完整",
       "breakdown_data_ready": false,
@@ -9017,8 +9077,8 @@
       "market_value": 9585.0,
       "unrealized_pnl": -1574.58,
       "unrealized_pnl_pct": -14.14,
-      "strategy_mode": "high_volatility",
-      "strategy_status": "ATR14占比=7.09%",
+      "strategy_mode": "deep_stuck",
+      "strategy_status": "浮动盈亏=-14.14%",
       "price_history": [
         {
           "time": 1788942577.148728,
@@ -9164,13 +9224,23 @@
           "time": 1788947477.168309,
           "price": 19.17,
           "volume": 145728.0
+        },
+        {
+          "time": 1788966258.525804,
+          "price": 19.17,
+          "volume": 145728.0
+        },
+        {
+          "time": 1788966580.342453,
+          "price": 19.17,
+          "volume": 145728.0
         }
       ],
       "last_signal_at": null,
       "last_signal_type": null,
       "signal_confirmations": {},
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 17:51:17",
+      "quote_status_at": "2026-09-09 23:09:40",
       "data_source": "tencent",
       "last_day_seen": "2026-09-09",
       "change_pct": -5.8,
@@ -10266,7 +10336,7 @@
         "minute_5": [],
         "history_status": "READY",
         "history_error": null,
-        "history_fetched_at": "2026-09-09 17:53:12",
+        "history_fetched_at": "2026-09-09 23:11:34",
         "minute_status": "PARTIAL"
       },
       "ma5_daily": 20.388,
@@ -10287,15 +10357,15 @@
       "avg_amplitude_5": 0.0,
       "intraday_support": 19.17,
       "minute_status": "PARTIAL",
-      "minute_last_attempt_at": 1788947477.168309,
+      "minute_last_attempt_at": 1788966580.342453,
       "zombie_data_ready": false,
       "zombie_data_note": "历史5日换手率或真实振幅不完整",
       "breakdown_data_ready": false,
       "breakdown_data_note": "需要至少22根5分钟K线",
-      "strategy_classification_reason": "ATR14占比=7.09%",
+      "strategy_classification_reason": "浮动盈亏=-14.14%",
       "platform_industry": null,
       "platform_beta": null,
-      "daily_atr_ratio": 0.0709
+      "daily_atr_ratio": null
     },
     {
       "code": "123258",
@@ -10309,8 +10379,8 @@
       "market_value": 11847.2,
       "unrealized_pnl": -1414.65,
       "unrealized_pnl_pct": -10.69,
-      "strategy_mode": "high_volatility",
-      "strategy_status": "ATR14占比=11.81%",
+      "strategy_mode": "deep_stuck",
+      "strategy_status": "浮动盈亏=-10.69%",
       "price_history": [
         {
           "time": 1788942577.148728,
@@ -10456,13 +10526,23 @@
           "time": 1788947477.168309,
           "price": 236.944,
           "volume": 350219.0
+        },
+        {
+          "time": 1788966258.525804,
+          "price": 236.944,
+          "volume": 350219.0
+        },
+        {
+          "time": 1788966580.342453,
+          "price": 236.944,
+          "volume": 350219.0
         }
       ],
       "last_signal_at": null,
       "last_signal_type": null,
       "signal_confirmations": {},
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 17:51:17",
+      "quote_status_at": "2026-09-09 23:09:40",
       "data_source": "tencent",
       "last_day_seen": "2026-09-09",
       "change_pct": -3.19,
@@ -10475,21 +10555,12 @@
         "instrument_type": "convertible_bond",
         "daily": [
           {
-            "date": "2026-03-18",
-            "open": 156.475,
-            "high": 160.0,
-            "low": 154.521,
-            "close": 156.236,
-            "volume": 704350
-          },
-          {
             "date": "2026-03-19",
             "open": 155.0,
             "high": 155.697,
             "low": 151.895,
             "close": 153.133,
-            "volume": 284257,
-            "previous_close": 156.236
+            "volume": 284257
           },
           {
             "date": "2026-03-20",
@@ -11552,18 +11623,27 @@
             "close": 244.741,
             "volume": 4633990,
             "previous_close": 247.28
+          },
+          {
+            "date": "2026-09-09",
+            "open": 245.843,
+            "high": 250.9,
+            "low": 235.7,
+            "close": 236.944,
+            "volume": 3502185,
+            "previous_close": 244.741
           }
         ],
         "minute_1": [],
         "minute_5": [],
         "history_status": "READY",
         "history_error": null,
-        "history_fetched_at": "2026-09-09 17:53:38",
+        "history_fetched_at": "2026-09-09 23:12:01",
         "minute_status": "PARTIAL"
       },
-      "ma5_daily": 249.184,
-      "ma10_daily": 299.504,
-      "ma20_daily": 317.012,
+      "ma5_daily": 244.093,
+      "ma10_daily": 289.498,
+      "ma20_daily": 312.41,
       "daily_ma_data_ready": true,
       "daily_ma_note": "日线收盘样本 120 条",
       "ma20": 236.944,
@@ -11579,15 +11659,15 @@
       "avg_amplitude_5": 0.0,
       "intraday_support": 236.944,
       "minute_status": "PARTIAL",
-      "minute_last_attempt_at": 1788947477.168309,
+      "minute_last_attempt_at": 1788966580.342453,
       "zombie_data_ready": false,
       "zombie_data_note": "历史5日换手率或真实振幅不完整",
       "breakdown_data_ready": false,
       "breakdown_data_note": "需要至少22根5分钟K线",
-      "strategy_classification_reason": "ATR14占比=11.81%",
+      "strategy_classification_reason": "浮动盈亏=-10.69%",
       "platform_industry": null,
       "platform_beta": null,
-      "daily_atr_ratio": 0.1181
+      "daily_atr_ratio": null
     },
     {
       "code": "001366",
@@ -11748,13 +11828,23 @@
           "time": 1788947477.168309,
           "price": 14.74,
           "volume": 266976.0
+        },
+        {
+          "time": 1788966258.525804,
+          "price": 14.74,
+          "volume": 266976.0
+        },
+        {
+          "time": 1788966580.342453,
+          "price": 14.74,
+          "volume": 266976.0
         }
       ],
       "last_signal_at": null,
       "last_signal_type": null,
       "signal_confirmations": {},
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 17:51:17",
+      "quote_status_at": "2026-09-09 23:09:40",
       "data_source": "tencent",
       "last_day_seen": "2026-09-09",
       "change_pct": -10.01,
@@ -12850,7 +12940,7 @@
         "minute_5": [],
         "history_status": "READY",
         "history_error": null,
-        "history_fetched_at": "2026-09-09 17:53:49",
+        "history_fetched_at": "2026-09-09 23:12:16",
         "minute_status": "PARTIAL"
       },
       "ma5_daily": 14.866,
@@ -12871,7 +12961,7 @@
       "avg_amplitude_5": 0.0,
       "intraday_support": 14.74,
       "minute_status": "PARTIAL",
-      "minute_last_attempt_at": 1788947477.168309,
+      "minute_last_attempt_at": 1788966580.342453,
       "zombie_data_ready": false,
       "zombie_data_note": "历史5日换手率或真实振幅不完整",
       "breakdown_data_ready": false,
@@ -12893,8 +12983,8 @@
       "market_value": 7740.0,
       "unrealized_pnl": -1247.74,
       "unrealized_pnl_pct": -13.91,
-      "strategy_mode": "high_volatility",
-      "strategy_status": "ATR14占比=7.11%",
+      "strategy_mode": "deep_stuck",
+      "strategy_status": "浮动盈亏=-13.91%",
       "price_history": [
         {
           "time": 1788942577.148728,
@@ -13040,13 +13130,23 @@
           "time": 1788947477.168309,
           "price": 7.74,
           "volume": 525183.0
+        },
+        {
+          "time": 1788966258.525804,
+          "price": 7.74,
+          "volume": 525183.0
+        },
+        {
+          "time": 1788966580.342453,
+          "price": 7.74,
+          "volume": 525183.0
         }
       ],
       "last_signal_at": null,
       "last_signal_type": null,
       "signal_confirmations": {},
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 17:51:17",
+      "quote_status_at": "2026-09-09 23:09:40",
       "data_source": "tencent",
       "last_day_seen": "2026-09-09",
       "change_pct": -6.18,
@@ -14142,7 +14242,7 @@
         "minute_5": [],
         "history_status": "READY",
         "history_error": null,
-        "history_fetched_at": "2026-09-09 17:54:11",
+        "history_fetched_at": "2026-09-09 23:12:45",
         "minute_status": "PARTIAL"
       },
       "ma5_daily": 8.03,
@@ -14163,15 +14263,15 @@
       "avg_amplitude_5": 0.0,
       "intraday_support": 7.74,
       "minute_status": "PARTIAL",
-      "minute_last_attempt_at": 1788947477.168309,
+      "minute_last_attempt_at": 1788966580.342453,
       "zombie_data_ready": false,
       "zombie_data_note": "历史5日换手率或真实振幅不完整",
       "breakdown_data_ready": false,
       "breakdown_data_note": "需要至少22根5分钟K线",
-      "strategy_classification_reason": "ATR14占比=7.11%",
+      "strategy_classification_reason": "浮动盈亏=-13.91%",
       "platform_industry": null,
       "platform_beta": null,
-      "daily_atr_ratio": 0.0711
+      "daily_atr_ratio": null
     },
     {
       "code": "002938",
@@ -14332,15 +14432,25 @@
           "time": 1788947477.168309,
           "price": 92.45,
           "volume": 219977.0
+        },
+        {
+          "time": 1788966258.525804,
+          "price": 92.45,
+          "volume": 219977.0
+        },
+        {
+          "time": 1788966580.342453,
+          "price": 92.45,
+          "volume": 219977.0
         }
       ],
-      "last_signal_at": 1788946549.810991,
+      "last_signal_at": 1788966258.525804,
       "last_signal_type": "TIME_STOP_REDUCE",
       "signal_confirmations": {
-        "TIME_STOP_REDUCE": 3
+        "TIME_STOP_REDUCE": 5
       },
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 17:51:17",
+      "quote_status_at": "2026-09-09 23:09:40",
       "data_source": "tencent",
       "last_day_seen": "2026-09-09",
       "change_pct": 3.34,
@@ -15436,7 +15546,7 @@
         "minute_5": [],
         "history_status": "READY",
         "history_error": null,
-        "history_fetched_at": "2026-09-09 17:54:30",
+        "history_fetched_at": "2026-09-09 23:13:03",
         "minute_status": "PARTIAL"
       },
       "ma5_daily": 87.944,
@@ -15457,7 +15567,7 @@
       "avg_amplitude_5": 0.0,
       "intraday_support": 92.45,
       "minute_status": "PARTIAL",
-      "minute_last_attempt_at": 1788947477.168309,
+      "minute_last_attempt_at": 1788966580.342453,
       "zombie_data_ready": false,
       "zombie_data_note": "历史5日换手率或真实振幅不完整",
       "breakdown_data_ready": false,
@@ -15466,14 +15576,14 @@
         "alert_id": "WATCH_002938_TIME_STOP_REDUCE",
         "code": "002938",
         "name": "鹏鼎控股",
-        "time": "17:35",
+        "time": "23:04",
         "date": "2026-09-09",
         "rule_type": "TIME_STOP_REDUCE",
-        "reason": "时间止损降级：减仓1/3并锁定日内正T，提示换股",
+        "reason": "高波动时间止损降级：减仓1/3并锁定日内正T",
         "sell_price": 92.45,
         "entry_price": 93.31,
         "shares": 1000,
-        "strategy_mode": "normal"
+        "strategy_mode": "high_volatility"
       },
       "strategy_classification_reason": "ATR14占比=5.08%",
       "platform_industry": null,
@@ -15639,13 +15749,23 @@
           "time": 1788947477.168309,
           "price": 33.76,
           "volume": 177633.0
+        },
+        {
+          "time": 1788966258.525804,
+          "price": 33.76,
+          "volume": 177633.0
+        },
+        {
+          "time": 1788966580.342453,
+          "price": 33.76,
+          "volume": 177633.0
         }
       ],
       "last_signal_at": null,
       "last_signal_type": null,
       "signal_confirmations": {},
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 17:51:17",
+      "quote_status_at": "2026-09-09 23:09:40",
       "data_source": "tencent",
       "last_day_seen": "2026-09-09",
       "change_pct": 2.3,
@@ -16741,7 +16861,7 @@
         "minute_5": [],
         "history_status": "READY",
         "history_error": null,
-        "history_fetched_at": "2026-09-09 17:54:49",
+        "history_fetched_at": "2026-09-09 23:13:26",
         "minute_status": "PARTIAL"
       },
       "ma5_daily": 33.754,
@@ -16762,7 +16882,7 @@
       "avg_amplitude_5": 0.0,
       "intraday_support": 33.76,
       "minute_status": "PARTIAL",
-      "minute_last_attempt_at": 1788947477.168309,
+      "minute_last_attempt_at": 1788966580.342453,
       "zombie_data_ready": false,
       "zombie_data_note": "历史5日换手率或真实振幅不完整",
       "breakdown_data_ready": false,
@@ -16931,13 +17051,23 @@
           "time": 1788947477.168309,
           "price": 5.35,
           "volume": 734513.0
+        },
+        {
+          "time": 1788966258.525804,
+          "price": 5.35,
+          "volume": 734513.0
+        },
+        {
+          "time": 1788966580.342453,
+          "price": 5.35,
+          "volume": 734513.0
         }
       ],
       "last_signal_at": null,
       "last_signal_type": null,
       "signal_confirmations": {},
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 17:51:17",
+      "quote_status_at": "2026-09-09 23:09:40",
       "data_source": "tencent",
       "last_day_seen": "2026-09-09",
       "change_pct": -1.11,
@@ -18033,7 +18163,7 @@
         "minute_5": [],
         "history_status": "READY",
         "history_error": null,
-        "history_fetched_at": "2026-09-09 17:55:08",
+        "history_fetched_at": "2026-09-09 23:13:47",
         "minute_status": "PARTIAL"
       },
       "ma5_daily": 5.118,
@@ -18054,7 +18184,7 @@
       "avg_amplitude_5": 0.0,
       "intraday_support": 5.35,
       "minute_status": "PARTIAL",
-      "minute_last_attempt_at": 1788947477.168309,
+      "minute_last_attempt_at": 1788966580.342453,
       "zombie_data_ready": false,
       "zombie_data_note": "历史5日换手率或真实振幅不完整",
       "breakdown_data_ready": false,
@@ -18223,13 +18353,23 @@
           "time": 1788947477.168309,
           "price": 393.39,
           "volume": 7304829.0
+        },
+        {
+          "time": 1788966258.525804,
+          "price": 393.39,
+          "volume": 7304829.0
+        },
+        {
+          "time": 1788966580.342453,
+          "price": 393.39,
+          "volume": 7304829.0
         }
       ],
       "last_signal_at": null,
       "last_signal_type": null,
       "signal_confirmations": {},
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 17:51:17",
+      "quote_status_at": "2026-09-09 23:09:40",
       "data_source": "tencent",
       "last_day_seen": "2026-09-09",
       "change_pct": -1.97,
@@ -19325,7 +19465,7 @@
         "minute_5": [],
         "history_status": "READY",
         "history_error": null,
-        "history_fetched_at": "2026-09-09 17:55:32",
+        "history_fetched_at": "2026-09-09 23:14:07",
         "minute_status": "PARTIAL"
       },
       "ma5_daily": 389.028,
@@ -19346,7 +19486,7 @@
       "avg_amplitude_5": 0.0,
       "intraday_support": 393.39,
       "minute_status": "PARTIAL",
-      "minute_last_attempt_at": 1788947477.168309,
+      "minute_last_attempt_at": 1788966580.342453,
       "zombie_data_ready": false,
       "zombie_data_note": "历史5日换手率或真实振幅不完整",
       "breakdown_data_ready": false,
@@ -19368,8 +19508,8 @@
       "market_value": 1709.3,
       "unrealized_pnl": -222.51,
       "unrealized_pnl_pct": -11.54,
-      "strategy_mode": "high_volatility",
-      "strategy_status": "ATR14占比=8.49%",
+      "strategy_mode": "deep_stuck",
+      "strategy_status": "浮动盈亏=-11.54%",
       "price_history": [
         {
           "time": 1788943085.566929,
@@ -19473,6 +19613,16 @@
         },
         {
           "time": 1788947477.168309,
+          "price": 341.86,
+          "volume": 235495.0
+        },
+        {
+          "time": 1788966258.525804,
+          "price": 341.86,
+          "volume": 235495.0
+        },
+        {
+          "time": 1788966580.342453,
           "price": 341.86,
           "volume": 235495.0
         }
@@ -20565,7 +20715,7 @@
         "minute_5": [],
         "history_status": "READY",
         "history_error": null,
-        "history_fetched_at": "2026-09-09 17:55:54",
+        "history_fetched_at": "2026-09-09 23:14:27",
         "minute_status": "PARTIAL"
       },
       "history_status": "READY",
@@ -20574,7 +20724,7 @@
       "last_signal_type": null,
       "signal_confirmations": {},
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 17:51:17",
+      "quote_status_at": "2026-09-09 23:09:40",
       "data_source": "tencent",
       "last_day_seen": "2026-09-09",
       "change_pct": -3.26,
@@ -20589,7 +20739,7 @@
       "daily_ma_note": "日线收盘样本 120 条",
       "ma20": 341.86,
       "minute_status": "PARTIAL",
-      "minute_last_attempt_at": 1788947477.168309,
+      "minute_last_attempt_at": 1788966580.342453,
       "bias": 0.0,
       "rsi_1m": 50.0,
       "rsi_5m": 50.0,
@@ -20603,10 +20753,10 @@
       "zombie_data_note": "历史5日换手率或真实振幅不完整",
       "breakdown_data_ready": false,
       "breakdown_data_note": "需要至少22根5分钟K线",
-      "strategy_classification_reason": "ATR14占比=8.49%",
+      "strategy_classification_reason": "浮动盈亏=-11.54%",
       "platform_industry": null,
       "platform_beta": null,
-      "daily_atr_ratio": 0.0849
+      "daily_atr_ratio": null
     }
   ],
   "watch_sell_alerts": [
