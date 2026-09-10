@@ -1,0 +1,142 @@
+[
+  {
+    "timestamp": "2026-09-10 19:16:32",
+    "level": "INFO",
+    "category": "Bootstrap",
+    "message": "Detected stale candidate pool (2026-09-09); catching up 2026-09-10 post-market review",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-10 19:16:32",
+    "level": "INFO",
+    "category": "Scheduler",
+    "message": "Manual trigger: Running FULL post-market data refresh for 2026-09-10",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-10 19:16:33",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 35 limit-up stocks via [AkShare] for 2026-09-10",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-10 19:16:33",
+    "level": "INFO",
+    "category": "Sentiment",
+    "message": "Calculating market sentiment for trading date: 2026-09-10 (Prev: 2026-09-09)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-10 19:16:33",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 35 limit-up stocks via [AkShare] for 2026-09-10",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-10 19:16:36",
+    "level": "INFO",
+    "category": "Sentiment",
+    "message": "Market sentiment score: 47.0 (震荡分化), Target Position Limit: 65%",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-10 19:16:36",
+    "level": "INFO",
+    "category": "Scoring",
+    "message": "Executing 4-factor quant scoring for 2026-09-10",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-10 19:16:36",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Successfully fetched 35 limit-up stocks via [AkShare] for 2026-09-10",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-10 19:16:36",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 0 lock-up records for 2026-09-10",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-10 19:16:36",
+    "level": "INFO",
+    "category": "Scoring",
+    "message": "Pool filtered: 35 -> 30 stocks (ST, Cap, Price, Inst filters applied)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-10 19:16:36",
+    "level": "INFO",
+    "category": "Scoring",
+    "message": "Linking sentiment state: '震荡/分化期' to consecutive board factor",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-10 19:16:36",
+    "level": "INFO",
+    "category": "Notifier",
+    "message": "📢 🎯 盘后打板量化选股完成 (2026-09-10): 市场情绪状态: [震荡/分化期]，共分析 35 只涨停标的，排雷筛选后推荐 Top 8:\n瑞尔特(002790, 83.67分), 桂林旅游(000978, 81.58分), 闽东电力(000993, 75.37分), 渝三峡Ａ(000565, 74.72分), 鼎信通讯(603421, 74.32分), 云煤能源(600792, 71.68分), 华银电力(600744, 68.01分), 新农开发(600359, 67.88分)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-10 19:16:36",
+    "level": "INFO",
+    "category": "Scheduler",
+    "message": "Manual review: 2026-09-10 FINAL manifest 已发布",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-10 19:16:36",
+    "level": "INFO",
+    "category": "ReviewAttribution",
+    "message": "2026-09-10 post-market review generated from real data files",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-10 19:16:36",
+    "level": "INFO",
+    "category": "Iteration",
+    "message": "Post-mortem / shadow-backtest slot called for 2026-09-10 — status=NOT_RUN (no real backtest runner wired up yet)",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-10 19:16:36",
+    "level": "INFO",
+    "category": "Scheduler",
+    "message": "APScheduler daemon activated with 6 daily lifecycle jobs.",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-10 19:40:01",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 1 lock-up records for 2026-09-07",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-10 19:40:18",
+    "level": "INFO",
+    "category": "DataFetcher",
+    "message": "Parsed 1 lock-up records for 2026-09-07",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-10 19:41:48",
+    "level": "INFO",
+    "category": "Bootstrap",
+    "message": "Keeping existing candidate pool for 2026-09-10; no bootstrap overwrite",
+    "details": {}
+  },
+  {
+    "timestamp": "2026-09-10 19:41:48",
+    "level": "INFO",
+    "category": "Scheduler",
+    "message": "APScheduler daemon activated with 6 daily lifecycle jobs.",
+    "details": {}
+  }
+]

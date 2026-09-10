@@ -37,7 +37,8 @@ from quant_system.config import (
     TRAILING_TIER2_PROFIT, 
     TRAILING_TIER2_STOP,
     BROKEN_ZT_EXIT_MINS,       # 优化4：炸板超时风控
-    DATA_DIR
+    DATA_DIR,
+    INTRADAY_POLL_END_TIME
 )
 from quant_system.config import snapshot_manifest_file
 from quant_system.core.data_fetcher import data_fetcher
@@ -870,7 +871,12 @@ class PortfolioEngine:
             return []
 
         now = datetime.datetime.now()
-        cur_time = current_time_str or now.strftime("%H:%M")
+        beijing_now = datetime.datetime.utcnow() + datetime.timedelta(hours=8)
+        cur_time = current_time_str or beijing_now.strftime("%H:%M")
+
+        # Stop live quote polling after the 15:30 post-close cutoff.
+        if cur_time >= INTRADAY_POLL_END_TIME:
+            return []
 
         # Trading hours guard: no sells outside 09:30–15:00
         is_within_trading_hours = ("09:30" <= cur_time <= "15:00")
@@ -1325,7 +1331,10 @@ class PortfolioEngine:
         if not positions:
             return []
         now = datetime.datetime.now()
-        cur_time = current_time_str or now.strftime("%H:%M")
+        beijing_now = datetime.datetime.utcnow() + datetime.timedelta(hours=8)
+        cur_time = current_time_str or beijing_now.strftime("%H:%M")
+        if cur_time >= INTRADAY_POLL_END_TIME:
+            return []
         quotes = data_fetcher.get_realtime_quotes([p["code"] for p in positions])
         market_risk = self._watch_market_risk()
         alerts: List[Dict[str, Any]] = []
@@ -1811,6 +1820,10 @@ class PortfolioEngine:
         """
         effective_date = data_fetcher.get_effective_date(trade_date)
         state = self.load_state()
+
+        beijing_now = datetime.datetime.utcnow() + datetime.timedelta(hours=8)
+        if beijing_now.strftime("%H:%M") >= INTRADAY_POLL_END_TIME:
+            return state
         
         # 1. Refresh the independent watchlist even when the paper account is empty.
         # monitor_intraday_exits() intentionally returns early for zero paper/live

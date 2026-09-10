@@ -61,7 +61,7 @@ export function App() {
   //    don't need 3s churn. Buying happens only at 09:30 (scheduler fires it).
   // -------------------------------------------------------------------------
   const computeIntervalMs = useCallback((): number | null => {
-    if (!marketSession?.today_date || marketSession.current_time_beijing >= "15:30:00") return null;
+    if (!marketSession?.today_date || marketSession.current_time_beijing >= "18:35:00") return null;
     const holdings = [
       ...(portfolio?.holdings || []),
       ...(portfolio?.live_positions || []),
@@ -200,7 +200,7 @@ export function App() {
       // Resolve effective date: prefer today_date (calendar), fall back to
       // trade_date (last trading day) so the pool fetch is never skipped.
       const effectiveDate = currentSession?.today_date || currentSession?.trade_date || "";
-      const isBeforeClose = (currentSession?.current_time_beijing || "") < "15:30:00";
+      const isBeforeClose = (currentSession?.current_time_beijing || "") < "18:30:00";
       const [sentimentJson, candJson, poolJson, portJson, iterJson, reviewJson] =
         await Promise.all([
           fetch("/api/sentiment", { signal }).then((r) => r.json()).catch(() => ({ success: false })),
@@ -286,7 +286,7 @@ export function App() {
       if (currentSession) setMarketSession(currentSession);
 
       const beforeFinalSnapshot = Boolean(
-        currentSession?.today_date && currentSession.current_time_beijing < "15:30:00"
+        currentSession?.today_date && currentSession.current_time_beijing < "18:30:00"
       );
 
       // Before 15:30, including the noon break, use the current day's live

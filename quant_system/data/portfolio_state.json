@@ -700,7 +700,7 @@
       }
     }
   ],
-  "last_update": "2026-09-09 23:14:38",
+  "last_update": "2026-09-10 19:34:40",
   "entry_observations": {
     "002412": {
       "date": "2026-08-26",
@@ -1155,25 +1155,25 @@
       "cost_price": 5.7,
       "entry_date": "2026-09-09",
       "position_source": "LIVE",
-      "holding_days": 0,
-      "can_sell": false,
+      "holding_days": 1,
+      "can_sell": true,
       "sell_available_date": "2026-09-10",
-      "high_price": 5.81,
-      "current_price": 5.71,
-      "market_value": 11420.0,
-      "unrealized_pnl": 20.0,
-      "unrealized_pnl_pct": 0.18,
+      "high_price": 6.0,
+      "current_price": 5.25,
+      "market_value": 10500.0,
+      "unrealized_pnl": -900.0,
+      "unrealized_pnl_pct": -7.89,
       "anti_shakeout_count": 0,
       "hard_stop_price": 5.46,
-      "trailing_stop_price": 5.66,
+      "trailing_stop_price": 5.85,
       "sector": "手动实盘",
-      "status_tag": "NORMAL",
+      "status_tag": "TRAILING_WARN",
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 23:14:38",
-      "change_pct": 8.14,
-      "turnover_rate": 40.55,
-      "seal_ratio": 0.0012,
-      "pullback_pct": 1.72,
+      "quote_status_at": "2026-09-10 19:34:40",
+      "change_pct": -8.06,
+      "turnover_rate": 31.9,
+      "seal_ratio": 0.0009,
+      "pullback_pct": 12.5,
       "t1_lock_text": "T+0 当日买入锁仓 (下一交易日可卖)"
     },
     {
@@ -1184,55 +1184,24 @@
       "cost_price": 8.19,
       "entry_date": "2026-09-09",
       "position_source": "LIVE",
-      "holding_days": 0,
-      "can_sell": false,
+      "holding_days": 1,
+      "can_sell": true,
       "sell_available_date": "2026-09-10",
-      "high_price": 8.81,
-      "current_price": 8.81,
-      "market_value": 8810.0,
-      "unrealized_pnl": 620.0,
-      "unrealized_pnl_pct": 7.57,
+      "high_price": 9.69,
+      "current_price": 9.69,
+      "market_value": 9690.0,
+      "unrealized_pnl": 1500.0,
+      "unrealized_pnl_pct": 18.32,
       "anti_shakeout_count": 0,
       "hard_stop_price": 7.85,
-      "trailing_stop_price": 8.59,
+      "trailing_stop_price": 9.45,
       "sector": "手动实盘",
       "status_tag": "LOCKED_ZT",
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 23:14:38",
+      "quote_status_at": "2026-09-10 19:34:40",
       "change_pct": 9.99,
-      "turnover_rate": 26.04,
-      "seal_ratio": 0.0328,
-      "pullback_pct": 0.0,
-      "was_zt_today": true,
-      "zt_broken_time": null,
-      "t1_lock_text": "T+0 当日买入锁仓 (下一交易日可卖)"
-    },
-    {
-      "code": "600865",
-      "name": "百大集团",
-      "shares": 1000,
-      "entry_price": 14.1,
-      "cost_price": 14.1,
-      "entry_date": "2026-09-09",
-      "position_source": "LIVE",
-      "holding_days": 0,
-      "can_sell": false,
-      "sell_available_date": "2026-09-10",
-      "high_price": 15.11,
-      "current_price": 15.11,
-      "market_value": 15110.0,
-      "unrealized_pnl": 1010.0,
-      "unrealized_pnl_pct": 7.16,
-      "anti_shakeout_count": 0,
-      "hard_stop_price": 13.52,
-      "trailing_stop_price": 14.73,
-      "sector": "手动实盘",
-      "status_tag": "LOCKED_ZT",
-      "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 23:14:38",
-      "change_pct": 9.97,
-      "turnover_rate": 18.79,
-      "seal_ratio": 0.056,
+      "turnover_rate": 17.27,
+      "seal_ratio": 0.0894,
       "pullback_pct": 0.0,
       "was_zt_today": true,
       "zt_broken_time": null,
@@ -1246,14 +1215,14 @@
       "shares": 3000,
       "entry_price": 30.03,
       "cost_price": 30.03,
-      "holding_days": 212,
-      "current_price": 18.39,
+      "holding_days": 213,
+      "current_price": 18.18,
       "high_price": 18.39,
-      "market_value": 55170.0,
-      "unrealized_pnl": -34975.17,
-      "unrealized_pnl_pct": -38.86,
+      "market_value": 54540.0,
+      "unrealized_pnl": -35604.54,
+      "unrealized_pnl_pct": -39.56,
       "strategy_mode": "deep_stuck",
-      "strategy_status": "浮动盈亏=-38.86%",
+      "strategy_status": "浮动盈亏=-39.56%",
       "price_history": [
         {
           "time": 1788942577.148728,
@@ -1409,17 +1378,47 @@
           "time": 1788966580.342453,
           "price": 18.39,
           "volume": 274466.0
+        },
+        {
+          "time": 1789038862.210751,
+          "price": 18.18,
+          "volume": 180975.0
+        },
+        {
+          "time": 1789038892.242101,
+          "price": 18.18,
+          "volume": 180975.0
+        },
+        {
+          "time": 1789038999.062028,
+          "price": 18.18,
+          "volume": 180975.0
+        },
+        {
+          "time": 1789039336.38606,
+          "price": 18.18,
+          "volume": 180975.0
+        },
+        {
+          "time": 1789039490.536883,
+          "price": 18.18,
+          "volume": 180975.0
+        },
+        {
+          "time": 1789040063.050339,
+          "price": 18.18,
+          "volume": 180975.0
         }
       ],
       "last_signal_at": null,
       "last_signal_type": null,
       "signal_confirmations": {},
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 23:09:40",
+      "quote_status_at": "2026-09-10 19:34:23",
       "data_source": "tencent",
-      "last_day_seen": "2026-09-09",
-      "change_pct": -2.39,
-      "turnover_rate": 1.68,
+      "last_day_seen": "2026-09-10",
+      "change_pct": -1.14,
+      "turnover_rate": 1.11,
       "indicator_data_ready": true,
       "indicator_note": "基于实时快照滚动估算",
       "status_tag": "NORMAL",
@@ -1428,21 +1427,12 @@
         "instrument_type": "stock",
         "daily": [
           {
-            "date": "2026-03-19",
-            "open": 23.38,
-            "close": 22.86,
-            "high": 23.4,
-            "low": 22.76,
-            "amount": 453384.0
-          },
-          {
             "date": "2026-03-20",
             "open": 22.81,
             "close": 22.42,
             "high": 23.04,
             "low": 22.35,
-            "amount": 351532.0,
-            "previous_close": 22.86
+            "amount": 351532.0
           },
           {
             "date": "2026-03-23",
@@ -2505,39 +2495,48 @@
             "low": 18.36,
             "amount": 274466.0,
             "previous_close": 18.84
+          },
+          {
+            "date": "2026-09-10",
+            "open": 18.3,
+            "close": 18.18,
+            "high": 18.32,
+            "low": 18.13,
+            "amount": 180975.0,
+            "previous_close": 18.39
           }
         ],
         "minute_1": [],
         "minute_5": [],
         "history_status": "READY",
         "history_error": null,
-        "history_fetched_at": "2026-09-09 23:09:42",
+        "history_fetched_at": "2026-09-10 19:34:23",
         "minute_status": "PARTIAL"
       },
-      "ma5_daily": 18.61,
-      "ma10_daily": 18.482,
-      "ma20_daily": 18.674,
+      "ma5_daily": 18.586,
+      "ma10_daily": 18.483,
+      "ma20_daily": 18.622,
       "daily_ma_data_ready": true,
       "daily_ma_note": "日线收盘样本 120 条",
-      "ma20": 18.39,
+      "ma20": 18.327,
       "history_status": "READY",
       "history_error": null,
-      "bias": 0.0,
-      "rsi_1m": 50.0,
-      "rsi_5m": 50.0,
-      "boll_upper": 18.39,
-      "boll_lower": 18.39,
-      "atr_ratio": 0.0,
+      "bias": -0.96,
+      "rsi_1m": 0.0,
+      "rsi_5m": 0.0,
+      "boll_upper": 18.511,
+      "boll_lower": 18.201,
+      "atr_ratio": 0.0008,
       "volume_ratio": 1.0,
       "avg_amplitude_5": 0.0,
-      "intraday_support": 18.39,
+      "intraday_support": 18.18,
       "minute_status": "PARTIAL",
-      "minute_last_attempt_at": 1788966580.342453,
+      "minute_last_attempt_at": 1789040063.050339,
       "zombie_data_ready": false,
       "zombie_data_note": "历史5日换手率或真实振幅不完整",
       "breakdown_data_ready": false,
       "breakdown_data_note": "需要至少22根5分钟K线",
-      "strategy_classification_reason": "浮动盈亏=-38.86%",
+      "strategy_classification_reason": "浮动盈亏=-39.56%",
       "platform_industry": null,
       "platform_beta": null,
       "daily_atr_ratio": null
@@ -2548,14 +2547,14 @@
       "shares": 3000,
       "entry_price": 56.2,
       "cost_price": 56.2,
-      "holding_days": 91,
-      "current_price": 51.38,
+      "holding_days": 92,
+      "current_price": 50.9,
       "high_price": 51.38,
-      "market_value": 154140.0,
-      "unrealized_pnl": -14614.14,
-      "unrealized_pnl_pct": -8.68,
+      "market_value": 152700.0,
+      "unrealized_pnl": -16052.7,
+      "unrealized_pnl_pct": -9.53,
       "strategy_mode": "deep_stuck",
-      "strategy_status": "持仓天数=91天",
+      "strategy_status": "持仓天数=92天",
       "price_history": [
         {
           "time": 1788942577.148728,
@@ -2711,17 +2710,47 @@
           "time": 1788966580.342453,
           "price": 51.38,
           "volume": 34838.0
+        },
+        {
+          "time": 1789038862.210751,
+          "price": 50.9,
+          "volume": 30726.0
+        },
+        {
+          "time": 1789038892.242101,
+          "price": 50.9,
+          "volume": 30726.0
+        },
+        {
+          "time": 1789038999.062028,
+          "price": 50.9,
+          "volume": 30726.0
+        },
+        {
+          "time": 1789039336.38606,
+          "price": 50.9,
+          "volume": 30726.0
+        },
+        {
+          "time": 1789039490.536883,
+          "price": 50.9,
+          "volume": 30726.0
+        },
+        {
+          "time": 1789040063.050339,
+          "price": 50.9,
+          "volume": 30726.0
         }
       ],
       "last_signal_at": null,
       "last_signal_type": null,
       "signal_confirmations": {},
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 23:09:40",
+      "quote_status_at": "2026-09-10 19:34:23",
       "data_source": "tencent",
-      "last_day_seen": "2026-09-09",
-      "change_pct": -0.17,
-      "turnover_rate": 0.49,
+      "last_day_seen": "2026-09-10",
+      "change_pct": -0.93,
+      "turnover_rate": 0.43,
       "indicator_data_ready": true,
       "indicator_note": "基于实时快照滚动估算",
       "status_tag": "NORMAL",
@@ -2730,21 +2759,12 @@
         "instrument_type": "stock",
         "daily": [
           {
-            "date": "2026-03-19",
-            "open": 62.83,
-            "close": 62.88,
-            "high": 63.4,
-            "low": 62.78,
-            "amount": 40143.0
-          },
-          {
             "date": "2026-03-20",
             "open": 62.87,
             "close": 62.56,
             "high": 63.31,
             "low": 62.52,
-            "amount": 48706.0,
-            "previous_close": 62.88
+            "amount": 48706.0
           },
           {
             "date": "2026-03-23",
@@ -3807,39 +3827,48 @@
             "low": 51.03,
             "amount": 34838.0,
             "previous_close": 51.47
+          },
+          {
+            "date": "2026-09-10",
+            "open": 51.17,
+            "close": 50.9,
+            "high": 51.32,
+            "low": 50.9,
+            "amount": 30726.0,
+            "previous_close": 51.38
           }
         ],
         "minute_1": [],
         "minute_5": [],
         "history_status": "READY",
         "history_error": null,
-        "history_fetched_at": "2026-09-09 23:09:59",
+        "history_fetched_at": "2026-09-10 19:34:25",
         "minute_status": "PARTIAL"
       },
-      "ma5_daily": 51.31,
-      "ma10_daily": 51.085,
-      "ma20_daily": 51.367,
+      "ma5_daily": 51.342,
+      "ma10_daily": 51.076,
+      "ma20_daily": 51.259,
       "daily_ma_data_ready": true,
       "daily_ma_note": "日线收盘样本 120 条",
-      "ma20": 51.38,
+      "ma20": 51.236,
       "history_status": "READY",
       "history_error": null,
-      "bias": 0.0,
-      "rsi_1m": 50.0,
-      "rsi_5m": 50.0,
-      "boll_upper": 51.38,
-      "boll_lower": 51.38,
-      "atr_ratio": 0.0,
+      "bias": -0.78,
+      "rsi_1m": 0.0,
+      "rsi_5m": 0.0,
+      "boll_upper": 51.656,
+      "boll_lower": 50.948,
+      "atr_ratio": 0.0007,
       "volume_ratio": 1.0,
       "avg_amplitude_5": 0.0,
-      "intraday_support": 51.38,
+      "intraday_support": 50.9,
       "minute_status": "PARTIAL",
-      "minute_last_attempt_at": 1788966580.342453,
+      "minute_last_attempt_at": 1789040063.050339,
       "zombie_data_ready": false,
       "zombie_data_note": "历史5日换手率或真实振幅不完整",
       "breakdown_data_ready": false,
       "breakdown_data_note": "需要至少22根5分钟K线",
-      "strategy_classification_reason": "持仓天数=91天",
+      "strategy_classification_reason": "持仓天数=92天",
       "platform_industry": null,
       "platform_beta": null,
       "daily_atr_ratio": null
@@ -3850,14 +3879,14 @@
       "shares": 100,
       "entry_price": 451.5,
       "cost_price": 451.5,
-      "holding_days": 23,
-      "current_price": 383.3,
-      "high_price": 383.3,
-      "market_value": 38330.0,
-      "unrealized_pnl": -6858.33,
-      "unrealized_pnl_pct": -15.21,
+      "holding_days": 24,
+      "current_price": 392.31,
+      "high_price": 392.31,
+      "market_value": 39231.0,
+      "unrealized_pnl": -5958.23,
+      "unrealized_pnl_pct": -13.21,
       "strategy_mode": "deep_stuck",
-      "strategy_status": "浮动盈亏=-15.21%",
+      "strategy_status": "浮动盈亏=-13.21%",
       "price_history": [
         {
           "time": 1788942577.148728,
@@ -4013,40 +4042,63 @@
           "time": 1788966580.342453,
           "price": 383.3,
           "volume": 75650.0
+        },
+        {
+          "time": 1789038862.210751,
+          "price": 392.31,
+          "volume": 83110.0
+        },
+        {
+          "time": 1789038892.242101,
+          "price": 392.31,
+          "volume": 83110.0
+        },
+        {
+          "time": 1789038999.062028,
+          "price": 392.31,
+          "volume": 83110.0
+        },
+        {
+          "time": 1789039336.38606,
+          "price": 392.31,
+          "volume": 83110.0
+        },
+        {
+          "time": 1789039490.536883,
+          "price": 392.31,
+          "volume": 83110.0
+        },
+        {
+          "time": 1789040063.050339,
+          "price": 392.31,
+          "volume": 83110.0
         }
       ],
-      "last_signal_at": null,
-      "last_signal_type": null,
-      "signal_confirmations": {},
+      "last_signal_at": 1789040063.050339,
+      "last_signal_type": "ANTI_T_SELL",
+      "signal_confirmations": {
+        "ANTI_T_SELL": 6
+      },
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 23:09:40",
+      "quote_status_at": "2026-09-10 19:34:23",
       "data_source": "tencent",
-      "last_day_seen": "2026-09-09",
-      "change_pct": 0.21,
-      "turnover_rate": 1.14,
+      "last_day_seen": "2026-09-10",
+      "change_pct": 2.35,
+      "turnover_rate": 1.25,
       "indicator_data_ready": true,
       "indicator_note": "基于实时快照滚动估算",
-      "status_tag": "NORMAL",
+      "status_tag": "SELL_SIGNAL",
       "historical_data": {
         "code": "002916",
         "instrument_type": "stock",
         "daily": [
-          {
-            "date": "2026-03-19",
-            "open": 255.0,
-            "close": 249.99,
-            "high": 258.1,
-            "low": 248.0,
-            "amount": 113599.0
-          },
           {
             "date": "2026-03-20",
             "open": 251.82,
             "close": 249.68,
             "high": 256.77,
             "low": 248.01,
-            "amount": 78897.0,
-            "previous_close": 249.99
+            "amount": 78897.0
           },
           {
             "date": "2026-03-23",
@@ -5109,42 +5161,66 @@
             "low": 380.0,
             "amount": 75650.0,
             "previous_close": 382.5
+          },
+          {
+            "date": "2026-09-10",
+            "open": 380.14,
+            "close": 392.31,
+            "high": 397.87,
+            "low": 377.0,
+            "amount": 83110.0,
+            "previous_close": 383.3
           }
         ],
         "minute_1": [],
         "minute_5": [],
         "history_status": "READY",
         "history_error": null,
-        "history_fetched_at": "2026-09-09 23:10:17",
+        "history_fetched_at": "2026-09-10 19:34:26",
         "minute_status": "PARTIAL"
       },
-      "ma5_daily": 360.824,
-      "ma10_daily": 360.343,
-      "ma20_daily": 360.7,
+      "ma5_daily": 370.978,
+      "ma10_daily": 363.064,
+      "ma20_daily": 361.416,
       "daily_ma_data_ready": true,
       "daily_ma_note": "日线收盘样本 120 条",
-      "ma20": 383.3,
+      "ma20": 386.003,
       "history_status": "READY",
       "history_error": null,
-      "bias": 0.0,
+      "bias": 1.96,
       "rsi_1m": 50.0,
       "rsi_5m": 50.0,
-      "boll_upper": 383.3,
-      "boll_lower": 383.3,
-      "atr_ratio": 0.0,
+      "boll_upper": 391.403,
+      "boll_lower": 378.119,
+      "atr_ratio": 0.0017,
       "volume_ratio": 1.0,
       "avg_amplitude_5": 0.0,
       "intraday_support": 383.3,
       "minute_status": "PARTIAL",
-      "minute_last_attempt_at": 1788966580.342453,
+      "minute_last_attempt_at": 1789040063.050339,
       "zombie_data_ready": false,
       "zombie_data_note": "历史5日换手率或真实振幅不完整",
       "breakdown_data_ready": false,
       "breakdown_data_note": "需要至少22根5分钟K线",
-      "strategy_classification_reason": "浮动盈亏=-15.21%",
+      "strategy_classification_reason": "浮动盈亏=-13.21%",
       "platform_industry": null,
       "platform_beta": null,
-      "daily_atr_ratio": null
+      "daily_atr_ratio": null,
+      "sell_signal": {
+        "alert_id": "WATCH_002916_ANTI_T_SELL",
+        "code": "002916",
+        "name": "深南电路",
+        "time": "19:34",
+        "date": "2026-09-10",
+        "rule_type": "ANTI_T_SELL",
+        "reason": "深套反T高抛，建议卖出底仓20%-30%",
+        "sell_price": 392.31,
+        "entry_price": 451.5,
+        "shares": 100,
+        "strategy_mode": "deep_stuck"
+      },
+      "t_loop_action": "ANTI_T_SELL",
+      "t_loop_price": 392.31
     },
     {
       "code": "300274",
@@ -5152,14 +5228,14 @@
       "shares": 2700,
       "entry_price": 88.27,
       "cost_price": 88.27,
-      "holding_days": 10,
-      "current_price": 87.0,
+      "holding_days": 11,
+      "current_price": 85.93,
       "high_price": 87.0,
-      "market_value": 234900.0,
-      "unrealized_pnl": -3663.9,
-      "unrealized_pnl_pct": -1.54,
+      "market_value": 232011.0,
+      "unrealized_pnl": -6550.01,
+      "unrealized_pnl_pct": -2.75,
       "strategy_mode": "high_volatility",
-      "strategy_status": "ATR14占比=5.21%",
+      "strategy_status": "ATR14占比=5.07%",
       "price_history": [
         {
           "time": 1788942577.148728,
@@ -5315,17 +5391,47 @@
           "time": 1788966580.342453,
           "price": 87.0,
           "volume": 346103.0
+        },
+        {
+          "time": 1789038862.210751,
+          "price": 85.93,
+          "volume": 313480.0
+        },
+        {
+          "time": 1789038892.242101,
+          "price": 85.93,
+          "volume": 313480.0
+        },
+        {
+          "time": 1789038999.062028,
+          "price": 85.93,
+          "volume": 313480.0
+        },
+        {
+          "time": 1789039336.38606,
+          "price": 85.93,
+          "volume": 313480.0
+        },
+        {
+          "time": 1789039490.536883,
+          "price": 85.93,
+          "volume": 313480.0
+        },
+        {
+          "time": 1789040063.050339,
+          "price": 85.93,
+          "volume": 313480.0
         }
       ],
       "last_signal_at": null,
       "last_signal_type": null,
       "signal_confirmations": {},
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 23:09:40",
+      "quote_status_at": "2026-09-10 19:34:23",
       "data_source": "tencent",
-      "last_day_seen": "2026-09-09",
-      "change_pct": -0.97,
-      "turnover_rate": 2.18,
+      "last_day_seen": "2026-09-10",
+      "change_pct": -1.23,
+      "turnover_rate": 1.97,
       "indicator_data_ready": true,
       "indicator_note": "基于实时快照滚动估算",
       "status_tag": "NORMAL",
@@ -5334,21 +5440,12 @@
         "instrument_type": "stock",
         "daily": [
           {
-            "date": "2026-03-19",
-            "open": 163.64,
-            "close": 165.1,
-            "high": 170.38,
-            "low": 163.64,
-            "amount": 583427.0
-          },
-          {
             "date": "2026-03-20",
             "open": 166.53,
             "close": 173.6,
             "high": 180.15,
             "low": 163.65,
-            "amount": 1183556.0,
-            "previous_close": 165.1
+            "amount": 1183556.0
           },
           {
             "date": "2026-03-23",
@@ -6411,42 +6508,51 @@
             "low": 86.23,
             "amount": 346103.0,
             "previous_close": 87.85
+          },
+          {
+            "date": "2026-09-10",
+            "open": 86.23,
+            "close": 85.93,
+            "high": 87.7,
+            "low": 85.36,
+            "amount": 313480.0,
+            "previous_close": 87.0
           }
         ],
         "minute_1": [],
         "minute_5": [],
         "history_status": "READY",
         "history_error": null,
-        "history_fetched_at": "2026-09-09 23:10:38",
+        "history_fetched_at": "2026-09-10 19:34:28",
         "minute_status": "PARTIAL"
       },
-      "ma5_daily": 87.822,
-      "ma10_daily": 90.287,
-      "ma20_daily": 102.186,
+      "ma5_daily": 87.592,
+      "ma10_daily": 88.996,
+      "ma20_daily": 100.576,
       "daily_ma_data_ready": true,
       "daily_ma_note": "日线收盘样本 120 条",
-      "ma20": 87.0,
+      "ma20": 86.679,
       "history_status": "READY",
       "history_error": null,
-      "bias": 0.0,
-      "rsi_1m": 50.0,
-      "rsi_5m": 50.0,
-      "boll_upper": 87.0,
-      "boll_lower": 87.0,
-      "atr_ratio": 0.0,
+      "bias": -1.03,
+      "rsi_1m": 0.0,
+      "rsi_5m": 0.0,
+      "boll_upper": 87.615,
+      "boll_lower": 86.038,
+      "atr_ratio": 0.0009,
       "volume_ratio": 1.0,
       "avg_amplitude_5": 0.0,
-      "intraday_support": 87.0,
+      "intraday_support": 85.93,
       "minute_status": "PARTIAL",
-      "minute_last_attempt_at": 1788966580.342453,
+      "minute_last_attempt_at": 1789040063.050339,
       "zombie_data_ready": false,
       "zombie_data_note": "历史5日换手率或真实振幅不完整",
       "breakdown_data_ready": false,
       "breakdown_data_note": "需要至少22根5分钟K线",
-      "strategy_classification_reason": "ATR14占比=5.21%",
+      "strategy_classification_reason": "ATR14占比=5.07%",
       "platform_industry": null,
       "platform_beta": null,
-      "daily_atr_ratio": 0.0521
+      "daily_atr_ratio": 0.0507
     },
     {
       "code": "128136",
@@ -6454,14 +6560,14 @@
       "shares": 200,
       "entry_price": 128.65,
       "cost_price": 128.65,
-      "holding_days": 69,
-      "current_price": 111.745,
+      "holding_days": 70,
+      "current_price": 111.643,
       "high_price": 111.745,
-      "market_value": 22349.0,
-      "unrealized_pnl": -3403.35,
-      "unrealized_pnl_pct": -13.24,
+      "market_value": 22328.6,
+      "unrealized_pnl": -3423.73,
+      "unrealized_pnl_pct": -13.32,
       "strategy_mode": "deep_stuck",
-      "strategy_status": "浮动盈亏=-13.24%",
+      "strategy_status": "浮动盈亏=-13.32%",
       "price_history": [
         {
           "time": 1788942577.148728,
@@ -6617,17 +6723,47 @@
           "time": 1788966580.342453,
           "price": 111.745,
           "volume": 226394.0
+        },
+        {
+          "time": 1789038862.210751,
+          "price": 111.643,
+          "volume": 184545.0
+        },
+        {
+          "time": 1789038892.242101,
+          "price": 111.643,
+          "volume": 184545.0
+        },
+        {
+          "time": 1789038999.062028,
+          "price": 111.643,
+          "volume": 184545.0
+        },
+        {
+          "time": 1789039336.38606,
+          "price": 111.643,
+          "volume": 184545.0
+        },
+        {
+          "time": 1789039490.536883,
+          "price": 111.643,
+          "volume": 184545.0
+        },
+        {
+          "time": 1789040063.050339,
+          "price": 111.643,
+          "volume": 184545.0
         }
       ],
       "last_signal_at": null,
       "last_signal_type": null,
       "signal_confirmations": {},
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 23:09:40",
+      "quote_status_at": "2026-09-10 19:34:23",
       "data_source": "tencent",
-      "last_day_seen": "2026-09-09",
-      "change_pct": -0.71,
-      "turnover_rate": 7.59,
+      "last_day_seen": "2026-09-10",
+      "change_pct": -0.09,
+      "turnover_rate": 6.19,
       "indicator_data_ready": true,
       "indicator_note": "基于实时快照滚动估算",
       "status_tag": "NORMAL",
@@ -6636,21 +6772,12 @@
         "instrument_type": "convertible_bond",
         "daily": [
           {
-            "date": "2026-03-19",
-            "open": 124.99,
-            "high": 124.99,
-            "low": 121.57,
-            "close": 122.228,
-            "volume": 879290
-          },
-          {
             "date": "2026-03-20",
             "open": 122.529,
             "high": 124.357,
             "low": 121.407,
             "close": 121.786,
-            "volume": 912500,
-            "previous_close": 122.228
+            "volume": 912500
           },
           {
             "date": "2026-03-23",
@@ -7713,42 +7840,54 @@
             "close": 111.745,
             "volume": 2263940,
             "previous_close": 112.541
+          },
+          {
+            "date": "2026-09-10",
+            "open": 111.45,
+            "high": 112.102,
+            "low": 109.809,
+            "close": 111.643,
+            "volume": 1845447,
+            "previous_close": 111.745
           }
         ],
         "minute_1": [],
         "minute_5": [],
         "history_status": "READY",
         "history_error": null,
-        "history_fetched_at": "2026-09-09 23:10:58",
+        "history_fetched_at": "2026-09-10 19:34:29",
         "minute_status": "PARTIAL"
       },
-      "ma5_daily": 113.364,
-      "ma10_daily": 115.44,
-      "ma20_daily": 115.903,
+      "ma5_daily": 112.692,
+      "ma10_daily": 114.708,
+      "ma20_daily": 115.527,
       "daily_ma_data_ready": true,
       "daily_ma_note": "日线收盘样本 120 条",
-      "ma20": 111.745,
+      "ma20": 111.714,
       "history_status": "READY",
       "history_error": null,
-      "bias": 0.0,
-      "rsi_1m": 50.0,
-      "rsi_5m": 50.0,
-      "boll_upper": 111.745,
-      "boll_lower": 111.745,
-      "atr_ratio": 0.0,
+      "bias": -0.08,
+      "rsi_1m": 0.0,
+      "rsi_5m": 0.0,
+      "boll_upper": 111.804,
+      "boll_lower": 111.653,
+      "atr_ratio": 0.0001,
       "volume_ratio": 1.0,
       "avg_amplitude_5": 0.0,
-      "intraday_support": 111.745,
+      "intraday_support": 111.643,
       "minute_status": "PARTIAL",
-      "minute_last_attempt_at": 1788966580.342453,
+      "minute_last_attempt_at": 1789040063.050339,
       "zombie_data_ready": false,
       "zombie_data_note": "历史5日换手率或真实振幅不完整",
       "breakdown_data_ready": false,
       "breakdown_data_note": "需要至少22根5分钟K线",
-      "strategy_classification_reason": "浮动盈亏=-13.24%",
+      "strategy_classification_reason": "浮动盈亏=-13.32%",
       "platform_industry": null,
       "platform_beta": null,
-      "daily_atr_ratio": null
+      "daily_atr_ratio": null,
+      "five_minute_closes_below_ma20": true,
+      "micro_volume_ratio": 0.96,
+      "breakdown_confirmed": false
     },
     {
       "code": "603986",
@@ -7756,14 +7895,14 @@
       "shares": 300,
       "entry_price": 389.0,
       "cost_price": 389.0,
-      "holding_days": 13,
-      "current_price": 381.87,
+      "holding_days": 14,
+      "current_price": 380.64,
       "high_price": 381.87,
-      "market_value": 114561.0,
-      "unrealized_pnl": -2253.56,
-      "unrealized_pnl_pct": -1.93,
+      "market_value": 114192.0,
+      "unrealized_pnl": -2622.19,
+      "unrealized_pnl_pct": -2.25,
       "strategy_mode": "high_volatility",
-      "strategy_status": "ATR14占比=4.52%",
+      "strategy_status": "ATR14占比=4.49%",
       "price_history": [
         {
           "time": 1788942577.148728,
@@ -7919,17 +8058,47 @@
           "time": 1788966580.342453,
           "price": 381.87,
           "volume": 229047.0
+        },
+        {
+          "time": 1789038862.210751,
+          "price": 380.64,
+          "volume": 215208.0
+        },
+        {
+          "time": 1789038892.242101,
+          "price": 380.64,
+          "volume": 215208.0
+        },
+        {
+          "time": 1789038999.062028,
+          "price": 380.64,
+          "volume": 215208.0
+        },
+        {
+          "time": 1789039336.38606,
+          "price": 380.64,
+          "volume": 215208.0
+        },
+        {
+          "time": 1789039490.536883,
+          "price": 380.64,
+          "volume": 215208.0
+        },
+        {
+          "time": 1789040063.050339,
+          "price": 380.64,
+          "volume": 215208.0
         }
       ],
       "last_signal_at": 1788945981.875337,
       "last_signal_type": "TIME_STOP",
       "signal_confirmations": {},
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 23:09:40",
+      "quote_status_at": "2026-09-10 19:34:23",
       "data_source": "tencent",
-      "last_day_seen": "2026-09-09",
-      "change_pct": -1.06,
-      "turnover_rate": 3.41,
+      "last_day_seen": "2026-09-10",
+      "change_pct": -0.32,
+      "turnover_rate": 3.21,
       "indicator_data_ready": true,
       "indicator_note": "基于实时快照滚动估算",
       "status_tag": "NORMAL",
@@ -7938,21 +8107,12 @@
         "instrument_type": "stock",
         "daily": [
           {
-            "date": "2026-03-19",
-            "open": 300.0,
-            "close": 303.68,
-            "high": 309.71,
-            "low": 297.0,
-            "amount": 312146.0
-          },
-          {
             "date": "2026-03-20",
             "open": 305.55,
             "close": 290.2,
             "high": 306.7,
             "low": 290.0,
-            "amount": 312536.0,
-            "previous_close": 303.68
+            "amount": 312536.0
           },
           {
             "date": "2026-03-23",
@@ -9015,32 +9175,41 @@
             "low": 380.0,
             "amount": 229047.0,
             "previous_close": 385.96
+          },
+          {
+            "date": "2026-09-10",
+            "open": 380.83,
+            "close": 380.64,
+            "high": 387.5,
+            "low": 379.01,
+            "amount": 215208.0,
+            "previous_close": 381.87
           }
         ],
         "minute_1": [],
         "minute_5": [],
         "history_status": "READY",
         "history_error": null,
-        "history_fetched_at": "2026-09-09 23:11:08",
+        "history_fetched_at": "2026-09-10 19:34:30",
         "minute_status": "PARTIAL"
       },
-      "ma5_daily": 381.67,
-      "ma10_daily": 390.423,
-      "ma20_daily": 399.644,
+      "ma5_daily": 381.158,
+      "ma10_daily": 387.367,
+      "ma20_daily": 398.452,
       "daily_ma_data_ready": true,
       "daily_ma_note": "日线收盘样本 120 条",
-      "ma20": 381.87,
+      "ma20": 381.501,
       "history_status": "READY",
       "history_error": null,
-      "bias": 0.0,
-      "rsi_1m": 50.0,
-      "rsi_5m": 50.0,
-      "boll_upper": 381.87,
-      "boll_lower": 381.87,
-      "atr_ratio": 0.0,
+      "bias": -0.27,
+      "rsi_1m": 0.0,
+      "rsi_5m": 0.0,
+      "boll_upper": 382.577,
+      "boll_lower": 380.764,
+      "atr_ratio": 0.0002,
       "volume_ratio": 1.0,
       "avg_amplitude_5": 0.0,
-      "intraday_support": 381.87,
+      "intraday_support": 380.64,
       "sell_signal": {
         "alert_id": "WATCH_603986_TIME_STOP",
         "code": "603986",
@@ -9055,15 +9224,15 @@
         "strategy_mode": "normal"
       },
       "minute_status": "PARTIAL",
-      "minute_last_attempt_at": 1788966580.342453,
+      "minute_last_attempt_at": 1789040063.050339,
       "zombie_data_ready": false,
       "zombie_data_note": "历史5日换手率或真实振幅不完整",
       "breakdown_data_ready": false,
       "breakdown_data_note": "需要至少22根5分钟K线",
-      "strategy_classification_reason": "ATR14占比=4.52%",
+      "strategy_classification_reason": "ATR14占比=4.49%",
       "platform_industry": null,
       "platform_beta": null,
-      "daily_atr_ratio": 0.0452
+      "daily_atr_ratio": 0.0449
     },
     {
       "code": "603721",
@@ -9071,14 +9240,14 @@
       "shares": 500,
       "entry_price": 22.3,
       "cost_price": 22.3,
-      "holding_days": 8,
-      "current_price": 19.17,
+      "holding_days": 9,
+      "current_price": 18.18,
       "high_price": 19.17,
-      "market_value": 9585.0,
-      "unrealized_pnl": -1574.58,
-      "unrealized_pnl_pct": -14.14,
+      "market_value": 9090.0,
+      "unrealized_pnl": -2069.09,
+      "unrealized_pnl_pct": -18.58,
       "strategy_mode": "deep_stuck",
-      "strategy_status": "浮动盈亏=-14.14%",
+      "strategy_status": "浮动盈亏=-18.58%",
       "price_history": [
         {
           "time": 1788942577.148728,
@@ -9234,40 +9403,63 @@
           "time": 1788966580.342453,
           "price": 19.17,
           "volume": 145728.0
+        },
+        {
+          "time": 1789038862.210751,
+          "price": 18.18,
+          "volume": 98810.0
+        },
+        {
+          "time": 1789038892.242101,
+          "price": 18.18,
+          "volume": 98810.0
+        },
+        {
+          "time": 1789038999.062028,
+          "price": 18.18,
+          "volume": 98810.0
+        },
+        {
+          "time": 1789039336.38606,
+          "price": 18.18,
+          "volume": 98810.0
+        },
+        {
+          "time": 1789039490.536883,
+          "price": 18.18,
+          "volume": 98810.0
+        },
+        {
+          "time": 1789040063.050339,
+          "price": 18.18,
+          "volume": 98810.0
         }
       ],
-      "last_signal_at": null,
-      "last_signal_type": null,
-      "signal_confirmations": {},
+      "last_signal_at": 1789040063.050339,
+      "last_signal_type": "TRAILING_EXIT",
+      "signal_confirmations": {
+        "TRAILING_EXIT": 6
+      },
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 23:09:40",
+      "quote_status_at": "2026-09-10 19:34:23",
       "data_source": "tencent",
-      "last_day_seen": "2026-09-09",
-      "change_pct": -5.8,
-      "turnover_rate": 11.21,
+      "last_day_seen": "2026-09-10",
+      "change_pct": -5.16,
+      "turnover_rate": 7.6,
       "indicator_data_ready": true,
       "indicator_note": "基于实时快照滚动估算",
-      "status_tag": "NORMAL",
+      "status_tag": "SELL_SIGNAL",
       "historical_data": {
         "code": "603721",
         "instrument_type": "stock",
         "daily": [
-          {
-            "date": "2026-03-11",
-            "open": 20.99,
-            "close": 20.98,
-            "high": 21.02,
-            "low": 20.8,
-            "amount": 5635.0
-          },
           {
             "date": "2026-03-12",
             "open": 20.94,
             "close": 20.78,
             "high": 20.95,
             "low": 20.71,
-            "amount": 5229.0,
-            "previous_close": 20.98
+            "amount": 5229.0
           },
           {
             "date": "2026-03-13",
@@ -10330,42 +10522,64 @@
             "low": 18.99,
             "amount": 145728.0,
             "previous_close": 20.35
+          },
+          {
+            "date": "2026-09-10",
+            "open": 19.15,
+            "close": 18.18,
+            "high": 19.15,
+            "low": 18.14,
+            "amount": 98810.0,
+            "previous_close": 19.17
           }
         ],
         "minute_1": [],
         "minute_5": [],
         "history_status": "READY",
         "history_error": null,
-        "history_fetched_at": "2026-09-09 23:11:34",
+        "history_fetched_at": "2026-09-10 19:34:31",
         "minute_status": "PARTIAL"
       },
-      "ma5_daily": 20.388,
-      "ma10_daily": 19.837,
-      "ma20_daily": 18.973,
+      "ma5_daily": 19.888,
+      "ma10_daily": 19.908,
+      "ma20_daily": 18.93,
       "daily_ma_data_ready": true,
       "daily_ma_note": "日线收盘样本 120 条",
-      "ma20": 19.17,
+      "ma20": 18.873,
       "history_status": "READY",
       "history_error": null,
-      "bias": 0.0,
-      "rsi_1m": 50.0,
-      "rsi_5m": 50.0,
-      "boll_upper": 19.17,
-      "boll_lower": 19.17,
-      "atr_ratio": 0.0,
+      "bias": -4.36,
+      "rsi_1m": 0.0,
+      "rsi_5m": 0.0,
+      "boll_upper": 19.739,
+      "boll_lower": 18.28,
+      "atr_ratio": 0.0037,
       "volume_ratio": 1.0,
       "avg_amplitude_5": 0.0,
-      "intraday_support": 19.17,
+      "intraday_support": 18.18,
       "minute_status": "PARTIAL",
-      "minute_last_attempt_at": 1788966580.342453,
+      "minute_last_attempt_at": 1789040063.050339,
       "zombie_data_ready": false,
       "zombie_data_note": "历史5日换手率或真实振幅不完整",
       "breakdown_data_ready": false,
       "breakdown_data_note": "需要至少22根5分钟K线",
-      "strategy_classification_reason": "浮动盈亏=-14.14%",
+      "strategy_classification_reason": "浮动盈亏=-18.58%",
       "platform_industry": null,
       "platform_beta": null,
-      "daily_atr_ratio": null
+      "daily_atr_ratio": null,
+      "sell_signal": {
+        "alert_id": "WATCH_603721_TRAILING_EXIT",
+        "code": "603721",
+        "name": "中广天择",
+        "time": "19:34",
+        "date": "2026-09-10",
+        "rule_type": "TRAILING_EXIT",
+        "reason": "移动止盈清仓",
+        "sell_price": 18.18,
+        "entry_price": 22.3,
+        "shares": 500,
+        "strategy_mode": "deep_stuck"
+      }
     },
     {
       "code": "123258",
@@ -10373,14 +10587,14 @@
       "shares": 50,
       "entry_price": 265.0,
       "cost_price": 265.0,
-      "holding_days": 8,
-      "current_price": 236.944,
+      "holding_days": 9,
+      "current_price": 234.942,
       "high_price": 236.944,
-      "market_value": 11847.2,
-      "unrealized_pnl": -1414.65,
-      "unrealized_pnl_pct": -10.69,
+      "market_value": 11747.1,
+      "unrealized_pnl": -1514.65,
+      "unrealized_pnl_pct": -11.44,
       "strategy_mode": "deep_stuck",
-      "strategy_status": "浮动盈亏=-10.69%",
+      "strategy_status": "浮动盈亏=-11.44%",
       "price_history": [
         {
           "time": 1788942577.148728,
@@ -10536,17 +10750,47 @@
           "time": 1788966580.342453,
           "price": 236.944,
           "volume": 350219.0
+        },
+        {
+          "time": 1789038862.210751,
+          "price": 234.942,
+          "volume": 467089.0
+        },
+        {
+          "time": 1789038892.242101,
+          "price": 234.942,
+          "volume": 467089.0
+        },
+        {
+          "time": 1789038999.062028,
+          "price": 234.942,
+          "volume": 467089.0
+        },
+        {
+          "time": 1789039336.38606,
+          "price": 234.942,
+          "volume": 467089.0
+        },
+        {
+          "time": 1789039490.536883,
+          "price": 234.942,
+          "volume": 467089.0
+        },
+        {
+          "time": 1789040063.050339,
+          "price": 234.942,
+          "volume": 467089.0
         }
       ],
       "last_signal_at": null,
       "last_signal_type": null,
       "signal_confirmations": {},
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 23:09:40",
+      "quote_status_at": "2026-09-10 19:34:23",
       "data_source": "tencent",
-      "last_day_seen": "2026-09-09",
-      "change_pct": -3.19,
-      "turnover_rate": 77.87,
+      "last_day_seen": "2026-09-10",
+      "change_pct": -0.84,
+      "turnover_rate": 103.88,
       "indicator_data_ready": true,
       "indicator_note": "基于实时快照滚动估算",
       "status_tag": "NORMAL",
@@ -10555,21 +10799,12 @@
         "instrument_type": "convertible_bond",
         "daily": [
           {
-            "date": "2026-03-19",
-            "open": 155.0,
-            "high": 155.697,
-            "low": 151.895,
-            "close": 153.133,
-            "volume": 284257
-          },
-          {
             "date": "2026-03-20",
             "open": 153.133,
             "high": 155.1,
             "low": 151.572,
             "close": 152.11,
-            "volume": 380990,
-            "previous_close": 153.133
+            "volume": 380990
           },
           {
             "date": "2026-03-23",
@@ -11632,42 +11867,54 @@
             "close": 236.944,
             "volume": 3502185,
             "previous_close": 244.741
+          },
+          {
+            "date": "2026-09-10",
+            "open": 231.9,
+            "high": 241.64,
+            "low": 226.0,
+            "close": 234.942,
+            "volume": 4670894,
+            "previous_close": 236.944
           }
         ],
         "minute_1": [],
         "minute_5": [],
         "history_status": "READY",
         "history_error": null,
-        "history_fetched_at": "2026-09-09 23:12:01",
+        "history_fetched_at": "2026-09-10 19:34:33",
         "minute_status": "PARTIAL"
       },
-      "ma5_daily": 244.093,
-      "ma10_daily": 289.498,
-      "ma20_daily": 312.41,
+      "ma5_daily": 239.981,
+      "ma10_daily": 277.222,
+      "ma20_daily": 308.243,
       "daily_ma_data_ready": true,
       "daily_ma_note": "日线收盘样本 120 条",
-      "ma20": 236.944,
+      "ma20": 236.343,
       "history_status": "READY",
       "history_error": null,
-      "bias": 0.0,
-      "rsi_1m": 50.0,
-      "rsi_5m": 50.0,
-      "boll_upper": 236.944,
-      "boll_lower": 236.944,
-      "atr_ratio": 0.0,
+      "bias": -0.71,
+      "rsi_1m": 0.0,
+      "rsi_5m": 0.0,
+      "boll_upper": 238.095,
+      "boll_lower": 235.143,
+      "atr_ratio": 0.0006,
       "volume_ratio": 1.0,
       "avg_amplitude_5": 0.0,
-      "intraday_support": 236.944,
+      "intraday_support": 234.942,
       "minute_status": "PARTIAL",
-      "minute_last_attempt_at": 1788966580.342453,
+      "minute_last_attempt_at": 1789040063.050339,
       "zombie_data_ready": false,
       "zombie_data_note": "历史5日换手率或真实振幅不完整",
       "breakdown_data_ready": false,
       "breakdown_data_note": "需要至少22根5分钟K线",
-      "strategy_classification_reason": "浮动盈亏=-10.69%",
+      "strategy_classification_reason": "浮动盈亏=-11.44%",
       "platform_industry": null,
       "platform_beta": null,
-      "daily_atr_ratio": null
+      "daily_atr_ratio": null,
+      "five_minute_closes_below_ma20": true,
+      "micro_volume_ratio": 0.72,
+      "breakdown_confirmed": false
     },
     {
       "code": "001366",
@@ -11675,14 +11922,14 @@
       "shares": 2000,
       "entry_price": 15.38,
       "cost_price": 15.38,
-      "holding_days": 2,
-      "current_price": 14.74,
+      "holding_days": 3,
+      "current_price": 13.82,
       "high_price": 14.74,
-      "market_value": 29480.0,
-      "unrealized_pnl": -1309.48,
-      "unrealized_pnl_pct": -4.26,
-      "strategy_mode": "high_volatility",
-      "strategy_status": "ATR14占比=7.07%",
+      "market_value": 27640.0,
+      "unrealized_pnl": -3147.64,
+      "unrealized_pnl_pct": -10.24,
+      "strategy_mode": "deep_stuck",
+      "strategy_status": "浮动盈亏=-10.24%",
       "price_history": [
         {
           "time": 1788942577.148728,
@@ -11838,40 +12085,63 @@
           "time": 1788966580.342453,
           "price": 14.74,
           "volume": 266976.0
+        },
+        {
+          "time": 1789038862.210751,
+          "price": 13.82,
+          "volume": 205228.0
+        },
+        {
+          "time": 1789038892.242101,
+          "price": 13.82,
+          "volume": 205228.0
+        },
+        {
+          "time": 1789038999.062028,
+          "price": 13.82,
+          "volume": 205228.0
+        },
+        {
+          "time": 1789039336.38606,
+          "price": 13.82,
+          "volume": 205228.0
+        },
+        {
+          "time": 1789039490.536883,
+          "price": 13.82,
+          "volume": 205228.0
+        },
+        {
+          "time": 1789040063.050339,
+          "price": 13.82,
+          "volume": 205228.0
         }
       ],
-      "last_signal_at": null,
-      "last_signal_type": null,
-      "signal_confirmations": {},
+      "last_signal_at": 1789040063.050339,
+      "last_signal_type": "TRAILING_EXIT",
+      "signal_confirmations": {
+        "TRAILING_EXIT": 6
+      },
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 23:09:40",
+      "quote_status_at": "2026-09-10 19:34:23",
       "data_source": "tencent",
-      "last_day_seen": "2026-09-09",
-      "change_pct": -10.01,
-      "turnover_rate": 16.62,
+      "last_day_seen": "2026-09-10",
+      "change_pct": -6.24,
+      "turnover_rate": 12.77,
       "indicator_data_ready": true,
       "indicator_note": "基于实时快照滚动估算",
-      "status_tag": "NORMAL",
+      "status_tag": "SELL_SIGNAL",
       "historical_data": {
         "code": "001366",
         "instrument_type": "stock",
         "daily": [
-          {
-            "date": "2026-03-19",
-            "open": 13.98,
-            "close": 14.01,
-            "high": 14.38,
-            "low": 13.93,
-            "amount": 89300.0
-          },
           {
             "date": "2026-03-20",
             "open": 14.04,
             "close": 13.36,
             "high": 14.3,
             "low": 13.28,
-            "amount": 84070.0,
-            "previous_close": 14.01
+            "amount": 84070.0
           },
           {
             "date": "2026-03-23",
@@ -12934,42 +13204,64 @@
             "low": 14.74,
             "amount": 266976.0,
             "previous_close": 16.38
+          },
+          {
+            "date": "2026-09-10",
+            "open": 14.37,
+            "close": 13.82,
+            "high": 15.11,
+            "low": 13.76,
+            "amount": 205228.0,
+            "previous_close": 14.74
           }
         ],
         "minute_1": [],
         "minute_5": [],
         "history_status": "READY",
         "history_error": null,
-        "history_fetched_at": "2026-09-09 23:12:16",
+        "history_fetched_at": "2026-09-10 19:34:33",
         "minute_status": "PARTIAL"
       },
-      "ma5_daily": 14.866,
-      "ma10_daily": 14.045,
-      "ma20_daily": 13.216,
+      "ma5_daily": 15.02,
+      "ma10_daily": 14.154,
+      "ma20_daily": 13.307,
       "daily_ma_data_ready": true,
       "daily_ma_note": "日线收盘样本 120 条",
-      "ma20": 14.74,
+      "ma20": 14.464,
       "history_status": "READY",
       "history_error": null,
-      "bias": 0.0,
-      "rsi_1m": 50.0,
-      "rsi_5m": 50.0,
-      "boll_upper": 14.74,
-      "boll_lower": 14.74,
-      "atr_ratio": 0.0,
+      "bias": -5.28,
+      "rsi_1m": 0.0,
+      "rsi_5m": 0.0,
+      "boll_upper": 15.269,
+      "boll_lower": 13.913,
+      "atr_ratio": 0.0045,
       "volume_ratio": 1.0,
       "avg_amplitude_5": 0.0,
-      "intraday_support": 14.74,
+      "intraday_support": 13.82,
       "minute_status": "PARTIAL",
-      "minute_last_attempt_at": 1788966580.342453,
+      "minute_last_attempt_at": 1789040063.050339,
       "zombie_data_ready": false,
       "zombie_data_note": "历史5日换手率或真实振幅不完整",
       "breakdown_data_ready": false,
       "breakdown_data_note": "需要至少22根5分钟K线",
-      "strategy_classification_reason": "ATR14占比=7.07%",
+      "strategy_classification_reason": "浮动盈亏=-10.24%",
       "platform_industry": null,
       "platform_beta": null,
-      "daily_atr_ratio": 0.0707
+      "daily_atr_ratio": null,
+      "sell_signal": {
+        "alert_id": "WATCH_001366_TRAILING_EXIT",
+        "code": "001366",
+        "name": "播恩集团",
+        "time": "19:34",
+        "date": "2026-09-10",
+        "rule_type": "TRAILING_EXIT",
+        "reason": "移动止盈清仓",
+        "sell_price": 13.82,
+        "entry_price": 15.38,
+        "shares": 2000,
+        "strategy_mode": "deep_stuck"
+      }
     },
     {
       "code": "600551",
@@ -12977,14 +13269,14 @@
       "shares": 1000,
       "entry_price": 8.98,
       "cost_price": 8.98,
-      "holding_days": 9,
-      "current_price": 7.74,
+      "holding_days": 10,
+      "current_price": 7.56,
       "high_price": 7.74,
-      "market_value": 7740.0,
-      "unrealized_pnl": -1247.74,
-      "unrealized_pnl_pct": -13.91,
+      "market_value": 7560.0,
+      "unrealized_pnl": -1427.56,
+      "unrealized_pnl_pct": -15.91,
       "strategy_mode": "deep_stuck",
-      "strategy_status": "浮动盈亏=-13.91%",
+      "strategy_status": "浮动盈亏=-15.91%",
       "price_history": [
         {
           "time": 1788942577.148728,
@@ -13140,17 +13432,47 @@
           "time": 1788966580.342453,
           "price": 7.74,
           "volume": 525183.0
+        },
+        {
+          "time": 1789038862.210751,
+          "price": 7.56,
+          "volume": 396865.0
+        },
+        {
+          "time": 1789038892.242101,
+          "price": 7.56,
+          "volume": 396865.0
+        },
+        {
+          "time": 1789038999.062028,
+          "price": 7.56,
+          "volume": 396865.0
+        },
+        {
+          "time": 1789039336.38606,
+          "price": 7.56,
+          "volume": 396865.0
+        },
+        {
+          "time": 1789039490.536883,
+          "price": 7.56,
+          "volume": 396865.0
+        },
+        {
+          "time": 1789040063.050339,
+          "price": 7.56,
+          "volume": 396865.0
         }
       ],
       "last_signal_at": null,
       "last_signal_type": null,
       "signal_confirmations": {},
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 23:09:40",
+      "quote_status_at": "2026-09-10 19:34:23",
       "data_source": "tencent",
-      "last_day_seen": "2026-09-09",
-      "change_pct": -6.18,
-      "turnover_rate": 7.75,
+      "last_day_seen": "2026-09-10",
+      "change_pct": -2.33,
+      "turnover_rate": 5.85,
       "indicator_data_ready": true,
       "indicator_note": "基于实时快照滚动估算",
       "status_tag": "NORMAL",
@@ -13159,21 +13481,12 @@
         "instrument_type": "stock",
         "daily": [
           {
-            "date": "2026-03-19",
-            "open": 8.35,
-            "close": 8.41,
-            "high": 8.41,
-            "low": 8.32,
-            "amount": 35523.0
-          },
-          {
             "date": "2026-03-20",
             "open": 8.39,
             "close": 8.14,
             "high": 8.42,
             "low": 8.14,
-            "amount": 63964.0,
-            "previous_close": 8.41
+            "amount": 63964.0
           },
           {
             "date": "2026-03-23",
@@ -14236,1359 +14549,51 @@
             "low": 7.53,
             "amount": 525183.0,
             "previous_close": 8.25
+          },
+          {
+            "date": "2026-09-10",
+            "open": 7.7,
+            "close": 7.56,
+            "high": 7.97,
+            "low": 7.54,
+            "amount": 396865.0,
+            "previous_close": 7.74
           }
         ],
         "minute_1": [],
         "minute_5": [],
         "history_status": "READY",
         "history_error": null,
-        "history_fetched_at": "2026-09-09 23:12:45",
+        "history_fetched_at": "2026-09-10 19:34:35",
         "minute_status": "PARTIAL"
       },
-      "ma5_daily": 8.03,
-      "ma10_daily": 8.042,
-      "ma20_daily": 7.478,
+      "ma5_daily": 7.95,
+      "ma10_daily": 8.116,
+      "ma20_daily": 7.509,
       "daily_ma_data_ready": true,
       "daily_ma_note": "日线收盘样本 120 条",
-      "ma20": 7.74,
+      "ma20": 7.686,
       "history_status": "READY",
       "history_error": null,
-      "bias": 0.0,
-      "rsi_1m": 50.0,
-      "rsi_5m": 50.0,
-      "boll_upper": 7.74,
-      "boll_lower": 7.74,
-      "atr_ratio": 0.0,
+      "bias": -1.96,
+      "rsi_1m": 0.0,
+      "rsi_5m": 0.0,
+      "boll_upper": 7.844,
+      "boll_lower": 7.578,
+      "atr_ratio": 0.0017,
       "volume_ratio": 1.0,
       "avg_amplitude_5": 0.0,
-      "intraday_support": 7.74,
+      "intraday_support": 7.56,
       "minute_status": "PARTIAL",
-      "minute_last_attempt_at": 1788966580.342453,
+      "minute_last_attempt_at": 1789040063.050339,
       "zombie_data_ready": false,
       "zombie_data_note": "历史5日换手率或真实振幅不完整",
       "breakdown_data_ready": false,
       "breakdown_data_note": "需要至少22根5分钟K线",
-      "strategy_classification_reason": "浮动盈亏=-13.91%",
+      "strategy_classification_reason": "浮动盈亏=-15.91%",
       "platform_industry": null,
       "platform_beta": null,
       "daily_atr_ratio": null
-    },
-    {
-      "code": "002938",
-      "name": "鹏鼎控股",
-      "shares": 1000,
-      "entry_price": 93.31,
-      "cost_price": 93.31,
-      "holding_days": 23,
-      "current_price": 92.45,
-      "high_price": 92.45,
-      "market_value": 92450.0,
-      "unrealized_pnl": -952.45,
-      "unrealized_pnl_pct": -1.02,
-      "strategy_mode": "high_volatility",
-      "strategy_status": "ATR14占比=5.08%",
-      "price_history": [
-        {
-          "time": 1788942577.148728,
-          "price": 92.45,
-          "volume": 219977.0
-        },
-        {
-          "time": 1788942798.105079,
-          "price": 92.45,
-          "volume": 219977.0
-        },
-        {
-          "time": 1788942801.283856,
-          "price": 92.45,
-          "volume": 219977.0
-        },
-        {
-          "time": 1788942804.116685,
-          "price": 92.45,
-          "volume": 219977.0
-        },
-        {
-          "time": 1788942808.066686,
-          "price": 92.45,
-          "volume": 219977.0
-        },
-        {
-          "time": 1788942879.026029,
-          "price": 92.45,
-          "volume": 219977.0
-        },
-        {
-          "time": 1788942888.11694,
-          "price": 92.45,
-          "volume": 219977.0
-        },
-        {
-          "time": 1788942981.297195,
-          "price": 92.45,
-          "volume": 219977.0
-        },
-        {
-          "time": 1788943085.566929,
-          "price": 92.45,
-          "volume": 219977.0
-        },
-        {
-          "time": 1788943131.428589,
-          "price": 92.45,
-          "volume": 219977.0
-        },
-        {
-          "time": 1788943302.192407,
-          "price": 92.45,
-          "volume": 219977.0
-        },
-        {
-          "time": 1788943307.150281,
-          "price": 92.45,
-          "volume": 219977.0
-        },
-        {
-          "time": 1788943566.795839,
-          "price": 92.45,
-          "volume": 219977.0
-        },
-        {
-          "time": 1788943571.274097,
-          "price": 92.45,
-          "volume": 219977.0
-        },
-        {
-          "time": 1788943644.629958,
-          "price": 92.45,
-          "volume": 219977.0
-        },
-        {
-          "time": 1788943648.718885,
-          "price": 92.45,
-          "volume": 219977.0
-        },
-        {
-          "time": 1788943717.56841,
-          "price": 92.45,
-          "volume": 219977.0
-        },
-        {
-          "time": 1788944021.23218,
-          "price": 92.45,
-          "volume": 219977.0
-        },
-        {
-          "time": 1788944483.345308,
-          "price": 92.45,
-          "volume": 219977.0
-        },
-        {
-          "time": 1788944500.569819,
-          "price": 92.45,
-          "volume": 219977.0
-        },
-        {
-          "time": 1788944752.535171,
-          "price": 92.45,
-          "volume": 219977.0
-        },
-        {
-          "time": 1788944841.113254,
-          "price": 92.45,
-          "volume": 219977.0
-        },
-        {
-          "time": 1788945083.724818,
-          "price": 92.45,
-          "volume": 219977.0
-        },
-        {
-          "time": 1788945363.153133,
-          "price": 92.45,
-          "volume": 219977.0
-        },
-        {
-          "time": 1788945370.040633,
-          "price": 92.45,
-          "volume": 219977.0
-        },
-        {
-          "time": 1788945981.875337,
-          "price": 92.45,
-          "volume": 219977.0
-        },
-        {
-          "time": 1788946224.448834,
-          "price": 92.45,
-          "volume": 219977.0
-        },
-        {
-          "time": 1788946549.810991,
-          "price": 92.45,
-          "volume": 219977.0
-        },
-        {
-          "time": 1788947477.168309,
-          "price": 92.45,
-          "volume": 219977.0
-        },
-        {
-          "time": 1788966258.525804,
-          "price": 92.45,
-          "volume": 219977.0
-        },
-        {
-          "time": 1788966580.342453,
-          "price": 92.45,
-          "volume": 219977.0
-        }
-      ],
-      "last_signal_at": 1788966258.525804,
-      "last_signal_type": "TIME_STOP_REDUCE",
-      "signal_confirmations": {
-        "TIME_STOP_REDUCE": 5
-      },
-      "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 23:09:40",
-      "data_source": "tencent",
-      "last_day_seen": "2026-09-09",
-      "change_pct": 3.34,
-      "turnover_rate": 0.95,
-      "indicator_data_ready": true,
-      "indicator_note": "基于实时快照滚动估算",
-      "status_tag": "NORMAL",
-      "historical_data": {
-        "code": "002938",
-        "instrument_type": "stock",
-        "daily": [
-          {
-            "date": "2026-03-19",
-            "open": 53.5,
-            "close": 53.25,
-            "high": 54.54,
-            "low": 52.9,
-            "amount": 281191.0
-          },
-          {
-            "date": "2026-03-20",
-            "open": 53.8,
-            "close": 52.03,
-            "high": 54.64,
-            "low": 52.0,
-            "amount": 298326.0,
-            "previous_close": 53.25
-          },
-          {
-            "date": "2026-03-23",
-            "open": 50.66,
-            "close": 49.13,
-            "high": 51.19,
-            "low": 49.0,
-            "amount": 252558.0,
-            "previous_close": 52.03
-          },
-          {
-            "date": "2026-03-24",
-            "open": 50.0,
-            "close": 49.99,
-            "high": 50.2,
-            "low": 48.13,
-            "amount": 179486.0,
-            "previous_close": 49.13
-          },
-          {
-            "date": "2026-03-25",
-            "open": 50.5,
-            "close": 51.37,
-            "high": 52.17,
-            "low": 50.16,
-            "amount": 225592.0,
-            "previous_close": 49.99
-          },
-          {
-            "date": "2026-03-26",
-            "open": 51.0,
-            "close": 50.45,
-            "high": 52.39,
-            "low": 50.2,
-            "amount": 183349.0,
-            "previous_close": 51.37
-          },
-          {
-            "date": "2026-03-27",
-            "open": 49.5,
-            "close": 50.18,
-            "high": 51.3,
-            "low": 48.76,
-            "amount": 186479.0,
-            "previous_close": 50.45
-          },
-          {
-            "date": "2026-03-30",
-            "open": 48.71,
-            "close": 50.65,
-            "high": 50.81,
-            "low": 48.0,
-            "amount": 245703.0,
-            "previous_close": 50.18
-          },
-          {
-            "date": "2026-03-31",
-            "open": 50.65,
-            "close": 52.17,
-            "high": 54.56,
-            "low": 49.87,
-            "amount": 430367.0,
-            "previous_close": 50.65
-          },
-          {
-            "date": "2026-04-01",
-            "open": 54.25,
-            "close": 53.61,
-            "high": 54.35,
-            "low": 53.04,
-            "amount": 302065.0,
-            "previous_close": 52.17
-          },
-          {
-            "date": "2026-04-02",
-            "open": 53.58,
-            "close": 50.95,
-            "high": 53.98,
-            "low": 50.62,
-            "amount": 260673.0,
-            "previous_close": 53.61
-          },
-          {
-            "date": "2026-04-03",
-            "open": 51.52,
-            "close": 50.87,
-            "high": 52.59,
-            "low": 50.7,
-            "amount": 211690.0,
-            "previous_close": 50.95
-          },
-          {
-            "date": "2026-04-07",
-            "open": 51.5,
-            "close": 50.93,
-            "high": 52.28,
-            "low": 50.01,
-            "amount": 181919.0,
-            "previous_close": 50.87
-          },
-          {
-            "date": "2026-04-08",
-            "open": 52.39,
-            "close": 54.67,
-            "high": 54.79,
-            "low": 52.36,
-            "amount": 381904.0,
-            "previous_close": 50.93
-          },
-          {
-            "date": "2026-04-09",
-            "open": 53.8,
-            "close": 55.6,
-            "high": 55.99,
-            "low": 53.6,
-            "amount": 353290.0,
-            "previous_close": 54.67
-          },
-          {
-            "date": "2026-04-10",
-            "open": 56.01,
-            "close": 56.3,
-            "high": 57.39,
-            "low": 55.06,
-            "amount": 354266.0,
-            "previous_close": 55.6
-          },
-          {
-            "date": "2026-04-13",
-            "open": 56.15,
-            "close": 57.9,
-            "high": 58.21,
-            "low": 55.64,
-            "amount": 387980.0,
-            "previous_close": 56.3
-          },
-          {
-            "date": "2026-04-14",
-            "open": 59.05,
-            "close": 60.33,
-            "high": 61.97,
-            "low": 59.01,
-            "amount": 516779.0,
-            "previous_close": 57.9
-          },
-          {
-            "date": "2026-04-15",
-            "open": 60.55,
-            "close": 59.42,
-            "high": 61.99,
-            "low": 59.14,
-            "amount": 423852.0,
-            "previous_close": 60.33
-          },
-          {
-            "date": "2026-04-16",
-            "open": 59.4,
-            "close": 61.0,
-            "high": 62.53,
-            "low": 59.18,
-            "amount": 391483.0,
-            "previous_close": 59.42
-          },
-          {
-            "date": "2026-04-17",
-            "open": 60.95,
-            "close": 62.12,
-            "high": 62.18,
-            "low": 60.24,
-            "amount": 392260.0,
-            "previous_close": 61.0
-          },
-          {
-            "date": "2026-04-20",
-            "open": 62.0,
-            "close": 65.87,
-            "high": 66.95,
-            "low": 61.5,
-            "amount": 519865.0,
-            "previous_close": 62.12
-          },
-          {
-            "date": "2026-04-21",
-            "open": 65.87,
-            "close": 69.25,
-            "high": 70.8,
-            "low": 65.07,
-            "amount": 465806.0,
-            "previous_close": 65.87
-          },
-          {
-            "date": "2026-04-22",
-            "open": 69.28,
-            "close": 76.18,
-            "high": 76.18,
-            "low": 69.25,
-            "amount": 485983.0,
-            "previous_close": 69.25
-          },
-          {
-            "date": "2026-04-23",
-            "open": 77.43,
-            "close": 75.42,
-            "high": 78.66,
-            "low": 74.55,
-            "amount": 678748.0,
-            "previous_close": 76.18
-          },
-          {
-            "date": "2026-04-24",
-            "open": 74.89,
-            "close": 71.59,
-            "high": 76.21,
-            "low": 70.2,
-            "amount": 519999.0,
-            "previous_close": 75.42
-          },
-          {
-            "date": "2026-04-27",
-            "open": 72.73,
-            "close": 77.18,
-            "high": 77.73,
-            "low": 72.0,
-            "amount": 525925.0,
-            "previous_close": 71.59
-          },
-          {
-            "date": "2026-04-28",
-            "open": 77.49,
-            "close": 74.62,
-            "high": 78.01,
-            "low": 73.77,
-            "amount": 324332.0,
-            "previous_close": 77.18
-          },
-          {
-            "date": "2026-04-29",
-            "open": 73.47,
-            "close": 72.82,
-            "high": 75.13,
-            "low": 72.33,
-            "amount": 312841.0,
-            "previous_close": 74.62
-          },
-          {
-            "date": "2026-04-30",
-            "open": 72.82,
-            "close": 72.05,
-            "high": 74.28,
-            "low": 71.54,
-            "amount": 368791.0,
-            "previous_close": 72.82
-          },
-          {
-            "date": "2026-05-06",
-            "open": 73.0,
-            "close": 75.13,
-            "high": 75.45,
-            "low": 71.68,
-            "amount": 530975.0,
-            "previous_close": 72.05
-          },
-          {
-            "date": "2026-05-07",
-            "open": 75.33,
-            "close": 75.83,
-            "high": 76.95,
-            "low": 73.1,
-            "amount": 377916.0,
-            "previous_close": 75.13
-          },
-          {
-            "date": "2026-05-08",
-            "open": 74.79,
-            "close": 75.54,
-            "high": 77.22,
-            "low": 74.12,
-            "amount": 340159.0,
-            "previous_close": 75.83
-          },
-          {
-            "date": "2026-05-11",
-            "open": 76.0,
-            "close": 80.1,
-            "high": 80.91,
-            "low": 75.27,
-            "amount": 538067.0,
-            "previous_close": 75.54
-          },
-          {
-            "date": "2026-05-12",
-            "open": 78.74,
-            "close": 79.3,
-            "high": 80.31,
-            "low": 75.79,
-            "amount": 369476.0,
-            "previous_close": 80.1
-          },
-          {
-            "date": "2026-05-13",
-            "open": 78.2,
-            "close": 87.23,
-            "high": 87.23,
-            "low": 78.0,
-            "amount": 401785.0,
-            "previous_close": 79.3
-          },
-          {
-            "date": "2026-05-14",
-            "open": 91.5,
-            "close": 84.17,
-            "high": 91.5,
-            "low": 84.1,
-            "amount": 369892.0,
-            "previous_close": 87.23
-          },
-          {
-            "date": "2026-05-15",
-            "open": 85.76,
-            "close": 85.91,
-            "high": 88.5,
-            "low": 82.5,
-            "amount": 384777.0,
-            "previous_close": 84.17
-          },
-          {
-            "date": "2026-05-18",
-            "open": 84.62,
-            "close": 89.23,
-            "high": 92.5,
-            "low": 81.51,
-            "amount": 373973.0,
-            "previous_close": 85.91
-          },
-          {
-            "date": "2026-05-19",
-            "open": 89.23,
-            "close": 94.12,
-            "high": 95.44,
-            "low": 86.21,
-            "amount": 375749.0,
-            "previous_close": 89.23
-          },
-          {
-            "date": "2026-05-20",
-            "open": 93.03,
-            "close": 90.22,
-            "high": 94.9,
-            "low": 87.6,
-            "amount": 367132.0,
-            "previous_close": 94.12
-          },
-          {
-            "date": "2026-05-21",
-            "open": 94.83,
-            "close": 94.48,
-            "high": 99.24,
-            "low": 93.76,
-            "amount": 523152.0,
-            "previous_close": 90.22
-          },
-          {
-            "date": "2026-05-22",
-            "open": 103.92,
-            "close": 103.93,
-            "high": 103.93,
-            "low": 103.88,
-            "amount": 146940.0,
-            "previous_close": 94.48
-          },
-          {
-            "date": "2026-05-25",
-            "open": 114.32,
-            "close": 114.32,
-            "high": 114.32,
-            "low": 112.27,
-            "amount": 209100.0,
-            "previous_close": 103.93
-          },
-          {
-            "date": "2026-05-26",
-            "open": 116.0,
-            "close": 116.0,
-            "high": 122.97,
-            "low": 111.92,
-            "amount": 1003403.0,
-            "previous_close": 114.32
-          },
-          {
-            "date": "2026-05-27",
-            "open": 110.2,
-            "close": 105.91,
-            "high": 113.2,
-            "low": 105.18,
-            "amount": 725419.0,
-            "previous_close": 116.0
-          },
-          {
-            "date": "2026-05-28",
-            "open": 106.92,
-            "close": 106.0,
-            "high": 107.73,
-            "low": 101.5,
-            "amount": 605384.0,
-            "previous_close": 105.91
-          },
-          {
-            "date": "2026-05-29",
-            "open": 107.99,
-            "close": 105.01,
-            "high": 112.99,
-            "low": 104.0,
-            "amount": 609268.0,
-            "previous_close": 106.0
-          },
-          {
-            "date": "2026-06-01",
-            "open": 111.62,
-            "close": 103.34,
-            "high": 112.92,
-            "low": 101.99,
-            "amount": 590054.0,
-            "previous_close": 105.01
-          },
-          {
-            "date": "2026-06-02",
-            "open": 103.0,
-            "close": 111.89,
-            "high": 113.67,
-            "low": 100.13,
-            "amount": 723451.0,
-            "previous_close": 103.34
-          },
-          {
-            "date": "2026-06-03",
-            "open": 112.0,
-            "close": 108.3,
-            "high": 113.47,
-            "low": 105.0,
-            "amount": 611092.0,
-            "previous_close": 111.89
-          },
-          {
-            "date": "2026-06-04",
-            "open": 106.51,
-            "close": 111.0,
-            "high": 112.85,
-            "low": 105.05,
-            "amount": 529571.0,
-            "previous_close": 108.3
-          },
-          {
-            "date": "2026-06-05",
-            "open": 107.0,
-            "close": 106.15,
-            "high": 112.94,
-            "low": 105.1,
-            "amount": 459265.0,
-            "previous_close": 111.0
-          },
-          {
-            "date": "2026-06-08",
-            "open": 102.0,
-            "close": 112.0,
-            "high": 116.5,
-            "low": 102.0,
-            "amount": 564193.0,
-            "previous_close": 106.15
-          },
-          {
-            "date": "2026-06-09",
-            "open": 112.0,
-            "close": 115.6,
-            "high": 117.34,
-            "low": 107.98,
-            "amount": 576212.0,
-            "previous_close": 112.0
-          },
-          {
-            "date": "2026-06-10",
-            "open": 112.5,
-            "close": 111.06,
-            "high": 114.99,
-            "low": 106.3,
-            "amount": 442808.0,
-            "previous_close": 115.6
-          },
-          {
-            "date": "2026-06-11",
-            "open": 109.38,
-            "close": 106.5,
-            "high": 113.8,
-            "low": 104.0,
-            "amount": 390860.0,
-            "previous_close": 111.06
-          },
-          {
-            "date": "2026-06-12",
-            "open": 108.11,
-            "close": 101.52,
-            "high": 109.77,
-            "low": 101.36,
-            "amount": 425496.0,
-            "previous_close": 106.5
-          },
-          {
-            "date": "2026-06-15",
-            "open": 103.44,
-            "close": 104.64,
-            "high": 105.0,
-            "low": 98.61,
-            "amount": 575780.0,
-            "previous_close": 101.52
-          },
-          {
-            "date": "2026-06-16",
-            "open": 104.5,
-            "close": 108.19,
-            "high": 110.6,
-            "low": 103.3,
-            "amount": 501898.0,
-            "previous_close": 104.64
-          },
-          {
-            "date": "2026-06-17",
-            "open": 105.54,
-            "close": 119.01,
-            "high": 119.01,
-            "low": 105.54,
-            "amount": 643199.0,
-            "previous_close": 108.19
-          },
-          {
-            "date": "2026-06-18",
-            "open": 119.01,
-            "close": 119.91,
-            "high": 123.1,
-            "low": 113.42,
-            "amount": 608720.0,
-            "previous_close": 119.01
-          },
-          {
-            "date": "2026-06-22",
-            "open": 120.9,
-            "close": 112.99,
-            "high": 121.99,
-            "low": 108.06,
-            "amount": 835126.0,
-            "previous_close": 119.91
-          },
-          {
-            "date": "2026-06-23",
-            "open": 109.95,
-            "close": 106.91,
-            "high": 110.94,
-            "low": 102.18,
-            "amount": 788174.0,
-            "previous_close": 112.99
-          },
-          {
-            "date": "2026-06-24",
-            "open": 106.38,
-            "close": 106.4,
-            "high": 109.03,
-            "low": 103.88,
-            "amount": 491847.0,
-            "previous_close": 106.91
-          },
-          {
-            "date": "2026-06-25",
-            "open": 106.9,
-            "close": 114.14,
-            "high": 117.0,
-            "low": 104.0,
-            "amount": 640083.0,
-            "previous_close": 106.4
-          },
-          {
-            "date": "2026-06-26",
-            "open": 112.0,
-            "close": 110.98,
-            "high": 117.0,
-            "low": 108.29,
-            "amount": 487815.0,
-            "previous_close": 114.14
-          },
-          {
-            "date": "2026-06-29",
-            "open": 108.67,
-            "close": 101.0,
-            "high": 109.5,
-            "low": 99.88,
-            "amount": 655311.0,
-            "previous_close": 110.98
-          },
-          {
-            "date": "2026-06-30",
-            "open": 100.99,
-            "close": 105.38,
-            "high": 107.99,
-            "low": 100.5,
-            "amount": 516362.0,
-            "previous_close": 101.0
-          },
-          {
-            "date": "2026-07-01",
-            "open": 106.38,
-            "close": 102.4,
-            "high": 112.62,
-            "low": 101.0,
-            "amount": 467961.0,
-            "previous_close": 105.38
-          },
-          {
-            "date": "2026-07-02",
-            "open": 100.0,
-            "close": 92.52,
-            "high": 100.4,
-            "low": 92.16,
-            "amount": 570547.0,
-            "previous_close": 102.4
-          },
-          {
-            "date": "2026-07-03",
-            "open": 92.52,
-            "close": 96.77,
-            "high": 98.5,
-            "low": 92.0,
-            "amount": 418173.0,
-            "previous_close": 92.52
-          },
-          {
-            "date": "2026-07-06",
-            "open": 95.64,
-            "close": 95.29,
-            "high": 98.68,
-            "low": 90.9,
-            "amount": 375214.0,
-            "previous_close": 96.77
-          },
-          {
-            "date": "2026-07-07",
-            "open": 94.48,
-            "close": 92.43,
-            "high": 97.4,
-            "low": 91.0,
-            "amount": 267974.0,
-            "previous_close": 95.29
-          },
-          {
-            "date": "2026-07-08",
-            "open": 93.44,
-            "close": 91.29,
-            "high": 94.86,
-            "low": 89.5,
-            "amount": 267746.0,
-            "previous_close": 92.43
-          },
-          {
-            "date": "2026-07-09",
-            "open": 93.61,
-            "close": 95.38,
-            "high": 95.86,
-            "low": 88.35,
-            "amount": 384436.0,
-            "previous_close": 91.29
-          },
-          {
-            "date": "2026-07-10",
-            "open": 97.99,
-            "close": 98.47,
-            "high": 100.9,
-            "low": 96.31,
-            "amount": 542214.0,
-            "previous_close": 95.38
-          },
-          {
-            "date": "2026-07-13",
-            "open": 97.63,
-            "close": 96.3,
-            "high": 102.38,
-            "low": 95.45,
-            "amount": 449176.0,
-            "previous_close": 98.47
-          },
-          {
-            "date": "2026-07-14",
-            "open": 97.4,
-            "close": 105.24,
-            "high": 105.93,
-            "low": 97.4,
-            "amount": 638488.0,
-            "previous_close": 96.3
-          },
-          {
-            "date": "2026-07-15",
-            "open": 105.24,
-            "close": 103.03,
-            "high": 106.18,
-            "low": 100.14,
-            "amount": 427248.0,
-            "previous_close": 105.24
-          },
-          {
-            "date": "2026-07-16",
-            "open": 99.95,
-            "close": 103.09,
-            "high": 107.89,
-            "low": 99.1,
-            "amount": 404579.0,
-            "previous_close": 103.03
-          },
-          {
-            "date": "2026-07-17",
-            "open": 101.09,
-            "close": 93.89,
-            "high": 101.24,
-            "low": 92.78,
-            "amount": 407220.0,
-            "previous_close": 103.09
-          },
-          {
-            "date": "2026-07-20",
-            "open": 95.97,
-            "close": 90.89,
-            "high": 98.0,
-            "low": 86.9,
-            "amount": 392878.0,
-            "previous_close": 93.89
-          },
-          {
-            "date": "2026-07-21",
-            "open": 91.79,
-            "close": 95.6,
-            "high": 96.38,
-            "low": 81.8,
-            "amount": 364533.0,
-            "previous_close": 90.89
-          },
-          {
-            "date": "2026-07-22",
-            "open": 95.0,
-            "close": 91.41,
-            "high": 98.6,
-            "low": 89.91,
-            "amount": 238127.0,
-            "previous_close": 95.6
-          },
-          {
-            "date": "2026-07-23",
-            "open": 93.23,
-            "close": 87.61,
-            "high": 96.0,
-            "low": 87.0,
-            "amount": 322927.0,
-            "previous_close": 91.41
-          },
-          {
-            "date": "2026-07-24",
-            "open": 86.86,
-            "close": 88.39,
-            "high": 91.39,
-            "low": 84.98,
-            "amount": 234670.0,
-            "previous_close": 87.61
-          },
-          {
-            "date": "2026-07-27",
-            "open": 88.0,
-            "close": 93.29,
-            "high": 93.66,
-            "low": 87.36,
-            "amount": 227401.0,
-            "previous_close": 88.39
-          },
-          {
-            "date": "2026-07-28",
-            "open": 90.3,
-            "close": 83.96,
-            "high": 91.21,
-            "low": 83.96,
-            "amount": 278297.0,
-            "previous_close": 93.29
-          },
-          {
-            "date": "2026-07-29",
-            "open": 81.71,
-            "close": 84.5,
-            "high": 86.0,
-            "low": 79.53,
-            "amount": 329156.0,
-            "previous_close": 83.96
-          },
-          {
-            "date": "2026-07-30",
-            "open": 83.3,
-            "close": 76.05,
-            "high": 84.37,
-            "low": 76.05,
-            "amount": 339082.0,
-            "previous_close": 84.5
-          },
-          {
-            "date": "2026-07-31",
-            "open": 82.0,
-            "close": 81.5,
-            "high": 83.64,
-            "low": 80.82,
-            "amount": 275986.0,
-            "previous_close": 76.05
-          },
-          {
-            "date": "2026-08-03",
-            "open": 80.31,
-            "close": 80.91,
-            "high": 82.66,
-            "low": 79.3,
-            "amount": 180736.0,
-            "previous_close": 81.5
-          },
-          {
-            "date": "2026-08-04",
-            "open": 82.89,
-            "close": 89.0,
-            "high": 89.0,
-            "low": 81.5,
-            "amount": 287943.0,
-            "previous_close": 80.91
-          },
-          {
-            "date": "2026-08-05",
-            "open": 88.11,
-            "close": 91.13,
-            "high": 94.2,
-            "low": 86.15,
-            "amount": 363277.0,
-            "previous_close": 89.0
-          },
-          {
-            "date": "2026-08-06",
-            "open": 89.0,
-            "close": 93.85,
-            "high": 96.17,
-            "low": 88.03,
-            "amount": 291928.0,
-            "previous_close": 91.13
-          },
-          {
-            "date": "2026-08-07",
-            "open": 94.95,
-            "close": 101.41,
-            "high": 103.24,
-            "low": 94.95,
-            "amount": 394747.0,
-            "previous_close": 93.85
-          },
-          {
-            "date": "2026-08-10",
-            "open": 101.0,
-            "close": 98.52,
-            "high": 102.0,
-            "low": 96.48,
-            "amount": 277448.0,
-            "previous_close": 101.41
-          },
-          {
-            "date": "2026-08-11",
-            "open": 96.88,
-            "close": 96.67,
-            "high": 99.4,
-            "low": 95.53,
-            "amount": 197643.0,
-            "previous_close": 98.52
-          },
-          {
-            "date": "2026-08-12",
-            "open": 98.32,
-            "close": 101.0,
-            "high": 104.1,
-            "low": 97.77,
-            "amount": 340074.0,
-            "previous_close": 96.67
-          },
-          {
-            "date": "2026-08-13",
-            "open": 102.5,
-            "close": 95.72,
-            "high": 104.11,
-            "low": 95.39,
-            "amount": 393144.0,
-            "previous_close": 101.0
-          },
-          {
-            "date": "2026-08-14",
-            "open": 96.45,
-            "close": 95.36,
-            "high": 96.7,
-            "low": 94.18,
-            "amount": 253078.0,
-            "previous_close": 95.72
-          },
-          {
-            "date": "2026-08-17",
-            "open": 95.58,
-            "close": 98.5,
-            "high": 98.58,
-            "low": 93.4,
-            "amount": 290116.0,
-            "previous_close": 95.36
-          },
-          {
-            "date": "2026-08-18",
-            "open": 98.43,
-            "close": 94.77,
-            "high": 98.43,
-            "low": 93.0,
-            "amount": 291574.0,
-            "previous_close": 98.5
-          },
-          {
-            "date": "2026-08-19",
-            "open": 91.0,
-            "close": 87.36,
-            "high": 93.68,
-            "low": 86.24,
-            "amount": 264103.0,
-            "previous_close": 94.77
-          },
-          {
-            "date": "2026-08-20",
-            "open": 89.0,
-            "close": 87.57,
-            "high": 90.35,
-            "low": 86.31,
-            "amount": 196328.0,
-            "previous_close": 87.36
-          },
-          {
-            "date": "2026-08-21",
-            "open": 87.57,
-            "close": 89.2,
-            "high": 89.98,
-            "low": 85.01,
-            "amount": 186590.0,
-            "previous_close": 87.57
-          },
-          {
-            "date": "2026-08-24",
-            "open": 89.21,
-            "close": 87.95,
-            "high": 89.88,
-            "low": 84.6,
-            "amount": 185725.0,
-            "previous_close": 89.2
-          },
-          {
-            "date": "2026-08-25",
-            "open": 86.88,
-            "close": 87.44,
-            "high": 89.38,
-            "low": 84.88,
-            "amount": 165679.0,
-            "previous_close": 87.95
-          },
-          {
-            "date": "2026-08-26",
-            "open": 88.0,
-            "close": 87.3,
-            "high": 88.29,
-            "low": 85.13,
-            "amount": 131805.0,
-            "previous_close": 87.44
-          },
-          {
-            "date": "2026-08-27",
-            "open": 88.78,
-            "close": 89.2,
-            "high": 90.5,
-            "low": 87.17,
-            "amount": 216807.0,
-            "previous_close": 87.3
-          },
-          {
-            "date": "2026-08-28",
-            "open": 88.07,
-            "close": 89.18,
-            "high": 93.52,
-            "low": 87.99,
-            "amount": 248713.0,
-            "previous_close": 89.2
-          },
-          {
-            "date": "2026-08-31",
-            "open": 86.51,
-            "close": 93.3,
-            "high": 94.52,
-            "low": 86.45,
-            "amount": 283107.0,
-            "previous_close": 89.18
-          },
-          {
-            "date": "2026-09-01",
-            "open": 93.49,
-            "close": 88.22,
-            "high": 93.5,
-            "low": 87.56,
-            "amount": 226138.0,
-            "previous_close": 93.3
-          },
-          {
-            "date": "2026-09-02",
-            "open": 87.19,
-            "close": 85.8,
-            "high": 87.67,
-            "low": 85.71,
-            "amount": 124520.0,
-            "previous_close": 88.22
-          },
-          {
-            "date": "2026-09-03",
-            "open": 86.6,
-            "close": 84.53,
-            "high": 86.9,
-            "low": 83.6,
-            "amount": 147306.0,
-            "previous_close": 85.8
-          },
-          {
-            "date": "2026-09-04",
-            "open": 85.09,
-            "close": 83.29,
-            "high": 87.63,
-            "low": 82.48,
-            "amount": 169855.0,
-            "previous_close": 84.53
-          },
-          {
-            "date": "2026-09-07",
-            "open": 84.26,
-            "close": 89.99,
-            "high": 90.6,
-            "low": 83.47,
-            "amount": 280402.0,
-            "previous_close": 83.29
-          },
-          {
-            "date": "2026-09-08",
-            "open": 89.77,
-            "close": 89.46,
-            "high": 92.4,
-            "low": 88.85,
-            "amount": 202215.0,
-            "previous_close": 89.99
-          },
-          {
-            "date": "2026-09-09",
-            "open": 89.98,
-            "close": 92.45,
-            "high": 92.6,
-            "low": 89.46,
-            "amount": 219977.0,
-            "previous_close": 89.46
-          }
-        ],
-        "minute_1": [],
-        "minute_5": [],
-        "history_status": "READY",
-        "history_error": null,
-        "history_fetched_at": "2026-09-09 23:13:03",
-        "minute_status": "PARTIAL"
-      },
-      "ma5_daily": 87.944,
-      "ma10_daily": 88.542,
-      "ma20_daily": 89.829,
-      "daily_ma_data_ready": true,
-      "daily_ma_note": "日线收盘样本 120 条",
-      "ma20": 92.45,
-      "history_status": "READY",
-      "history_error": null,
-      "bias": 0.0,
-      "rsi_1m": 50.0,
-      "rsi_5m": 50.0,
-      "boll_upper": 92.45,
-      "boll_lower": 92.45,
-      "atr_ratio": 0.0,
-      "volume_ratio": 1.0,
-      "avg_amplitude_5": 0.0,
-      "intraday_support": 92.45,
-      "minute_status": "PARTIAL",
-      "minute_last_attempt_at": 1788966580.342453,
-      "zombie_data_ready": false,
-      "zombie_data_note": "历史5日换手率或真实振幅不完整",
-      "breakdown_data_ready": false,
-      "breakdown_data_note": "需要至少22根5分钟K线",
-      "sell_signal": {
-        "alert_id": "WATCH_002938_TIME_STOP_REDUCE",
-        "code": "002938",
-        "name": "鹏鼎控股",
-        "time": "23:04",
-        "date": "2026-09-09",
-        "rule_type": "TIME_STOP_REDUCE",
-        "reason": "高波动时间止损降级：减仓1/3并锁定日内正T",
-        "sell_price": 92.45,
-        "entry_price": 93.31,
-        "shares": 1000,
-        "strategy_mode": "high_volatility"
-      },
-      "strategy_classification_reason": "ATR14占比=5.08%",
-      "platform_industry": null,
-      "platform_beta": null,
-      "daily_atr_ratio": 0.0508
     },
     {
       "code": "603270",
@@ -15596,14 +14601,14 @@
       "shares": 300,
       "entry_price": 36.35,
       "cost_price": 36.35,
-      "holding_days": 6,
-      "current_price": 33.76,
+      "holding_days": 7,
+      "current_price": 32.97,
       "high_price": 33.76,
-      "market_value": 10128.0,
-      "unrealized_pnl": -787.13,
-      "unrealized_pnl_pct": -7.23,
+      "market_value": 9891.0,
+      "unrealized_pnl": -1023.89,
+      "unrealized_pnl_pct": -9.4,
       "strategy_mode": "high_volatility",
-      "strategy_status": "ATR14占比=7.09%",
+      "strategy_status": "ATR14占比=7.36%",
       "price_history": [
         {
           "time": 1788942577.148728,
@@ -15759,17 +14764,47 @@
           "time": 1788966580.342453,
           "price": 33.76,
           "volume": 177633.0
+        },
+        {
+          "time": 1789038862.210751,
+          "price": 32.97,
+          "volume": 117479.0
+        },
+        {
+          "time": 1789038892.242101,
+          "price": 32.97,
+          "volume": 117479.0
+        },
+        {
+          "time": 1789038999.062028,
+          "price": 32.97,
+          "volume": 117479.0
+        },
+        {
+          "time": 1789039336.38606,
+          "price": 32.97,
+          "volume": 117479.0
+        },
+        {
+          "time": 1789039490.536883,
+          "price": 32.97,
+          "volume": 117479.0
+        },
+        {
+          "time": 1789040063.050339,
+          "price": 32.97,
+          "volume": 117479.0
         }
       ],
       "last_signal_at": null,
       "last_signal_type": null,
       "signal_confirmations": {},
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 23:09:40",
+      "quote_status_at": "2026-09-10 19:34:23",
       "data_source": "tencent",
-      "last_day_seen": "2026-09-09",
-      "change_pct": 2.3,
-      "turnover_rate": 25.12,
+      "last_day_seen": "2026-09-10",
+      "change_pct": -2.34,
+      "turnover_rate": 16.61,
       "indicator_data_ready": true,
       "indicator_note": "基于实时快照滚动估算",
       "status_tag": "NORMAL",
@@ -15778,21 +14813,12 @@
         "instrument_type": "stock",
         "daily": [
           {
-            "date": "2026-03-19",
-            "open": 24.44,
-            "close": 24.1,
-            "high": 24.6,
-            "low": 23.94,
-            "amount": 19775.0
-          },
-          {
             "date": "2026-03-20",
             "open": 24.18,
             "close": 23.55,
             "high": 24.4,
             "low": 23.5,
-            "amount": 19417.0,
-            "previous_close": 24.1
+            "amount": 19417.0
           },
           {
             "date": "2026-03-23",
@@ -16855,1344 +15881,54 @@
             "low": 32.4,
             "amount": 177633.0,
             "previous_close": 33.0
+          },
+          {
+            "date": "2026-09-10",
+            "open": 32.97,
+            "close": 32.97,
+            "high": 33.09,
+            "low": 32.03,
+            "amount": 117479.0,
+            "previous_close": 33.76
           }
         ],
         "minute_1": [],
         "minute_5": [],
         "history_status": "READY",
         "history_error": null,
-        "history_fetched_at": "2026-09-09 23:13:26",
+        "history_fetched_at": "2026-09-10 19:34:36",
         "minute_status": "PARTIAL"
       },
-      "ma5_daily": 33.754,
-      "ma10_daily": 31.522,
-      "ma20_daily": 29.917,
+      "ma5_daily": 33.358,
+      "ma10_daily": 32.014,
+      "ma20_daily": 30.149,
       "daily_ma_data_ready": true,
       "daily_ma_note": "日线收盘样本 120 条",
-      "ma20": 33.76,
+      "ma20": 33.523,
       "history_status": "READY",
       "history_error": null,
-      "bias": 0.0,
-      "rsi_1m": 50.0,
-      "rsi_5m": 50.0,
-      "boll_upper": 33.76,
-      "boll_lower": 33.76,
-      "atr_ratio": 0.0,
+      "bias": -1.97,
+      "rsi_1m": 0.0,
+      "rsi_5m": 0.0,
+      "boll_upper": 34.214,
+      "boll_lower": 33.05,
+      "atr_ratio": 0.0017,
       "volume_ratio": 1.0,
       "avg_amplitude_5": 0.0,
-      "intraday_support": 33.76,
+      "intraday_support": 32.97,
       "minute_status": "PARTIAL",
-      "minute_last_attempt_at": 1788966580.342453,
+      "minute_last_attempt_at": 1789040063.050339,
       "zombie_data_ready": false,
       "zombie_data_note": "历史5日换手率或真实振幅不完整",
       "breakdown_data_ready": false,
       "breakdown_data_note": "需要至少22根5分钟K线",
-      "strategy_classification_reason": "ATR14占比=7.09%",
+      "strategy_classification_reason": "ATR14占比=7.36%",
       "platform_industry": null,
       "platform_beta": null,
-      "daily_atr_ratio": 0.0709
-    },
-    {
-      "code": "002564",
-      "name": "天沃科技",
-      "shares": 3000,
-      "entry_price": 5.517,
-      "cost_price": 5.517,
-      "holding_days": 2,
-      "current_price": 5.35,
-      "high_price": 5.35,
-      "market_value": 16050.0,
-      "unrealized_pnl": -517.05,
-      "unrealized_pnl_pct": -3.13,
-      "strategy_mode": "high_volatility",
-      "strategy_status": "ATR14占比=3.91%",
-      "price_history": [
-        {
-          "time": 1788942577.148728,
-          "price": 5.35,
-          "volume": 734513.0
-        },
-        {
-          "time": 1788942798.105079,
-          "price": 5.35,
-          "volume": 734513.0
-        },
-        {
-          "time": 1788942801.283856,
-          "price": 5.35,
-          "volume": 734513.0
-        },
-        {
-          "time": 1788942804.116685,
-          "price": 5.35,
-          "volume": 734513.0
-        },
-        {
-          "time": 1788942808.066686,
-          "price": 5.35,
-          "volume": 734513.0
-        },
-        {
-          "time": 1788942879.026029,
-          "price": 5.35,
-          "volume": 734513.0
-        },
-        {
-          "time": 1788942888.11694,
-          "price": 5.35,
-          "volume": 734513.0
-        },
-        {
-          "time": 1788942981.297195,
-          "price": 5.35,
-          "volume": 734513.0
-        },
-        {
-          "time": 1788943085.566929,
-          "price": 5.35,
-          "volume": 734513.0
-        },
-        {
-          "time": 1788943131.428589,
-          "price": 5.35,
-          "volume": 734513.0
-        },
-        {
-          "time": 1788943302.192407,
-          "price": 5.35,
-          "volume": 734513.0
-        },
-        {
-          "time": 1788943307.150281,
-          "price": 5.35,
-          "volume": 734513.0
-        },
-        {
-          "time": 1788943566.795839,
-          "price": 5.35,
-          "volume": 734513.0
-        },
-        {
-          "time": 1788943571.274097,
-          "price": 5.35,
-          "volume": 734513.0
-        },
-        {
-          "time": 1788943644.629958,
-          "price": 5.35,
-          "volume": 734513.0
-        },
-        {
-          "time": 1788943648.718885,
-          "price": 5.35,
-          "volume": 734513.0
-        },
-        {
-          "time": 1788943717.56841,
-          "price": 5.35,
-          "volume": 734513.0
-        },
-        {
-          "time": 1788944021.23218,
-          "price": 5.35,
-          "volume": 734513.0
-        },
-        {
-          "time": 1788944483.345308,
-          "price": 5.35,
-          "volume": 734513.0
-        },
-        {
-          "time": 1788944500.569819,
-          "price": 5.35,
-          "volume": 734513.0
-        },
-        {
-          "time": 1788944752.535171,
-          "price": 5.35,
-          "volume": 734513.0
-        },
-        {
-          "time": 1788944841.113254,
-          "price": 5.35,
-          "volume": 734513.0
-        },
-        {
-          "time": 1788945083.724818,
-          "price": 5.35,
-          "volume": 734513.0
-        },
-        {
-          "time": 1788945363.153133,
-          "price": 5.35,
-          "volume": 734513.0
-        },
-        {
-          "time": 1788945370.040633,
-          "price": 5.35,
-          "volume": 734513.0
-        },
-        {
-          "time": 1788945981.875337,
-          "price": 5.35,
-          "volume": 734513.0
-        },
-        {
-          "time": 1788946224.448834,
-          "price": 5.35,
-          "volume": 734513.0
-        },
-        {
-          "time": 1788946549.810991,
-          "price": 5.35,
-          "volume": 734513.0
-        },
-        {
-          "time": 1788947477.168309,
-          "price": 5.35,
-          "volume": 734513.0
-        },
-        {
-          "time": 1788966258.525804,
-          "price": 5.35,
-          "volume": 734513.0
-        },
-        {
-          "time": 1788966580.342453,
-          "price": 5.35,
-          "volume": 734513.0
-        }
-      ],
-      "last_signal_at": null,
-      "last_signal_type": null,
-      "signal_confirmations": {},
-      "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 23:09:40",
-      "data_source": "tencent",
-      "last_day_seen": "2026-09-09",
-      "change_pct": -1.11,
-      "turnover_rate": 8.55,
-      "indicator_data_ready": true,
-      "indicator_note": "基于实时快照滚动估算",
-      "status_tag": "NORMAL",
-      "historical_data": {
-        "code": "002564",
-        "instrument_type": "stock",
-        "daily": [
-          {
-            "date": "2026-03-19",
-            "open": 6.76,
-            "close": 6.74,
-            "high": 6.83,
-            "low": 6.7,
-            "amount": 86075.0
-          },
-          {
-            "date": "2026-03-20",
-            "open": 6.72,
-            "close": 6.6,
-            "high": 6.81,
-            "low": 6.57,
-            "amount": 114823.0,
-            "previous_close": 6.74
-          },
-          {
-            "date": "2026-03-23",
-            "open": 6.49,
-            "close": 6.32,
-            "high": 6.59,
-            "low": 6.2,
-            "amount": 185719.0,
-            "previous_close": 6.6
-          },
-          {
-            "date": "2026-03-24",
-            "open": 6.45,
-            "close": 6.56,
-            "high": 6.58,
-            "low": 6.32,
-            "amount": 119444.0,
-            "previous_close": 6.32
-          },
-          {
-            "date": "2026-03-25",
-            "open": 6.6,
-            "close": 6.61,
-            "high": 6.63,
-            "low": 6.53,
-            "amount": 113497.0,
-            "previous_close": 6.56
-          },
-          {
-            "date": "2026-03-26",
-            "open": 6.52,
-            "close": 6.14,
-            "high": 6.54,
-            "low": 6.08,
-            "amount": 275745.0,
-            "previous_close": 6.61
-          },
-          {
-            "date": "2026-03-27",
-            "open": 6.07,
-            "close": 6.22,
-            "high": 6.23,
-            "low": 5.99,
-            "amount": 185138.0,
-            "previous_close": 6.14
-          },
-          {
-            "date": "2026-03-30",
-            "open": 6.14,
-            "close": 6.1,
-            "high": 6.23,
-            "low": 6.0,
-            "amount": 172975.0,
-            "previous_close": 6.22
-          },
-          {
-            "date": "2026-03-31",
-            "open": 6.09,
-            "close": 6.06,
-            "high": 6.23,
-            "low": 6.05,
-            "amount": 124326.0,
-            "previous_close": 6.1
-          },
-          {
-            "date": "2026-04-01",
-            "open": 6.18,
-            "close": 6.16,
-            "high": 6.22,
-            "low": 6.08,
-            "amount": 113675.0,
-            "previous_close": 6.06
-          },
-          {
-            "date": "2026-04-02",
-            "open": 6.17,
-            "close": 5.97,
-            "high": 6.17,
-            "low": 5.93,
-            "amount": 110104.0,
-            "previous_close": 6.16
-          },
-          {
-            "date": "2026-04-03",
-            "open": 5.97,
-            "close": 5.81,
-            "high": 6.02,
-            "low": 5.76,
-            "amount": 124295.0,
-            "previous_close": 5.97
-          },
-          {
-            "date": "2026-04-07",
-            "open": 5.78,
-            "close": 5.89,
-            "high": 5.94,
-            "low": 5.72,
-            "amount": 110190.0,
-            "previous_close": 5.81
-          },
-          {
-            "date": "2026-04-08",
-            "open": 6.01,
-            "close": 6.13,
-            "high": 6.14,
-            "low": 5.99,
-            "amount": 151071.0,
-            "previous_close": 5.89
-          },
-          {
-            "date": "2026-04-09",
-            "open": 6.08,
-            "close": 6.06,
-            "high": 6.19,
-            "low": 5.98,
-            "amount": 151800.0,
-            "previous_close": 6.13
-          },
-          {
-            "date": "2026-04-10",
-            "open": 6.13,
-            "close": 6.07,
-            "high": 6.15,
-            "low": 6.06,
-            "amount": 89752.0,
-            "previous_close": 6.06
-          },
-          {
-            "date": "2026-04-13",
-            "open": 6.03,
-            "close": 6.14,
-            "high": 6.17,
-            "low": 6.03,
-            "amount": 95223.0,
-            "previous_close": 6.07
-          },
-          {
-            "date": "2026-04-14",
-            "open": 6.2,
-            "close": 6.19,
-            "high": 6.22,
-            "low": 6.08,
-            "amount": 121853.0,
-            "previous_close": 6.14
-          },
-          {
-            "date": "2026-04-15",
-            "open": 6.23,
-            "close": 6.01,
-            "high": 6.24,
-            "low": 5.99,
-            "amount": 130425.0,
-            "previous_close": 6.19
-          },
-          {
-            "date": "2026-04-16",
-            "open": 6.0,
-            "close": 6.09,
-            "high": 6.15,
-            "low": 5.97,
-            "amount": 137303.0,
-            "previous_close": 6.01
-          },
-          {
-            "date": "2026-04-17",
-            "open": 6.06,
-            "close": 6.38,
-            "high": 6.53,
-            "low": 5.95,
-            "amount": 356961.0,
-            "previous_close": 6.09
-          },
-          {
-            "date": "2026-04-20",
-            "open": 6.32,
-            "close": 6.25,
-            "high": 6.35,
-            "low": 6.14,
-            "amount": 202929.0,
-            "previous_close": 6.38
-          },
-          {
-            "date": "2026-04-21",
-            "open": 6.23,
-            "close": 6.15,
-            "high": 6.23,
-            "low": 6.08,
-            "amount": 134859.0,
-            "previous_close": 6.25
-          },
-          {
-            "date": "2026-04-22",
-            "open": 6.14,
-            "close": 6.29,
-            "high": 6.35,
-            "low": 6.07,
-            "amount": 267186.0,
-            "previous_close": 6.15
-          },
-          {
-            "date": "2026-04-23",
-            "open": 6.29,
-            "close": 6.31,
-            "high": 6.35,
-            "low": 6.19,
-            "amount": 190998.0,
-            "previous_close": 6.29
-          },
-          {
-            "date": "2026-04-24",
-            "open": 6.28,
-            "close": 6.23,
-            "high": 6.31,
-            "low": 6.15,
-            "amount": 139727.0,
-            "previous_close": 6.31
-          },
-          {
-            "date": "2026-04-27",
-            "open": 6.23,
-            "close": 6.36,
-            "high": 6.57,
-            "low": 6.18,
-            "amount": 226080.0,
-            "previous_close": 6.23
-          },
-          {
-            "date": "2026-04-28",
-            "open": 6.34,
-            "close": 6.33,
-            "high": 6.38,
-            "low": 6.26,
-            "amount": 123925.0,
-            "previous_close": 6.36
-          },
-          {
-            "date": "2026-04-29",
-            "open": 6.32,
-            "close": 6.4,
-            "high": 6.49,
-            "low": 6.25,
-            "amount": 127899.0,
-            "previous_close": 6.33
-          },
-          {
-            "date": "2026-04-30",
-            "open": 6.3,
-            "close": 6.17,
-            "high": 6.48,
-            "low": 6.1,
-            "amount": 232531.0,
-            "previous_close": 6.4
-          },
-          {
-            "date": "2026-05-06",
-            "open": 6.18,
-            "close": 6.22,
-            "high": 6.36,
-            "low": 6.15,
-            "amount": 167571.0,
-            "previous_close": 6.17
-          },
-          {
-            "date": "2026-05-07",
-            "open": 6.2,
-            "close": 6.28,
-            "high": 6.35,
-            "low": 6.17,
-            "amount": 178964.0,
-            "previous_close": 6.22
-          },
-          {
-            "date": "2026-05-08",
-            "open": 6.26,
-            "close": 6.3,
-            "high": 6.33,
-            "low": 6.19,
-            "amount": 136807.0,
-            "previous_close": 6.28
-          },
-          {
-            "date": "2026-05-11",
-            "open": 6.34,
-            "close": 6.4,
-            "high": 6.48,
-            "low": 6.3,
-            "amount": 205163.0,
-            "previous_close": 6.3
-          },
-          {
-            "date": "2026-05-12",
-            "open": 6.37,
-            "close": 6.15,
-            "high": 6.37,
-            "low": 6.12,
-            "amount": 250400.0,
-            "previous_close": 6.4
-          },
-          {
-            "date": "2026-05-13",
-            "open": 6.13,
-            "close": 6.26,
-            "high": 6.28,
-            "low": 6.13,
-            "amount": 186117.0,
-            "previous_close": 6.15
-          },
-          {
-            "date": "2026-05-14",
-            "open": 6.26,
-            "close": 6.0,
-            "high": 6.28,
-            "low": 6.0,
-            "amount": 208429.0,
-            "previous_close": 6.26
-          },
-          {
-            "date": "2026-05-15",
-            "open": 6.0,
-            "close": 5.86,
-            "high": 6.02,
-            "low": 5.82,
-            "amount": 194606.0,
-            "previous_close": 6.0
-          },
-          {
-            "date": "2026-05-18",
-            "open": 5.87,
-            "close": 5.91,
-            "high": 5.95,
-            "low": 5.79,
-            "amount": 130516.0,
-            "previous_close": 5.86
-          },
-          {
-            "date": "2026-05-19",
-            "open": 5.91,
-            "close": 5.91,
-            "high": 5.95,
-            "low": 5.79,
-            "amount": 114386.0,
-            "previous_close": 5.91
-          },
-          {
-            "date": "2026-05-20",
-            "open": 5.87,
-            "close": 6.0,
-            "high": 6.06,
-            "low": 5.71,
-            "amount": 195370.0,
-            "previous_close": 5.91
-          },
-          {
-            "date": "2026-05-21",
-            "open": 6.0,
-            "close": 5.64,
-            "high": 6.09,
-            "low": 5.63,
-            "amount": 174989.0,
-            "previous_close": 6.0
-          },
-          {
-            "date": "2026-05-22",
-            "open": 5.69,
-            "close": 5.78,
-            "high": 5.8,
-            "low": 5.6,
-            "amount": 137980.0,
-            "previous_close": 5.64
-          },
-          {
-            "date": "2026-05-25",
-            "open": 5.71,
-            "close": 5.55,
-            "high": 5.72,
-            "low": 5.51,
-            "amount": 183927.0,
-            "previous_close": 5.78
-          },
-          {
-            "date": "2026-05-26",
-            "open": 5.52,
-            "close": 5.5,
-            "high": 5.65,
-            "low": 5.41,
-            "amount": 140333.0,
-            "previous_close": 5.55
-          },
-          {
-            "date": "2026-05-27",
-            "open": 5.46,
-            "close": 5.33,
-            "high": 5.5,
-            "low": 5.3,
-            "amount": 124215.0,
-            "previous_close": 5.5
-          },
-          {
-            "date": "2026-05-28",
-            "open": 5.28,
-            "close": 5.35,
-            "high": 5.41,
-            "low": 5.28,
-            "amount": 123791.0,
-            "previous_close": 5.33
-          },
-          {
-            "date": "2026-05-29",
-            "open": 5.38,
-            "close": 5.16,
-            "high": 5.4,
-            "low": 5.07,
-            "amount": 168567.0,
-            "previous_close": 5.35
-          },
-          {
-            "date": "2026-06-01",
-            "open": 5.16,
-            "close": 5.28,
-            "high": 5.33,
-            "low": 4.99,
-            "amount": 169050.0,
-            "previous_close": 5.16
-          },
-          {
-            "date": "2026-06-02",
-            "open": 5.28,
-            "close": 5.13,
-            "high": 5.3,
-            "low": 5.06,
-            "amount": 118721.0,
-            "previous_close": 5.28
-          },
-          {
-            "date": "2026-06-03",
-            "open": 5.12,
-            "close": 5.07,
-            "high": 5.14,
-            "low": 5.02,
-            "amount": 135333.0,
-            "previous_close": 5.13
-          },
-          {
-            "date": "2026-06-04",
-            "open": 5.06,
-            "close": 5.06,
-            "high": 5.1,
-            "low": 5.01,
-            "amount": 129078.0,
-            "previous_close": 5.07
-          },
-          {
-            "date": "2026-06-05",
-            "open": 5.04,
-            "close": 5.08,
-            "high": 5.19,
-            "low": 4.92,
-            "amount": 149491.0,
-            "previous_close": 5.06
-          },
-          {
-            "date": "2026-06-08",
-            "open": 4.95,
-            "close": 4.78,
-            "high": 5.06,
-            "low": 4.68,
-            "amount": 182995.0,
-            "previous_close": 5.08
-          },
-          {
-            "date": "2026-06-09",
-            "open": 4.87,
-            "close": 4.86,
-            "high": 4.93,
-            "low": 4.74,
-            "amount": 154209.0,
-            "previous_close": 4.78
-          },
-          {
-            "date": "2026-06-10",
-            "open": 4.88,
-            "close": 4.79,
-            "high": 4.93,
-            "low": 4.7,
-            "amount": 108385.0,
-            "previous_close": 4.86
-          },
-          {
-            "date": "2026-06-11",
-            "open": 4.72,
-            "close": 4.78,
-            "high": 4.79,
-            "low": 4.63,
-            "amount": 108435.0,
-            "previous_close": 4.79
-          },
-          {
-            "date": "2026-06-12",
-            "open": 4.86,
-            "close": 4.89,
-            "high": 4.92,
-            "low": 4.78,
-            "amount": 130058.0,
-            "previous_close": 4.78
-          },
-          {
-            "date": "2026-06-15",
-            "open": 4.9,
-            "close": 4.75,
-            "high": 4.94,
-            "low": 4.69,
-            "amount": 188113.0,
-            "previous_close": 4.89
-          },
-          {
-            "date": "2026-06-16",
-            "open": 4.75,
-            "close": 4.82,
-            "high": 4.92,
-            "low": 4.68,
-            "amount": 178599.0,
-            "previous_close": 4.75
-          },
-          {
-            "date": "2026-06-17",
-            "open": 5.01,
-            "close": 4.85,
-            "high": 5.3,
-            "low": 4.73,
-            "amount": 469279.0,
-            "previous_close": 4.82
-          },
-          {
-            "date": "2026-06-18",
-            "open": 4.81,
-            "close": 4.67,
-            "high": 4.95,
-            "low": 4.63,
-            "amount": 288383.0,
-            "previous_close": 4.85
-          },
-          {
-            "date": "2026-06-22",
-            "open": 4.6,
-            "close": 4.51,
-            "high": 4.65,
-            "low": 4.4,
-            "amount": 243636.0,
-            "previous_close": 4.67
-          },
-          {
-            "date": "2026-06-23",
-            "open": 4.51,
-            "close": 4.63,
-            "high": 4.67,
-            "low": 4.45,
-            "amount": 231364.0,
-            "previous_close": 4.51
-          },
-          {
-            "date": "2026-06-24",
-            "open": 4.64,
-            "close": 4.45,
-            "high": 4.66,
-            "low": 4.42,
-            "amount": 184068.0,
-            "previous_close": 4.63
-          },
-          {
-            "date": "2026-06-25",
-            "open": 4.46,
-            "close": 4.43,
-            "high": 4.55,
-            "low": 4.35,
-            "amount": 181304.0,
-            "previous_close": 4.45
-          },
-          {
-            "date": "2026-06-26",
-            "open": 4.4,
-            "close": 4.33,
-            "high": 4.47,
-            "low": 4.29,
-            "amount": 143550.0,
-            "previous_close": 4.43
-          },
-          {
-            "date": "2026-06-29",
-            "open": 4.3,
-            "close": 4.3,
-            "high": 4.35,
-            "low": 4.18,
-            "amount": 187083.0,
-            "previous_close": 4.33
-          },
-          {
-            "date": "2026-06-30",
-            "open": 4.29,
-            "close": 4.3,
-            "high": 4.37,
-            "low": 4.24,
-            "amount": 133480.0,
-            "previous_close": 4.3
-          },
-          {
-            "date": "2026-07-01",
-            "open": 4.3,
-            "close": 4.45,
-            "high": 4.55,
-            "low": 4.3,
-            "amount": 210881.0,
-            "previous_close": 4.3
-          },
-          {
-            "date": "2026-07-02",
-            "open": 4.41,
-            "close": 4.36,
-            "high": 4.54,
-            "low": 4.35,
-            "amount": 170391.0,
-            "previous_close": 4.45
-          },
-          {
-            "date": "2026-07-03",
-            "open": 4.46,
-            "close": 4.5,
-            "high": 4.54,
-            "low": 4.34,
-            "amount": 217333.0,
-            "previous_close": 4.36
-          },
-          {
-            "date": "2026-07-06",
-            "open": 4.47,
-            "close": 4.38,
-            "high": 4.58,
-            "low": 4.37,
-            "amount": 126979.0,
-            "previous_close": 4.5
-          },
-          {
-            "date": "2026-07-07",
-            "open": 4.35,
-            "close": 4.24,
-            "high": 4.37,
-            "low": 4.21,
-            "amount": 122242.0,
-            "previous_close": 4.38
-          },
-          {
-            "date": "2026-07-08",
-            "open": 4.21,
-            "close": 4.23,
-            "high": 4.27,
-            "low": 4.17,
-            "amount": 117474.0,
-            "previous_close": 4.24
-          },
-          {
-            "date": "2026-07-09",
-            "open": 4.18,
-            "close": 4.21,
-            "high": 4.26,
-            "low": 4.09,
-            "amount": 129998.0,
-            "previous_close": 4.23
-          },
-          {
-            "date": "2026-07-10",
-            "open": 4.2,
-            "close": 4.33,
-            "high": 4.46,
-            "low": 4.13,
-            "amount": 215088.0,
-            "previous_close": 4.21
-          },
-          {
-            "date": "2026-07-13",
-            "open": 4.3,
-            "close": 4.07,
-            "high": 4.33,
-            "low": 4.04,
-            "amount": 202726.0,
-            "previous_close": 4.33
-          },
-          {
-            "date": "2026-07-14",
-            "open": 4.07,
-            "close": 4.12,
-            "high": 4.15,
-            "low": 3.97,
-            "amount": 155790.0,
-            "previous_close": 4.07
-          },
-          {
-            "date": "2026-07-15",
-            "open": 4.09,
-            "close": 4.18,
-            "high": 4.25,
-            "low": 4.07,
-            "amount": 135609.0,
-            "previous_close": 4.12
-          },
-          {
-            "date": "2026-07-16",
-            "open": 4.13,
-            "close": 4.23,
-            "high": 4.28,
-            "low": 4.07,
-            "amount": 151865.0,
-            "previous_close": 4.18
-          },
-          {
-            "date": "2026-07-17",
-            "open": 4.23,
-            "close": 4.1,
-            "high": 4.28,
-            "low": 4.06,
-            "amount": 149026.0,
-            "previous_close": 4.23
-          },
-          {
-            "date": "2026-07-20",
-            "open": 4.1,
-            "close": 4.04,
-            "high": 4.25,
-            "low": 3.99,
-            "amount": 185379.0,
-            "previous_close": 4.1
-          },
-          {
-            "date": "2026-07-21",
-            "open": 4.09,
-            "close": 4.08,
-            "high": 4.12,
-            "low": 3.93,
-            "amount": 179617.0,
-            "previous_close": 4.04
-          },
-          {
-            "date": "2026-07-22",
-            "open": 4.01,
-            "close": 4.03,
-            "high": 4.16,
-            "low": 4.0,
-            "amount": 109541.0,
-            "previous_close": 4.08
-          },
-          {
-            "date": "2026-07-23",
-            "open": 4.02,
-            "close": 4.2,
-            "high": 4.22,
-            "low": 3.99,
-            "amount": 185540.0,
-            "previous_close": 4.03
-          },
-          {
-            "date": "2026-07-24",
-            "open": 4.2,
-            "close": 4.07,
-            "high": 4.27,
-            "low": 4.06,
-            "amount": 126745.0,
-            "previous_close": 4.2
-          },
-          {
-            "date": "2026-07-27",
-            "open": 4.09,
-            "close": 4.25,
-            "high": 4.27,
-            "low": 4.03,
-            "amount": 165034.0,
-            "previous_close": 4.07
-          },
-          {
-            "date": "2026-07-28",
-            "open": 4.25,
-            "close": 4.29,
-            "high": 4.47,
-            "low": 4.24,
-            "amount": 143118.0,
-            "previous_close": 4.25
-          },
-          {
-            "date": "2026-07-29",
-            "open": 4.29,
-            "close": 4.35,
-            "high": 4.37,
-            "low": 4.23,
-            "amount": 115390.0,
-            "previous_close": 4.29
-          },
-          {
-            "date": "2026-07-30",
-            "open": 4.35,
-            "close": 4.33,
-            "high": 4.46,
-            "low": 4.31,
-            "amount": 137207.0,
-            "previous_close": 4.35
-          },
-          {
-            "date": "2026-07-31",
-            "open": 4.35,
-            "close": 4.36,
-            "high": 4.42,
-            "low": 4.33,
-            "amount": 107170.0,
-            "previous_close": 4.33
-          },
-          {
-            "date": "2026-08-03",
-            "open": 4.38,
-            "close": 4.46,
-            "high": 4.48,
-            "low": 4.35,
-            "amount": 117351.0,
-            "previous_close": 4.36
-          },
-          {
-            "date": "2026-08-04",
-            "open": 4.47,
-            "close": 4.44,
-            "high": 4.5,
-            "low": 4.42,
-            "amount": 105179.0,
-            "previous_close": 4.46
-          },
-          {
-            "date": "2026-08-05",
-            "open": 4.44,
-            "close": 4.44,
-            "high": 4.47,
-            "low": 4.37,
-            "amount": 141356.0,
-            "previous_close": 4.44
-          },
-          {
-            "date": "2026-08-06",
-            "open": 4.44,
-            "close": 4.48,
-            "high": 4.5,
-            "low": 4.38,
-            "amount": 146211.0,
-            "previous_close": 4.44
-          },
-          {
-            "date": "2026-08-07",
-            "open": 4.48,
-            "close": 4.4,
-            "high": 4.49,
-            "low": 4.32,
-            "amount": 144553.0,
-            "previous_close": 4.48
-          },
-          {
-            "date": "2026-08-10",
-            "open": 4.4,
-            "close": 4.56,
-            "high": 4.6,
-            "low": 4.38,
-            "amount": 178709.0,
-            "previous_close": 4.4
-          },
-          {
-            "date": "2026-08-11",
-            "open": 4.59,
-            "close": 4.63,
-            "high": 4.71,
-            "low": 4.49,
-            "amount": 156403.0,
-            "previous_close": 4.56
-          },
-          {
-            "date": "2026-08-12",
-            "open": 4.69,
-            "close": 4.74,
-            "high": 4.77,
-            "low": 4.59,
-            "amount": 159610.0,
-            "previous_close": 4.63
-          },
-          {
-            "date": "2026-08-13",
-            "open": 4.74,
-            "close": 4.58,
-            "high": 4.78,
-            "low": 4.57,
-            "amount": 140262.0,
-            "previous_close": 4.74
-          },
-          {
-            "date": "2026-08-14",
-            "open": 4.59,
-            "close": 4.56,
-            "high": 4.62,
-            "low": 4.48,
-            "amount": 111431.0,
-            "previous_close": 4.58
-          },
-          {
-            "date": "2026-08-17",
-            "open": 4.56,
-            "close": 4.56,
-            "high": 4.58,
-            "low": 4.49,
-            "amount": 71172.0,
-            "previous_close": 4.56
-          },
-          {
-            "date": "2026-08-18",
-            "open": 4.58,
-            "close": 4.52,
-            "high": 4.61,
-            "low": 4.47,
-            "amount": 98255.0,
-            "previous_close": 4.56
-          },
-          {
-            "date": "2026-08-19",
-            "open": 4.52,
-            "close": 4.33,
-            "high": 4.52,
-            "low": 4.32,
-            "amount": 102452.0,
-            "previous_close": 4.52
-          },
-          {
-            "date": "2026-08-20",
-            "open": 4.35,
-            "close": 4.4,
-            "high": 4.41,
-            "low": 4.33,
-            "amount": 94063.0,
-            "previous_close": 4.33
-          },
-          {
-            "date": "2026-08-21",
-            "open": 4.35,
-            "close": 4.42,
-            "high": 4.44,
-            "low": 4.31,
-            "amount": 92540.0,
-            "previous_close": 4.4
-          },
-          {
-            "date": "2026-08-24",
-            "open": 4.42,
-            "close": 4.28,
-            "high": 4.42,
-            "low": 4.24,
-            "amount": 131098.0,
-            "previous_close": 4.42
-          },
-          {
-            "date": "2026-08-25",
-            "open": 4.29,
-            "close": 4.42,
-            "high": 4.45,
-            "low": 4.24,
-            "amount": 130255.0,
-            "previous_close": 4.28
-          },
-          {
-            "date": "2026-08-26",
-            "open": 4.4,
-            "close": 4.5,
-            "high": 4.55,
-            "low": 4.39,
-            "amount": 111651.0,
-            "previous_close": 4.42
-          },
-          {
-            "date": "2026-08-27",
-            "open": 4.47,
-            "close": 4.51,
-            "high": 4.52,
-            "low": 4.45,
-            "amount": 80023.0,
-            "previous_close": 4.5
-          },
-          {
-            "date": "2026-08-28",
-            "open": 4.53,
-            "close": 4.52,
-            "high": 4.56,
-            "low": 4.5,
-            "amount": 74856.0,
-            "previous_close": 4.51
-          },
-          {
-            "date": "2026-08-31",
-            "open": 4.49,
-            "close": 4.52,
-            "high": 4.55,
-            "low": 4.47,
-            "amount": 72981.0,
-            "previous_close": 4.52
-          },
-          {
-            "date": "2026-09-01",
-            "open": 4.48,
-            "close": 4.56,
-            "high": 4.6,
-            "low": 4.48,
-            "amount": 105936.0,
-            "previous_close": 4.52
-          },
-          {
-            "date": "2026-09-02",
-            "open": 4.55,
-            "close": 4.59,
-            "high": 4.63,
-            "low": 4.47,
-            "amount": 80618.0,
-            "previous_close": 4.56
-          },
-          {
-            "date": "2026-09-03",
-            "open": 4.6,
-            "close": 4.48,
-            "high": 4.62,
-            "low": 4.48,
-            "amount": 83496.0,
-            "previous_close": 4.59
-          },
-          {
-            "date": "2026-09-04",
-            "open": 4.48,
-            "close": 4.93,
-            "high": 4.93,
-            "low": 4.48,
-            "amount": 162802.0,
-            "previous_close": 4.48
-          },
-          {
-            "date": "2026-09-07",
-            "open": 5.36,
-            "close": 5.42,
-            "high": 5.42,
-            "low": 5.05,
-            "amount": 343660.0,
-            "previous_close": 4.93
-          },
-          {
-            "date": "2026-09-08",
-            "open": 5.56,
-            "close": 5.41,
-            "high": 5.77,
-            "low": 5.4,
-            "amount": 1113007.0,
-            "previous_close": 5.42
-          },
-          {
-            "date": "2026-09-09",
-            "open": 5.41,
-            "close": 5.35,
-            "high": 5.45,
-            "low": 5.14,
-            "amount": 734513.0,
-            "previous_close": 5.41
-          }
-        ],
-        "minute_1": [],
-        "minute_5": [],
-        "history_status": "READY",
-        "history_error": null,
-        "history_fetched_at": "2026-09-09 23:13:47",
-        "minute_status": "PARTIAL"
-      },
-      "ma5_daily": 5.118,
-      "ma10_daily": 4.829,
-      "ma20_daily": 4.643,
-      "daily_ma_data_ready": true,
-      "daily_ma_note": "日线收盘样本 120 条",
-      "ma20": 5.35,
-      "history_status": "READY",
-      "history_error": null,
-      "bias": 0.0,
-      "rsi_1m": 50.0,
-      "rsi_5m": 50.0,
-      "boll_upper": 5.35,
-      "boll_lower": 5.35,
-      "atr_ratio": 0.0,
-      "volume_ratio": 1.0,
-      "avg_amplitude_5": 0.0,
-      "intraday_support": 5.35,
-      "minute_status": "PARTIAL",
-      "minute_last_attempt_at": 1788966580.342453,
-      "zombie_data_ready": false,
-      "zombie_data_note": "历史5日换手率或真实振幅不完整",
-      "breakdown_data_ready": false,
-      "breakdown_data_note": "需要至少22根5分钟K线",
-      "strategy_classification_reason": "ATR14占比=3.91%",
-      "platform_industry": null,
-      "platform_beta": null,
-      "daily_atr_ratio": 0.0391
+      "daily_atr_ratio": 0.0736,
+      "historical_5d_avg_amplitude": 8.253,
+      "historical_5d_avg_turnover": 30.73,
+      "is_zombie_stock": false
     },
     {
       "code": "688766",
@@ -18200,14 +15936,14 @@
       "shares": 200,
       "entry_price": 378.54,
       "cost_price": 378.54,
-      "holding_days": 13,
-      "current_price": 393.39,
-      "high_price": 393.39,
-      "market_value": 78678.0,
-      "unrealized_pnl": 2891.32,
-      "unrealized_pnl_pct": 3.82,
+      "holding_days": 14,
+      "current_price": 398.95,
+      "high_price": 398.95,
+      "market_value": 79790.0,
+      "unrealized_pnl": 4002.21,
+      "unrealized_pnl_pct": 5.29,
       "strategy_mode": "high_volatility",
-      "strategy_status": "ATR14占比=7.29%",
+      "strategy_status": "ATR14占比=7.02%",
       "price_history": [
         {
           "time": 1788942577.148728,
@@ -18363,17 +16099,47 @@
           "time": 1788966580.342453,
           "price": 393.39,
           "volume": 7304829.0
+        },
+        {
+          "time": 1789038862.210751,
+          "price": 398.95,
+          "volume": 6352617.0
+        },
+        {
+          "time": 1789038892.242101,
+          "price": 398.95,
+          "volume": 6352617.0
+        },
+        {
+          "time": 1789038999.062028,
+          "price": 398.95,
+          "volume": 6352617.0
+        },
+        {
+          "time": 1789039336.38606,
+          "price": 398.95,
+          "volume": 6352617.0
+        },
+        {
+          "time": 1789039490.536883,
+          "price": 398.95,
+          "volume": 6352617.0
+        },
+        {
+          "time": 1789040063.050339,
+          "price": 398.95,
+          "volume": 6352617.0
         }
       ],
       "last_signal_at": null,
       "last_signal_type": null,
       "signal_confirmations": {},
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 23:09:40",
+      "quote_status_at": "2026-09-10 19:34:23",
       "data_source": "tencent",
-      "last_day_seen": "2026-09-09",
-      "change_pct": -1.97,
-      "turnover_rate": 4.91,
+      "last_day_seen": "2026-09-10",
+      "change_pct": 1.41,
+      "turnover_rate": 4.27,
       "indicator_data_ready": true,
       "indicator_note": "基于实时快照滚动估算",
       "status_tag": "NORMAL",
@@ -18382,21 +16148,12 @@
         "instrument_type": "stock",
         "daily": [
           {
-            "date": "2026-03-19",
-            "open": 268.09,
-            "close": 293.0,
-            "high": 305.99,
-            "low": 256.44,
-            "amount": 11668592.0
-          },
-          {
             "date": "2026-03-20",
             "open": 292.51,
             "close": 280.01,
             "high": 298.93,
             "low": 273.63,
-            "amount": 7881479.0,
-            "previous_close": 293.0
+            "amount": 7881479.0
           },
           {
             "date": "2026-03-23",
@@ -19459,42 +17216,51 @@
             "low": 391.0,
             "amount": 7304829.0,
             "previous_close": 401.3
+          },
+          {
+            "date": "2026-09-10",
+            "open": 389.0,
+            "close": 398.95,
+            "high": 406.98,
+            "low": 389.0,
+            "amount": 6352617.0,
+            "previous_close": 393.39
           }
         ],
         "minute_1": [],
         "minute_5": [],
         "history_status": "READY",
         "history_error": null,
-        "history_fetched_at": "2026-09-09 23:14:07",
+        "history_fetched_at": "2026-09-10 19:34:38",
         "minute_status": "PARTIAL"
       },
-      "ma5_daily": 389.028,
-      "ma10_daily": 397.821,
-      "ma20_daily": 415.74,
+      "ma5_daily": 391.638,
+      "ma10_daily": 394.727,
+      "ma20_daily": 416.518,
       "daily_ma_data_ready": true,
       "daily_ma_note": "日线收盘样本 120 条",
-      "ma20": 393.39,
+      "ma20": 395.058,
       "history_status": "READY",
       "history_error": null,
-      "bias": 0.0,
+      "bias": 1.18,
       "rsi_1m": 50.0,
       "rsi_5m": 50.0,
-      "boll_upper": 393.39,
-      "boll_lower": 393.39,
-      "atr_ratio": 0.0,
+      "boll_upper": 398.39,
+      "boll_lower": 390.193,
+      "atr_ratio": 0.001,
       "volume_ratio": 1.0,
       "avg_amplitude_5": 0.0,
       "intraday_support": 393.39,
       "minute_status": "PARTIAL",
-      "minute_last_attempt_at": 1788966580.342453,
+      "minute_last_attempt_at": 1789040063.050339,
       "zombie_data_ready": false,
       "zombie_data_note": "历史5日换手率或真实振幅不完整",
       "breakdown_data_ready": false,
       "breakdown_data_note": "需要至少22根5分钟K线",
-      "strategy_classification_reason": "ATR14占比=7.29%",
+      "strategy_classification_reason": "ATR14占比=7.02%",
       "platform_industry": null,
       "platform_beta": null,
-      "daily_atr_ratio": 0.0729
+      "daily_atr_ratio": 0.0702
     },
     {
       "code": "118058",
@@ -19502,14 +17268,14 @@
       "shares": 5,
       "entry_price": 386.02,
       "cost_price": 386.02,
-      "holding_days": 8,
-      "current_price": 341.86,
-      "high_price": 341.86,
-      "market_value": 1709.3,
-      "unrealized_pnl": -222.51,
-      "unrealized_pnl_pct": -11.54,
+      "holding_days": 9,
+      "current_price": 342.497,
+      "high_price": 342.497,
+      "market_value": 1712.49,
+      "unrealized_pnl": -219.33,
+      "unrealized_pnl_pct": -11.37,
       "strategy_mode": "deep_stuck",
-      "strategy_status": "浮动盈亏=-11.54%",
+      "strategy_status": "浮动盈亏=-11.37%",
       "price_history": [
         {
           "time": 1788943085.566929,
@@ -19625,6 +17391,36 @@
           "time": 1788966580.342453,
           "price": 341.86,
           "volume": 235495.0
+        },
+        {
+          "time": 1789038862.210751,
+          "price": 342.497,
+          "volume": 254439.0
+        },
+        {
+          "time": 1789038892.242101,
+          "price": 342.497,
+          "volume": 254439.0
+        },
+        {
+          "time": 1789038999.062028,
+          "price": 342.497,
+          "volume": 254439.0
+        },
+        {
+          "time": 1789039336.38606,
+          "price": 342.497,
+          "volume": 254439.0
+        },
+        {
+          "time": 1789039490.536883,
+          "price": 342.497,
+          "volume": 254439.0
+        },
+        {
+          "time": 1789040063.050339,
+          "price": 342.497,
+          "volume": 254439.0
         }
       ],
       "historical_data": {
@@ -19632,21 +17428,12 @@
         "instrument_type": "convertible_bond",
         "daily": [
           {
-            "date": "2026-03-19",
-            "open": 253.0,
-            "high": 254.378,
-            "low": 245.208,
-            "close": 246.236,
-            "volume": 2440290
-          },
-          {
             "date": "2026-03-20",
             "open": 249.0,
             "high": 261.374,
             "low": 245.213,
             "close": 252.854,
-            "volume": 6853570,
-            "previous_close": 246.236
+            "volume": 6853570
           },
           {
             "date": "2026-03-23",
@@ -20709,13 +18496,22 @@
             "close": 341.86,
             "volume": 2354950,
             "previous_close": 353.362
+          },
+          {
+            "date": "2026-09-10",
+            "open": 337.999,
+            "high": 347.24,
+            "low": 331.411,
+            "close": 342.497,
+            "volume": 2544390,
+            "previous_close": 341.86
           }
         ],
         "minute_1": [],
         "minute_5": [],
         "history_status": "READY",
         "history_error": null,
-        "history_fetched_at": "2026-09-09 23:14:27",
+        "history_fetched_at": "2026-09-10 19:34:39",
         "minute_status": "PARTIAL"
       },
       "history_status": "READY",
@@ -20724,28 +18520,28 @@
       "last_signal_type": null,
       "signal_confirmations": {},
       "quote_status": "LIVE",
-      "quote_status_at": "2026-09-09 23:09:40",
+      "quote_status_at": "2026-09-10 19:34:23",
       "data_source": "tencent",
-      "last_day_seen": "2026-09-09",
-      "change_pct": -3.26,
-      "turnover_rate": 20.13,
+      "last_day_seen": "2026-09-10",
+      "change_pct": 0.19,
+      "turnover_rate": 21.75,
       "indicator_data_ready": true,
       "indicator_note": "基于实时快照滚动估算",
       "status_tag": "NORMAL",
-      "ma5_daily": 350.346,
-      "ma10_daily": 402.498,
-      "ma20_daily": 434.42,
+      "ma5_daily": 348.011,
+      "ma10_daily": 389.038,
+      "ma20_daily": 428.957,
       "daily_ma_data_ready": true,
       "daily_ma_note": "日线收盘样本 120 条",
-      "ma20": 341.86,
+      "ma20": 342.051,
       "minute_status": "PARTIAL",
-      "minute_last_attempt_at": 1788966580.342453,
-      "bias": 0.0,
+      "minute_last_attempt_at": 1789040063.050339,
+      "bias": 0.15,
       "rsi_1m": 50.0,
       "rsi_5m": 50.0,
-      "boll_upper": 341.86,
-      "boll_lower": 341.86,
-      "atr_ratio": 0.0,
+      "boll_upper": 342.508,
+      "boll_lower": 341.476,
+      "atr_ratio": 0.0001,
       "volume_ratio": 1.0,
       "avg_amplitude_5": 0.0,
       "intraday_support": 341.86,
@@ -20753,13 +18549,52 @@
       "zombie_data_note": "历史5日换手率或真实振幅不完整",
       "breakdown_data_ready": false,
       "breakdown_data_note": "需要至少22根5分钟K线",
-      "strategy_classification_reason": "浮动盈亏=-11.54%",
+      "strategy_classification_reason": "浮动盈亏=-11.37%",
       "platform_industry": null,
       "platform_beta": null,
       "daily_atr_ratio": null
     }
   ],
   "watch_sell_alerts": [
+    {
+      "alert_id": "WATCH_001366_TRAILING_EXIT",
+      "code": "001366",
+      "name": "播恩集团",
+      "time": "19:14",
+      "date": "2026-09-10",
+      "rule_type": "TRAILING_EXIT",
+      "reason": "移动止盈清仓",
+      "sell_price": 13.82,
+      "entry_price": 15.38,
+      "shares": 2000,
+      "strategy_mode": "deep_stuck"
+    },
+    {
+      "alert_id": "WATCH_603721_TRAILING_EXIT",
+      "code": "603721",
+      "name": "中广天择",
+      "time": "19:14",
+      "date": "2026-09-10",
+      "rule_type": "TRAILING_EXIT",
+      "reason": "移动止盈清仓",
+      "sell_price": 18.18,
+      "entry_price": 22.3,
+      "shares": 500,
+      "strategy_mode": "deep_stuck"
+    },
+    {
+      "alert_id": "WATCH_002916_ANTI_T_SELL",
+      "code": "002916",
+      "name": "深南电路",
+      "time": "19:14",
+      "date": "2026-09-10",
+      "rule_type": "ANTI_T_SELL",
+      "reason": "深套反T高抛，建议卖出底仓20%-30%",
+      "sell_price": 392.31,
+      "entry_price": 451.5,
+      "shares": 100,
+      "strategy_mode": "deep_stuck"
+    },
     {
       "alert_id": "WATCH_002938_TIME_STOP_REDUCE",
       "code": "002938",
@@ -20786,5 +18621,7 @@
       "shares": 300,
       "strategy_mode": "normal"
     }
-  ]
+  ],
+  "t_day_date": "2026-09-10",
+  "t_day_spent": 23538.6
 }

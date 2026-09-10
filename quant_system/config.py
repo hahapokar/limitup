@@ -37,6 +37,7 @@ DATA_SOURCE_PRIORITY: List[str] = [
 DATA_REQUEST_TIMEOUT: float = 10.0  # Extended to 10.0s for heavy end-of-day data queries
 DATA_REQUEST_RETRIES: int = 3
 DATA_FETCH_INTERVAL: float = 0.5    # Seconds between requests to avoid IP throttling
+INTRADAY_POLL_END_TIME: str = "15:30"  # Stop heartbeat quote polling after the close
 
 # Account & Capital Allocation
 INITIAL_CAPITAL: float = 100_000.0     # 100,000 RMB (10万元本金)
